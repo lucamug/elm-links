@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Elm Resources</title>
+    <style>
+        @font-face {
+            font-family: Noto Sans Japanese;
+            font-style: normal;
+            font-weight: 400;
+            src: url("fonts/NotoSansJP-Regular.woff2") format("woff2"), url("fonts/NotoSansJP-Regular.woff") format("woff"), url("fonts/NotoSansJP-Regular.otf") format("opentype")
+        }
+
+        @font-face {
+            font-family: Noto Sans Japanese;
+            font-style: normal;
+            font-weight: 700;
+            src: url("fonts/NotoSansJP-Bold.woff2") format("woff2"), url("fonts/NotoSansJP-Bold.woff") format("woff"), url("fonts/NotoSansJP-Bold.otf") format("opentype")
+        }
+
+        @font-face {
+            font-family: Noto Sans Japanese;
+            font-style: normal;
+            font-weight: 100;
+            src: url("fonts/NotoSansJP-Light.woff2") format("woff2"), url("fonts/NotoSansJP-Light.woff") format("woff"), url("fonts/NotoSansJP-Light.otf") format("opentype")
+        }
+    </style>
+</head>
+
+<body>
+    <script class="dev-only" src="js-dev/main.js"></script>
+    <!-- prod-only <script src="js/main.js"></script> -->
+    <script>
+        (function(w) {
+            headerHeight = 120;
+            pageInTopArea = pageYOffset <= headerHeight;
+
+            var node = w.document.createElement('div');
+            w.document.body.appendChild(node);
+            var app = Elm.Main.init({
+                flags: {
+                    width: w.innerWidth
+                },
+                node: node
+            });
+
+            (function(headerHeight, pageInTopArea, app) {
+                window.addEventListener('scroll', function() {
+                    if (!pageInTopArea && pageYOffset > headerHeight) {
+                        return;
+                    }
+                    if (pageInTopArea && pageYOffset <= headerHeight) {
+                        return;
+                    }
+                    pageInTopArea = !pageInTopArea;
+                    app.ports.pageInTopArea.send(pageInTopArea);
+
+                }, false);
+            })(headerHeight, pageInTopArea, app);
+            window.app = app;
+        })(window || {});
+    </script>
+</body>
+
+</html>

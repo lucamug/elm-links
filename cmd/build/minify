@@ -1,0 +1,12 @@
+#!/bin/bash
+printf "\n\e[0;32m🍣   Copying to temp...\e[0m\n\n"
+rm -rf temp
+mkdir temp
+cp docs/index-dev.html temp/temp1.html
+printf "\n\e[0;32m🍣   Removing development scripts ...\e[0m\n\n"
+node_modules/.bin/replace '(<script class="dev-only".*</script>)' '<!-- $1 -->' temp/temp1.html -m -i
+printf "\n\e[0;32m🍣   Adding production scripts ...\e[0m\n\n"
+node_modules/.bin/replace '<!-- prod-only (.*) -->' '$1' temp/temp1.html -m -i
+printf "\n\e[0;32m🍣   Minifing temp.html ...\e[0m\n\n"
+node_modules/.bin/html-minifier -o docs/index.html temp/temp1.html --minify-css --minify-js --collapse-whitespace --remove-comments
+printf "Done\n"

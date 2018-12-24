@@ -5,5 +5,8 @@ node_modules
 # Desktop Services Store on macOS
 .DS_Store
 
+# main.js
+# index.html
 
-index.html
+js-dev
+temp
