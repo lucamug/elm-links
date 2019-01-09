@@ -92,12 +92,17 @@ type Id
     | Atom
     | Book
     | CSS
+    | ElmUI_Example
 
 
 list : List Attributes
 list =
     [ { id = Empty
       , name = "Empty"
+      , picture = ""
+      }
+    , { id = ElmUI_Example
+      , name = "elm-ui Examples"
       , picture = ""
       }
     , { id = CSS

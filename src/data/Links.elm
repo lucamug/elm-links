@@ -1087,4 +1087,68 @@ list =
       , url = "https://www.youtube.com/watch?v=re4oOOkqs3E"
       , description = ""
       }
+    , { authors = [ Roman_Frolow ]
+      , name = "Awesome Elm Gamedev"
+      , keywords = [ Game ]
+      , picture = ""
+      , code = ""
+      , url = "https://github.com/rofrol/awesome-elm-gamedev"
+      , description = "A curated list of useful Elm tutorials, libraries and software for Game Development. Inspired by awesome list. Feel free to contribute."
+      }
+    , { authors = [ Rogerio_Chaves ]
+      , name = "Spades"
+      , keywords = [ SPA, Boilerplate ]
+      , picture = ""
+      , code = ""
+      , url = "https://github.com/rogeriochaves/spades"
+      , description = "Spades is a framework for Elm that helps you quickly start a Single Page Application (SPA) ready to the real world"
+      }
+    , { authors = [ Sosuke ]
+      , name = "ELMineSweeper"
+      , keywords = [ Game, ElmUI_Example ]
+      , picture = ""
+      , code = "https://github.com/nikueater/elminesweeper"
+      , url = "https://dazzling-turing-db7f8b.netlify.com/"
+      , description = "Minesweeper written in Elm"
+      }
+    , { authors = [ Dillon_Kearns ]
+      , name = "Incremental Elm"
+      , keywords = [ ElmUI_Example, SPA ]
+      , picture = ""
+      , code = "https://github.com/IncrementalElm/incremental-elm-web"
+      , url = "http://incrementalelm.com/"
+      , description = "Incremental Elm Consulting Web site"
+      }
+    , { authors = [ Chandu_Tennety ]
+      , name = "Conway's Game of Life"
+      , keywords = [ ElmUI_Example, Game ]
+      , picture = ""
+      , code = "https://github.com/tennety/elm-game-of-life"
+      , url = "https://tennety.github.io/elm-game-of-life/"
+      , description = "A little implementation of Conway's Game of Life in Elm"
+      }
+    , { authors = [ Ronan ]
+      , name = "Roteiro"
+      , keywords = [ ElmUI_Example ]
+      , picture = ""
+      , code = "https://github.com/ronanyeah/roteiro"
+      , url = "https://roteiro.training/"
+      , description = ""
+      }
+    , { authors = [ Fabian_Kirchner ]
+      , name = "Grid"
+      , keywords = [ ElmUI_Example, Game ]
+      , picture = ""
+      , code = "https://github.com/kirchner/grid"
+      , url = "https://kirchner.github.io/grid/"
+      , description = ""
+      }
+    , { authors = [ Jo_Wood ]
+      , name = "The Turing Machine"
+      , keywords = [ ElmUI_Example, Game ]
+      , picture = ""
+      , code = "https://github.com/jwoLondon/turingmachine"
+      , url = "https://www.staff.city.ac.uk/~jwo/tutorials/tm/"
+      , description = "Web-based Turing Machine for teaching and learning"
+      }
     ]

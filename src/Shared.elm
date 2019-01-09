@@ -17,11 +17,13 @@ import Data.Keywords as Keywords
 import Data.Links as Links
 import Data.People as People
 import ElmTextSearch
+import Index.Defaults
 import Keyboard
 import List.Extra
 import NaturalOrdering
 import Port
 import Route
+import StopWordFilter
 import Url
 import Utils
 
@@ -445,19 +447,28 @@ peopleWithQuantity =
 -- SEARCH ENGINE
 
 
+createMyStopWordFilter =
+    StopWordFilter.createFilterFunc
+        []
+
+
 indexForLinks :
     List { b | lookup : { a | description : String, name : String } }
     -> ( ElmTextSearch.Index { b | lookup : { a | description : String, name : String } }, List ( Int, String ) )
 indexForLinks list =
     let
         index =
-            ElmTextSearch.new
+            ElmTextSearch.newWith
                 { ref = \item -> item.lookup.name
                 , fields =
                     [ ( \item -> item.lookup.name, 5.0 )
                     , ( \item -> item.lookup.description, 1.0 )
                     ]
                 , listFields = []
+                , indexType = "Elm Resources - Customized Stop Words v1"
+                , initialTransformFactories = Index.Defaults.defaultInitialTransformFactories
+                , transformFactories = Index.Defaults.defaultTransformFactories
+                , filterFactories = [ createMyStopWordFilter ]
                 }
     in
     ElmTextSearch.addDocs list index
@@ -469,12 +480,16 @@ indexBuilder :
 indexBuilder list =
     let
         index =
-            ElmTextSearch.new
+            ElmTextSearch.newWith
                 { ref = \item -> item.lookup.name
                 , fields =
                     [ ( \item -> item.lookup.name, 5.0 )
                     ]
                 , listFields = []
+                , indexType = "Elm Resources - Customized Stop Words v1"
+                , initialTransformFactories = Index.Defaults.defaultInitialTransformFactories
+                , transformFactories = Index.Defaults.defaultTransformFactories
+                , filterFactories = [ createMyStopWordFilter ]
                 }
     in
     ElmTextSearch.addDocs list index

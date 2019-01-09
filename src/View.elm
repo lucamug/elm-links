@@ -422,7 +422,7 @@ viewLinksList model =
     let
         searchResults =
             Result.map Tuple.second <|
-                Shared.resultSearch model.indexForLinks model.filter
+                Shared.resultSearch model.indexForLinks (Utils.decode model.filter)
 
         itemsToShow =
             case searchResults of
@@ -452,7 +452,7 @@ viewPeopleList model =
     let
         searchResults =
             Result.map Tuple.second <|
-                Shared.resultSearch model.indexForPeople model.filter
+                Shared.resultSearch model.indexForPeople (Utils.decode model.filter)
 
         itemsToShow =
             case searchResults of
@@ -482,7 +482,7 @@ viewKeywordsList model =
     let
         searchResults =
             Result.map Tuple.second <|
-                Shared.resultSearch model.indexForKeywords model.filter
+                Shared.resultSearch model.indexForKeywords (Utils.decode model.filter)
 
         itemsToShow =
             case searchResults of
@@ -745,7 +745,7 @@ viewHeader model =
                     , Border.color <| c model .background
                     ]
                     { onChange = Shared.ChangeFilter
-                    , text = model.filter
+                    , text = Utils.decode model.filter
                     , placeholder = Just <| Input.placeholder [ Font.color <| c model .fontLight ] <| text "Filter"
                     , label = Input.labelAbove [] none
                     }
@@ -1268,7 +1268,7 @@ extraDataLink model item =
     )
         ++ (if String.length item.url > 0 then
                 [ newTabLink [ Font.size 16 ]
-                    { url = item.code
+                    { url = item.url
                     , label = paragraph [ Font.size 16 ] [ text <| "Url: " ++ item.url ]
                     }
                 ]

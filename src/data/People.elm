@@ -131,15 +131,57 @@ type Id
     | Francesco_Orsenigo
     | Halohalospecial
     | Matias_Klemola
+    | Roman_Frolow
+    | Rogerio_Chaves
+    | Sosuke
+    | Chandu_Tennety
+    | Ronan
+    | Fabian_Kirchner
+    | Jo_Wood
 
 
 list : List Attributes
 list =
-    [ { id = Matias_Klemola
+    [ { id = Jo_Wood
+      , name = "Jo Wood"
+      , twitter = ""
+      , picture = "people/jo-wood.png"
+      , github = "tennety"
+      , url = "https://www.gicentre.net/"
+      }
+    , { id = Chandu_Tennety
+      , name = "Chandu Tennety"
+      , twitter = ""
+      , picture = "people/chandu-tennety.jpeg"
+      , github = "tennety"
+      , url = ""
+      }
+    , { id = Fabian_Kirchner
+      , name = "Fabian Kirchner"
+      , twitter = ""
+      , picture = "people/fabian-kirchner.jpeg"
+      , github = "kirchner"
+      , url = ""
+      }
+    , { id = Sosuke
+      , name = "Sosuke"
+      , twitter = ""
+      , picture = "people/sosuke.png"
+      , github = "nikueaterso"
+      , url = ""
+      }
+    , { id = Matias_Klemola
       , name = "Matias Klemola"
       , twitter = ""
       , picture = "people/matias-klemola.jpeg"
       , github = "klazuka"
+      , url = ""
+      }
+    , { id = Rogerio_Chaves
+      , name = "Rogério Chaves"
+      , twitter = ""
+      , picture = "people/rogerio-chaves.jpeg"
+      , github = "rogeriochaves"
       , url = ""
       }
     , { id = Keith_Lazuka
@@ -630,6 +672,20 @@ list =
       , twitter = ""
       , picture = ""
       , github = "halohalospecial"
+      , url = ""
+      }
+    , { id = Roman_Frolow
+      , name = "Roman Frołow"
+      , twitter = ""
+      , picture = "people/roman-frolow.jpeg"
+      , github = "rofrol"
+      , url = ""
+      }
+    , { id = Ronan
+      , name = "Rónán"
+      , twitter = ""
+      , picture = "people/ronan.jpeg"
+      , github = "ronanyeah"
       , url = ""
       }
     ]
