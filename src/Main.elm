@@ -2,10 +2,8 @@ module Main exposing (main)
 
 import Browser
 import Browser.Events
-import CommonRoute
 import Keyboard
 import Port
-import Route
 import Shared
 import View
 

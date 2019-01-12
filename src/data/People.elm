@@ -138,11 +138,75 @@ type Id
     | Ronan
     | Fabian_Kirchner
     | Jo_Wood
+    | Remi_Van_Keisbelck
+    | Justin_Herrick
+    | Martin_Feineis
+    | Miyamoen
+    | Tomas_Latal
+    | Jan_Hrcek
+    | Suresh_Yadali
+    | Markus_Laire
 
 
 list : List Attributes
 list =
-    [ { id = Jo_Wood
+    [ { id = Markus_Laire
+      , name = "Markus_Laire"
+      , twitter = ""
+      , picture = "people/markus-laire.png"
+      , github = "malaire"
+      , url = ""
+      }
+    , { id = Suresh_Yadali
+      , name = "Suresh Yadali"
+      , twitter = ""
+      , picture = "people/suresh-yadali.jpeg"
+      , github = "yadalis"
+      , url = ""
+      }
+    , { id = Tomas_Latal
+      , name = "Tomáš Látal"
+      , twitter = ""
+      , picture = "people/tomas-latal.jpeg"
+      , github = "kraklin"
+      , url = ""
+      }
+    , { id = Jan_Hrcek
+      , name = "Jan Hrcek"
+      , twitter = ""
+      , picture = "people/jan-hrcek.jpeg"
+      , github = "jhrcek"
+      , url = ""
+      }
+    , { id = Miyamoen
+      , name = "Miyamoen"
+      , twitter = ""
+      , picture = "people/miyamoen.jpeg"
+      , github = "miyamoen"
+      , url = ""
+      }
+    , { id = Martin_Feineis
+      , name = "Martin Feineis"
+      , twitter = ""
+      , picture = "people/martin-feineis.png"
+      , github = ""
+      , url = "http://canena.de/"
+      }
+    , { id = Justin_Herrick
+      , name = "Justin Herrick"
+      , twitter = ""
+      , picture = "people/justin-herrick.jpeg"
+      , github = "jah2488"
+      , url = "http://justinherrick.com/"
+      }
+    , { id = Remi_Van_Keisbelck
+      , name = "Remi Van Keisbelck"
+      , twitter = ""
+      , picture = "people/remi-van-keisbelck.png"
+      , github = "vankeisb"
+      , url = "http://www.rvkb.com/"
+      }
+    , { id = Jo_Wood
       , name = "Jo Wood"
       , twitter = ""
       , picture = "people/jo-wood.png"

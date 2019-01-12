@@ -1009,7 +1009,7 @@ list =
       }
     , { authors = [ Halohalospecial ]
       , name = "Elmjutsu"
-      , keywords = [ Atom ]
+      , keywords = [ Atom, IDEs ]
       , picture = ""
       , code = "https://github.com/halohalospecial/atom-elmjutsu"
       , url = "https://atom.io/packages/elmjutsu"
@@ -1017,7 +1017,7 @@ list =
       }
     , { authors = [ Matthew_Buscemi ]
       , name = "Elm Lens"
-      , keywords = [ Atom ]
+      , keywords = [ Atom, IDEs ]
       , picture = ""
       , code = "https://github.com/mbuscemi/elm-lens"
       , url = "https://atom.io/packages/elm-lens"
@@ -1048,12 +1048,12 @@ list =
       , description = ""
       }
     , { authors = [ Ossi_Hanhinen, Matias_Klemola ]
-      , name = "elm-taco"
+      , name = "elm-shared-state"
       , keywords = [ SPA, Boilerplate ]
       , picture = "img/tako.png"
-      , code = "https://github.com/ohanhi/elm-taco"
-      , url = "https://ohanhi.github.io/elm-taco/"
-      , description = "A simple concept for managing common information in large Elm SPAs"
+      , code = "https://github.com/ohanhi/elm-shared-state"
+      , url = "https://ohanhi.github.io/elm-shared-state/"
+      , description = "Example app on managing shared state in large Elm SPAs. (ex elm-taco)"
       }
     , { authors = [ Evan_Czaplicki ]
       , name = "The Hard Parts of Open Source"
@@ -1089,7 +1089,7 @@ list =
       }
     , { authors = [ Roman_Frolow ]
       , name = "Awesome Elm Gamedev"
-      , keywords = [ Game ]
+      , keywords = [ Game, ListOfLinks ]
       , picture = ""
       , code = ""
       , url = "https://github.com/rofrol/awesome-elm-gamedev"
@@ -1150,5 +1150,109 @@ list =
       , code = "https://github.com/jwoLondon/turingmachine"
       , url = "https://www.staff.city.ac.uk/~jwo/tutorials/tm/"
       , description = "Web-based Turing Machine for teaching and learning"
+      }
+    , { authors = [ Rogerio_Chaves ]
+      , name = "Rubber"
+      , keywords = [ Mathematics ]
+      , picture = ""
+      , code = "https://github.com/rogeriochaves/rubber/"
+      , url = "https://rogeriochaves.github.io/rubber/"
+      , description = "Evaluate LaTeX math code"
+      }
+    , { authors = [ Remi_Van_Keisbelck ]
+      , name = "IBM Decision Composer"
+      , keywords = [ IBM ]
+      , picture = ""
+      , code = "https://discourse.elm-lang.org/t/ibm-releases-elm-powered-app/2364"
+      , url = "https://decision-composer.ibm.com/"
+      , description = "A tool that allows business users to model and implement complex Decisions via graphical tools and human-readable artifacts instead of code."
+      }
+    , { authors = [ Yosuke_Torii ]
+      , name = "基礎からわかる Elm"
+      , keywords = [ Book ]
+      , picture = "img/book-elm-japanese.jpg"
+      , code = ""
+      , url = "https://www.amazon.co.jp/dp/4863542224/ref=asc_df_48635422242566179/?tag=jpgo-22&creative=9303&creativeASIN=4863542224&linkCode=df0&hvadid=295706574430&hvpos=1o1&hvnetw=g&hvrand=560766736247070493&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1009300&hvtargid=pla-526453139716&th=1&psc=1"
+      , description = ""
+      }
+    , { authors = [ Justin_Herrick ]
+      , name = "elm-companies"
+      , keywords = [ ListOfLinks ]
+      , picture = ""
+      , code = ""
+      , url = "https://github.com/jah2488/elm-companies"
+      , description = "A list of companies using Elm in production"
+      }
+    , { authors = []
+      , name = "Elm support for older browsers? (IE 9, 10, …)"
+      , keywords = [ IE ]
+      , picture = ""
+      , code = ""
+      , url = "https://discourse.elm-lang.org/t/elm-support-for-older-browsers-ie-9-10/744/8"
+      , description = ""
+      }
+    , { authors = [ Martin_Feineis ]
+      , name = "An Elm to the Past «Bringing Elm 0.18 to IE8+»"
+      , keywords = [ IE ]
+      , picture = ""
+      , code = ""
+      , url = "http://canena.de/blog/2018-02-24-an-elm-to-the-past/"
+      , description = ""
+      }
+    , { authors = []
+      , name = "test-elm-performance"
+      , keywords = [ ElmUI_Example, Performance ]
+      , picture = ""
+      , code = ""
+      , url = "https://github.com/webbhuset/test-elm-performance"
+      , description = "A simple, non-scientific test of the render performance of the Elm Virtual DOM"
+      }
+    , { authors = [ Miyamoen ]
+      , name = "Bibliopola"
+      , keywords = [ ElmUI_Example ]
+      , picture = ""
+      , code = "https://github.com/miyamoen/bibliopola"
+      , url = "https://miyamoen.github.io/bibliopola/"
+      , description = "UI Catalog for Elm applications built by elm-ui inspired by Storybook"
+      }
+    , { authors = [ Tomas_Latal ]
+      , name = "Elm 0.19 readiness helper"
+      , keywords = [ ElmUI_Example, DevTool ]
+      , picture = ""
+      , code = ""
+      , url = "https://kraklin.github.io/elm-readiness/"
+      , description = "Keep track of transition state of your dependencies in your own Elm app to Elm 0.19"
+      }
+    , { authors = [ Jan_Hrcek ]
+      , name = "Surjective / Injective"
+      , keywords = [ ElmUI_Example, Mathematics ]
+      , picture = ""
+      , code = "https://github.com/jhrcek/surjective-injective"
+      , url = "https://janhrcek.cz/surjective-injective/"
+      , description = "Visual exploration of surjectivity and injectivity (as a properties of mathematical functions)"
+      }
+    , { authors = [ Keith_Lazuka ]
+      , name = "intellij-elm"
+      , keywords = [ Intellij, IDEs ]
+      , picture = ""
+      , code = "https://github.com/klazuka/intellij-elm"
+      , url = "https://klazuka.github.io/intellij-elm/"
+      , description = "Elm language support for IntelliJ, WebStorm, PhpStorm and PyCharm (JetBrains)"
+      }
+    , { authors = [ Suresh_Yadali ]
+      , name = "MHC Truck Search"
+      , keywords = [ ElmUI_Example ]
+      , picture = ""
+      , code = "https://github.com/yadalis/mhctrucksearch"
+      , url = "https://mhctrucksmartsearch.azurewebsites.net/"
+      , description = "A super fast search/fitler trucks to give the results instantly"
+      }
+    , { authors = [ Markus_Laire ]
+      , name = "elm-dependencies-analyzer"
+      , keywords = [ DevTool ]
+      , picture = ""
+      , code = "https://github.com/malaire/elm-dependencies-analyzer"
+      , url = "https://www.markuslaire.com/github/elm-dependencies-analyzer/"
+      , description = "A little program I created for analyzing package dependencies of application elm.json"
       }
     ]

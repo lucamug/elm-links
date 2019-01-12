@@ -11,7 +11,6 @@ import Data.People as People
 import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
-import Element.Events as Events
 import Element.Font as Font
 import Element.Input as Input
 import Html exposing (Html)
@@ -918,7 +917,7 @@ listOfLinks model links toSkip =
                         , Font.size 20
                         ]
                         { url = linkUrl item Link
-                        , label = text <| item.lookup.name ++ " "
+                        , label = text <| item.lookup.name ++ "  "
                         }
                     , newTabLink []
                         { url = item.lookup.url

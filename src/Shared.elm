@@ -21,7 +21,6 @@ import Index.Defaults
 import Keyboard
 import List.Extra
 import NaturalOrdering
-import Port
 import Route
 import StopWordFilter
 import Url
@@ -34,7 +33,7 @@ import Utils
 
 initialSquareWidth : Int
 initialSquareWidth =
-    65
+    60
 
 
 initialSquareWidthForMobile : Int
@@ -445,6 +444,7 @@ peopleWithQuantity =
 
 
 -- SEARCH ENGINE
+--createMyStopWordFilter : Index.Model.Index doc -> ( Index.Model.Index doc, String -> Bool )
 
 
 createMyStopWordFilter =

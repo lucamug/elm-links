@@ -93,13 +93,44 @@ type Id
     | Book
     | CSS
     | ElmUI_Example
+    | IBM
+    | ListOfLinks
+    | IE
+    | Performance
+    | DevTool
+    | Intellij
+    | IDEs
 
 
 list : List Attributes
 list =
-    [ { id = Empty
+    [ { id = DevTool
+      , name = "DevTool"
+      , picture = ""
+      }
+    , { id = Intellij
+      , name = "IntelliJ"
+      , picture = ""
+      }
+    , { id = IDEs
+      , name = "Integrated Development Environment (IDE)"
+      , picture = ""
+      }
+    , { id = Empty
       , name = "Empty"
       , picture = ""
+      }
+    , { id = Performance
+      , name = "Performance"
+      , picture = ""
+      }
+    , { id = IE
+      , name = "Microsoft Internet Explorer (IE)"
+      , picture = "img/ie.png"
+      }
+    , { id = IBM
+      , name = "IBM"
+      , picture = "img/ibm.png"
       }
     , { id = ElmUI_Example
       , name = "elm-ui Examples"
@@ -241,13 +272,9 @@ list =
       , name = "Elixir"
       , picture = "svg/elixir.svg"
       }
-    , { id = Microsoft
-      , name = "Microsoft"
-      , picture = ""
-      }
     , { id = Ford
       , name = "Ford"
-      , picture = ""
+      , picture = "img/ford.jpeg"
       }
     , { id = Atom
       , name = "Atom"
@@ -256,5 +283,13 @@ list =
     , { id = Book
       , name = "Book"
       , picture = "svg/book.svg"
+      }
+    , { id = Microsoft
+      , name = "Microsoft"
+      , picture = "img/microsoft.png"
+      }
+    , { id = ListOfLinks
+      , name = "List of Links"
+      , picture = ""
       }
     ]
