@@ -1,0 +1,2286 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Elm Resources</title>
+    <style>@font-face{font-family:Noto Sans Japanese;font-style:normal;font-weight:400;src:url(fonts/NotoSansJP-Regular.woff2) format("woff2"),url(fonts/NotoSansJP-Regular.woff) format("woff"),url(fonts/NotoSansJP-Regular.otf) format("opentype")}@font-face{font-family:Noto Sans Japanese;font-style:normal;font-weight:700;src:url(fonts/NotoSansJP-Bold.woff2) format("woff2"),url(fonts/NotoSansJP-Bold.woff) format("woff"),url(fonts/NotoSansJP-Bold.otf) format("opentype")}@font-face{font-family:Noto Sans Japanese;font-style:normal;font-weight:100;src:url(fonts/NotoSansJP-Light.woff2) format("woff2"),url(fonts/NotoSansJP-Light.woff) format("woff"),url(fonts/NotoSansJP-Light.otf) format("opentype")}</style>
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-104755771-2"></script>
+    <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-104755771-2")</script>
+    <script style="display: none;">var tvt = tvt || {}; tvt.captureVariables = function(a){for(var b=
+new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"undefined"!=typeof a[f])try{var g=[];c[f]=JSON.stringify(a[f],function(a,b){try{if("function"!==typeof b){if("object"===typeof b&&null!==b){if(b instanceof HTMLElement||b instanceof Node||-1!=g.indexOf(b))return;g.push(b)}return b}}catch(H){}})}catch(l){}a=document.createEvent("CustomEvent");a.initCustomEvent("TvtRetrievedVariablesEvent",!0,!0,{variables:c,date:b});window.dispatchEvent(a)};window.setTimeout(function() {tvt.captureVariables({'dataLayer.hide': (function(a){a=a.split(".");for(var b=window,c=0;c<a.length&&(b=b[a[c]],b);c++);return b})('dataLayer.hide'),'gaData': window['gaData'],'dataLayer': window['dataLayer']})}, 2000);</script>
+</head>
+
+<body>
+    <div class="font-size-20 ff-noto-sans-japanesesans-serif fc-204-204-204-255 bg-51-51-51-255 s e wf ui s e" style="transition: background 1000ms linear 0s;">
+        <style>@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {.s.r > .s { flex-basis: auto !important; } .s.r > .s.ctr { flex-basis: auto !important; }}
+
+/* General Input Reset */
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  /* width: 100%;  Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:10;
+  width: 100%;
+  outline: dashed 1px;
+  height: 100%;
+  opacity: 0;
+}
+
+/* Hide all syling for track */
+input[type=range]::-moz-range-track {
+    background: transparent;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    background: transparent;
+    cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Thumbs */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    opacity: 0.5;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border:none;
+    border-radius: 5px;
+}
+input[type=range]::-moz-range-thumb {
+    opacity: 0.5;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border:none;
+    border-radius: 5px;
+}
+input[type=range]::-ms-thumb {
+    opacity: 0.5;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border:none;
+    border-radius: 5px;
+}
+input[type=range][orient=vertical]{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical;  /* WebKit */
+}
+
+.explain {
+    border: 6px solid rgb(174, 121, 15) !important;
+}
+.explain > .s {
+    border: 4px dashed rgb(0, 151, 167) !important;
+}
+
+.ctr {
+    border: none !important;
+}
+.explain > .ctr > .s {
+    border: 4px dashed rgb(0, 151, 167) !important;
+}
+
+html,body{height:100%;padding:0;margin:0;}.s.e.ic{display:block;}.s:focus{outline:none;}.ui{width:100%;height:auto;min-height:100%;z-index:0;}.ui.s.hf{height:100%;}.ui.s.hf > .hf{height:100%;}.ui > .fr.nb{position:fixed;}.nb{position:relative;border:none;display:flex;flex-direction:row;flex-basis:auto;}.nb.e{display:flex;flex-direction:column;white-space:pre;}.nb.e.hbh{z-index:0;}.nb.e.hbh > .bh{z-index:-1;}.nb.e.sbt > .t.hf{flex-grow:0;}.nb.e.sbt > .t.wf{align-self:auto !important;}.nb.e > .hc{height:auto;}.nb.e > .hf{flex-grow:100000;}.nb.e > .wf{width:100%;}.nb.e > .wc{align-self:flex-start;}.nb.e.ct{justify-content:flex-start;}.nb.e > .s.at{margin-bottom:auto !important;margin-top:0 !important;}.nb.e.cb{justify-content:flex-end;}.nb.e > .s.ab{margin-top:auto !important;margin-bottom:0 !important;}.nb.e.cr{align-items:flex-end;}.nb.e > .s.ar{align-self:flex-end;}.nb.e.cl{align-items:flex-start;}.nb.e > .s.al{align-self:flex-start;}.nb.e.ccx{align-items:center;}.nb.e > .s.cx{align-self:center;}.nb.e.ccy > .s{margin-top:auto;margin-bottom:auto;}.nb.e > .s.cy{margin-top:auto !important;margin-bottom:auto !important;}.nb.a{position:absolute;bottom:100%;left:0;width:100%;z-index:20;margin:0 !important;pointer-events:none;}.nb.a > .hf{height:auto;}.nb.a > .wf{width:100%;}.nb.a > *{pointer-events:auto;}.nb.b{position:absolute;bottom:0;left:0;height:0;width:100%;z-index:20;margin:0 !important;pointer-events:none;}.nb.b > *{pointer-events:auto;}.nb.b > .hf{height:auto;}.nb.or{position:absolute;left:100%;top:0;height:100%;margin:0 !important;z-index:20;pointer-events:none;}.nb.or > *{pointer-events:auto;}.nb.ol{position:absolute;right:100%;top:0;height:100%;margin:0 !important;z-index:20;pointer-events:none;}.nb.ol > *{pointer-events:auto;}.nb.fr{position:absolute;width:100%;height:100%;left:0;top:0;margin:0 !important;pointer-events:none;}.nb.fr > *{pointer-events:auto;}.nb.bh{position:absolute;width:100%;height:100%;left:0;top:0;margin:0 !important;z-index:0;pointer-events:none;}.nb.bh > *{pointer-events:auto;}.s{position:relative;border:none;flex-shrink:0;display:flex;flex-direction:row;flex-basis:auto;resize:none;font-feature-settings:inherit;box-sizing:border-box;margin:0;padding:0;border-width:0;border-style:solid;font-size:inherit;color:inherit;font-family:inherit;line-height:1;font-weight:inherit;text-decoration:none;font-style:inherit;}.s.wrp{flex-wrap:wrap;}.s.notxt{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;}.s.cptr{cursor:pointer;}.s.ctxt{cursor:text;}.s.ppe{pointer-events:none !important;}.s.cpe{pointer-events:auto !important;}.s.clr{opacity:0;}.s.oq{opacity:1;}.s.hvclr:hover{opacity:0;}.s.hvoq:hover{opacity:1;}.s.fcsclr:focus{opacity:0;}.s.fcsoq:focus{opacity:1;}.s.atvclr:active{opacity:0;}.s.atvoq:active{opacity:1;}.s.ts{transition:transform 160ms, opacity 160ms, filter 160ms, background-color 160ms, color 160ms, font-size 160ms;}.s.sb{overflow:auto;flex-shrink:1;}.s.sbx{overflow-x:auto;}.s.sbx.r{flex-shrink:1;}.s.sby{overflow-y:auto;}.s.sby.c{flex-shrink:1;}.s.sby.e{flex-shrink:1;}.s.cp{overflow:hidden;}.s.cpx{overflow-x:hidden;}.s.cpy{overflow-y:hidden;}.s.wc{width:auto;}.s.bn{border-width:0;}.s.bd{border-style:dashed;}.s.bdt{border-style:dotted;}.s.bs{border-style:solid;}.s.t{white-space:pre;display:inline-block;}.s.it{line-height:1.05;}.s.e{display:flex;flex-direction:column;white-space:pre;}.s.e.hbh{z-index:0;}.s.e.hbh > .bh{z-index:-1;}.s.e.sbt > .t.hf{flex-grow:0;}.s.e.sbt > .t.wf{align-self:auto !important;}.s.e > .hc{height:auto;}.s.e > .hf{flex-grow:100000;}.s.e > .wf{width:100%;}.s.e > .wc{align-self:flex-start;}.s.e.ct{justify-content:flex-start;}.s.e > .s.at{margin-bottom:auto !important;margin-top:0 !important;}.s.e.cb{justify-content:flex-end;}.s.e > .s.ab{margin-top:auto !important;margin-bottom:0 !important;}.s.e.cr{align-items:flex-end;}.s.e > .s.ar{align-self:flex-end;}.s.e.cl{align-items:flex-start;}.s.e > .s.al{align-self:flex-start;}.s.e.ccx{align-items:center;}.s.e > .s.cx{align-self:center;}.s.e.ccy > .s{margin-top:auto;margin-bottom:auto;}.s.e > .s.cy{margin-top:auto !important;margin-bottom:auto !important;}.s.r{display:flex;flex-direction:row;}.s.r > .s{flex-basis:0%;}.s.r > .s.we{flex-basis:auto;}.s.r > .hf{align-self:stretch !important;}.s.r > .hfp{align-self:stretch !important;}.s.r > .wf{flex-grow:100000;}.s.r > .ctr{flex-grow:0;flex-basis:auto;align-self:stretch;}.s.r > u:first-of-type.acr{flex-grow:1;}.s.r > s:first-of-type.accx{flex-grow:1;}.s.r > s:first-of-type.accx > .cx{margin-left:auto !important;}.s.r > s:last-of-type.accx{flex-grow:1;}.s.r > s:last-of-type.accx > .cx{margin-right:auto !important;}.s.r > s:only-of-type.accx{flex-grow:1;}.s.r > s:only-of-type.accx > .cy{margin-top:auto !important;margin-bottom:auto !important;}.s.r > s:last-of-type.accx ~ u{flex-grow:0;}.s.r > u:first-of-type.acr ~ s.accx{flex-grow:0;}.s.r.ct{align-items:flex-start;}.s.r > .s.at{align-self:flex-start;}.s.r.cb{align-items:flex-end;}.s.r > .s.ab{align-self:flex-end;}.s.r.cr{justify-content:flex-end;}.s.r.cl{justify-content:flex-start;}.s.r.ccx{justify-content:center;}.s.r.ccy{align-items:center;}.s.r > .s.cy{align-self:center;}.s.r.sev{justify-content:space-between;}.s.c{display:flex;flex-direction:column;}.s.c > .hf{flex-grow:100000;}.s.c > .wf{width:100%;}.s.c > .wfp{width:100%;}.s.c > .wc{align-self:flex-start;}.s.c > u:first-of-type.acb{flex-grow:1;}.s.c > s:first-of-type.accy{flex-grow:1;}.s.c > s:first-of-type.accy > .cy{margin-top:auto !important;margin-bottom:0 !important;}.s.c > s:last-of-type.accy{flex-grow:1;}.s.c > s:last-of-type.accy > .cy{margin-bottom:auto !important;margin-top:0 !important;}.s.c > s:only-of-type.accy{flex-grow:1;}.s.c > s:only-of-type.accy > .cy{margin-top:auto !important;margin-bottom:auto !important;}.s.c > s:last-of-type.accy ~ u{flex-grow:0;}.s.c > u:first-of-type.acb ~ s.accy{flex-grow:0;}.s.c.ct{justify-content:flex-start;}.s.c > .s.at{margin-bottom:auto;}.s.c.cb{justify-content:flex-end;}.s.c > .s.ab{margin-top:auto;}.s.c.cr{align-items:flex-end;}.s.c > .s.ar{align-self:flex-end;}.s.c.cl{align-items:flex-start;}.s.c > .s.al{align-self:flex-start;}.s.c.ccx{align-items:center;}.s.c > .s.cx{align-self:center;}.s.c.ccy{justify-content:center;}.s.c > .ctr{flex-grow:0;flex-basis:auto;width:100%;align-self:stretch !important;}.s.c.sev{justify-content:space-between;}.s.g{display:-ms-grid;}.s.g > .gp > .s{width:100%;}@supports (display:grid) {.s.g{display:grid;
+}}.s.g > .s.at{justify-content:flex-start;}.s.g > .s.ab{justify-content:flex-end;}.s.g > .s.ar{align-items:flex-end;}.s.g > .s.al{align-items:flex-start;}.s.g > .s.cx{align-items:center;}.s.g > .s.cy{justify-content:center;}.s.pg{display:block;}.s.pg > .s:first-child{margin:0 !important;}.s.pg > .s.al:first-child + .s{margin:0 !important;}.s.pg > .s.ar:first-child + .s{margin:0 !important;}.s.pg > .s.ar{float:right;}.s.pg > .s.ar::after{content:"";display:table;clear:both;}.s.pg > .s.al{float:left;}.s.pg > .s.al::after{content:"";display:table;clear:both;}.s.iml{white-space:pre-wrap;}.s.p{display:block;white-space:normal;}.s.p.hbh{z-index:0;}.s.p.hbh > .bh{z-index:-1;}.s.p > .t{display:inline;white-space:normal;}.s.p > .e{display:inline;white-space:normal;}.s.p > .e.fr{display:flex;}.s.p > .e.bh{display:flex;}.s.p > .e.a{display:flex;}.s.p > .e.b{display:flex;}.s.p > .e.or{display:flex;}.s.p > .e.ol{display:flex;}.s.p > .e > .t{display:inline;white-space:normal;}.s.p > .r{display:inline-flex;}.s.p > .c{display:inline-flex;}.s.p > .g{display:inline-grid;}.s.p > .s.ar{float:right;}.s.p > .s.al{float:left;}.s.hidden{display:none;}.s.w1{font-weight:100;}.s.w2{font-weight:200;}.s.w3{font-weight:300;}.s.w4{font-weight:400;}.s.w5{font-weight:500;}.s.w6{font-weight:600;}.s.w7{font-weight:700;}.s.w8{font-weight:800;}.s.w9{font-weight:900;}.s.i{font-style:italic;}.s.sk{text-decoration:line-through;}.s.u{text-decoration:underline;text-decoration-skip-ink:auto;text-decoration-skip:ink;}.s.u.sk{text-decoration:line-through underline;text-decoration-skip-ink:auto;text-decoration-skip:ink;}.s.tun{font-style:normal;}.s.tj{text-align:justify;}.s.tja{text-align:justify-all;}.s.tc{text-align:center;}.s.tr{text-align:right;}.s.tl{text-align:left;}.s.modal{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;}.border-0{border-width:0px;}.border-1{border-width:1px;}.border-2{border-width:2px;}.border-3{border-width:3px;}.border-4{border-width:4px;}.border-5{border-width:5px;}.border-6{border-width:6px;}.font-size-8{font-size:8px;}.font-size-9{font-size:9px;}.font-size-10{font-size:10px;}.font-size-11{font-size:11px;}.font-size-12{font-size:12px;}.font-size-13{font-size:13px;}.font-size-14{font-size:14px;}.font-size-15{font-size:15px;}.font-size-16{font-size:16px;}.font-size-17{font-size:17px;}.font-size-18{font-size:18px;}.font-size-19{font-size:19px;}.font-size-20{font-size:20px;}.font-size-21{font-size:21px;}.font-size-22{font-size:22px;}.font-size-23{font-size:23px;}.font-size-24{font-size:24px;}.font-size-25{font-size:25px;}.font-size-26{font-size:26px;}.font-size-27{font-size:27px;}.font-size-28{font-size:28px;}.font-size-29{font-size:29px;}.font-size-30{font-size:30px;}.font-size-31{font-size:31px;}.font-size-32{font-size:32px;}.p-0{padding:0px;}.p-1{padding:1px;}.p-2{padding:2px;}.p-3{padding:3px;}.p-4{padding:4px;}.p-5{padding:5px;}.p-6{padding:6px;}.p-7{padding:7px;}.p-8{padding:8px;}.p-9{padding:9px;}.p-10{padding:10px;}.p-11{padding:11px;}.p-12{padding:12px;}.p-13{padding:13px;}.p-14{padding:14px;}.p-15{padding:15px;}.p-16{padding:16px;}.p-17{padding:17px;}.p-18{padding:18px;}.p-19{padding:19px;}.p-20{padding:20px;}.p-21{padding:21px;}.p-22{padding:22px;}.p-23{padding:23px;}.p-24{padding:24px;}.v-smcp{font-variant:small-caps;}.v-smcp-off{font-variant:normal;}.v-zero{font-feature-settings:"zero";}.v-zero-off{font-feature-settings:"zero" 0;}.v-onum{font-feature-settings:"onum";}.v-onum-off{font-feature-settings:"onum" 0;}.v-liga{font-feature-settings:"liga";}.v-liga-off{font-feature-settings:"liga" 0;}.v-dlig{font-feature-settings:"dlig";}.v-dlig-off{font-feature-settings:"dlig" 0;}.v-ordn{font-feature-settings:"ordn";}.v-ordn-off{font-feature-settings:"ordn" 0;}.v-tnum{font-feature-settings:"tnum";}.v-tnum-off{font-feature-settings:"tnum" 0;}.v-afrc{font-feature-settings:"afrc";}.v-afrc-off{font-feature-settings:"afrc" 0;}.v-frac{font-feature-settings:"frac";}.v-frac-off{font-feature-settings:"frac" 0;}</style>
+        <style>.ff-noto-sans-japanesesans-serif.cap, .ff-noto-sans-japanesesans-serif .cap {line-height: 1;} .ff-noto-sans-japanesesans-serif.cap> .t, .ff-noto-sans-japanesesans-serif .cap > .t {vertical-align: 0;line-height: 1;}.p-12-0{
+  padding: 0px 12px 0px 12px;
+}.height-px-40px{
+  height : 40px;
+}.width-px-40{
+  width: 40px;
+}.mv--45900-0-0{
+  transform: translate3d(-180px, 0px, 0px);
+}.p-30-0{
+  padding: 0px 30px 0px 30px;
+}.bg-161-156-127-255{
+  background-color: rgba(161,156,127,1);
+}.bg-163-123-102-255{
+  background-color: rgba(163,123,102,1);
+}.bg-111-158-116-255{
+  background-color: rgba(111,158,116,1);
+}.bg-102-132-139-255{
+  background-color: rgba(102,132,139,1);
+}.bg-163-152-94-255{
+  background-color: rgba(163,152,94,1);
+}.b-0{
+  border-width: 0px 0px 0px 0px;
+}.mv--30600-0-0{
+  transform: translate3d(-120px, 0px, 0px);
+}.mv--15300-0-0{
+  transform: translate3d(-60px, 0px, 0px);
+}.p-25-0{
+  padding: 0px 25px 0px 25px;
+}.mv-0-0-0{
+  transform: translate3d(0px, 0px, 0px);
+}.width-px-60{
+  width: 60px;
+}.height-px-60px{
+  height : 60px;
+}.pad-80-0-0-0{
+  padding: 80px 0px 0px 0px;
+}.bc-51-51-51-255{
+  border-color: rgba(51,51,51,1);
+}.br-3{
+  border-radius: 3px;
+}.fc-128-128-128-255{
+  color: rgba(128,128,128,1);
+}.transparency-0{
+  opacity: 1;
+}.bg-0-0-0-0{
+  background-color: rgba(0,0,0,0);
+}.bc-0-0-0-0{
+  border-color: rgba(0,0,0,0);
+}.b-0-0-2-0{
+  border-width: 0px 0px 2px 0px;
+}.spacing-3-3.r > .s + .s{
+  margin-left: 3px;
+}.spacing-3-3.wrp.r > .s{
+  margin: 1.5px 1.5px;
+}.spacing-3-3.c > .s + .s{
+  margin-top: 3px;
+}.spacing-3-3.pg > .s + .s{
+  margin-top: 3px;
+}.spacing-3-3.pg > .al{
+  margin-right: 3px;
+}.spacing-3-3.pg > .ar{
+  margin-left: 3px;
+}.spacing-3-3.p{
+  line-height: calc(1em + 3px);
+}textarea.spacing-3-3{
+  line-height: calc(1em + 3px);
+}.spacing-3-3.p > .al{
+  margin-right: 3px;
+}.spacing-3-3.p > .ar{
+  margin-left: 3px;
+}.spacing-3-3.p::after{
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  margin-top: -1px;
+}.spacing-3-3.p::before{
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  margin-bottom: -1px;
+}.spacing-10-10.r > .s + .s{
+  margin-left: 10px;
+}.spacing-10-10.wrp.r > .s{
+  margin: 5px 5px;
+}.spacing-10-10.c > .s + .s{
+  margin-top: 10px;
+}.spacing-10-10.pg > .s + .s{
+  margin-top: 10px;
+}.spacing-10-10.pg > .al{
+  margin-right: 10px;
+}.spacing-10-10.pg > .ar{
+  margin-left: 10px;
+}.spacing-10-10.p{
+  line-height: calc(1em + 10px);
+}textarea.spacing-10-10{
+  line-height: calc(1em + 10px);
+}.spacing-10-10.p > .al{
+  margin-right: 10px;
+}.spacing-10-10.p > .ar{
+  margin-left: 10px;
+}.spacing-10-10.p::after{
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  margin-top: -5px;
+}.spacing-10-10.p::before{
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  margin-bottom: -5px;
+}.font-size-40{
+  font-size: 40px;
+}.spacing-40-40.r > .s + .s{
+  margin-left: 40px;
+}.spacing-40-40.wrp.r > .s{
+  margin: 20px 20px;
+}.spacing-40-40.c > .s + .s{
+  margin-top: 40px;
+}.spacing-40-40.pg > .s + .s{
+  margin-top: 40px;
+}.spacing-40-40.pg > .al{
+  margin-right: 40px;
+}.spacing-40-40.pg > .ar{
+  margin-left: 40px;
+}.spacing-40-40.p{
+  line-height: calc(1em + 40px);
+}textarea.spacing-40-40{
+  line-height: calc(1em + 40px);
+}.spacing-40-40.p > .al{
+  margin-right: 40px;
+}.spacing-40-40.p > .ar{
+  margin-left: 40px;
+}.spacing-40-40.p::after{
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  margin-top: -20px;
+}.spacing-40-40.p::before{
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  margin-bottom: -20px;
+}.box-0px0px10px5px0-0-0-51{
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.2);
+}.height-px-80px{
+  height : 80px;
+}.bg-51-51-51-255{
+  background-color: rgba(51,51,51,1);
+}.fc-204-204-204-255{
+  color: rgba(204,204,204,1);
+}.ff-noto-sans-japanesesans-serif{
+  font-family: "Noto Sans Japanese", sans-serif;
+  font-feature-settings: ;
+  font-variant: normal;
+}.s:focus .focusable, .s.focusable:focus{
+  outline: none;
+}</style>
+        <div class="hc pad-80-0-0-0 s r wc cl ccy wrp">
+            <style>.width-px-60 {width: 60.57142857142857px}</style>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-25-0 font-size-40 s e wc mv-0-0-0">
+                    <div class="s t wf hf">People</div>
+                </div>
+            </div>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-25-0 font-size-40 s e wc mv--15300-0-0">
+                    <div class="s t wf hf">People</div>
+                </div>
+            </div>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-25-0 font-size-40 s e wc mv--30600-0-0">
+                    <div class="s t wf hf">People</div>
+                </div>
+            </div><a class="hc s e wc ccx ccy" href="#/person/Abadi_Kurniawaan" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Abadi Kurniawaan (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/abadi-kurniawan.jpg" alt="Abadi Kurniawaan (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Alexander_Kachkaev" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Alexander Kachkaev (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/alexander-kachkaev.png" alt="Alexander Kachkaev (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Ally_Kelly_McKnight" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Ally Kelly McKnight (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/ally-kelly-mcknight.jpeg" alt="Ally Kelly McKnight (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Amitai_Burstein" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Amitai Burstein (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/amitai-burstein.png" alt="Amitai Burstein (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Andreas_Hultgren" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Andreas Hultgren (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/andreas-hultgren.jpeg" alt="Andreas Hultgren (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Andrey_Kuzmin" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Andrey Kuzmin (4)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/andrey-kuzmin.jpg" alt="Andrey Kuzmin (4)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Anthony_Deschamps" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Anthony Deschamps (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/anthony-deschamps.jpeg" alt="Anthony Deschamps (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Austin_Bingham" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Austin Bingham (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/austin-bingham.png" alt="Austin Bingham (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Brian_Hicks" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Brian Hicks (7)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/brian-hicks.jpg" alt="Brian Hicks (7)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/C%C3%A9line_Martinet_Sanchez" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Céline Martinet Sanchez (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/celine-martinet-sanchez.png" alt="Céline Martinet Sanchez (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Chandu_Tennety" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Chandu Tennety (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/chandu-tennety.jpeg" alt="Chandu Tennety (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Christophe_Benz" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Christophe Benz (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/christophe-benz.png" alt="Christophe Benz (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Christopher_Bertels" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Christopher Bertels (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/christopher-bertels.png" alt="Christopher Bertels (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/David_Ed_Mellum" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="David Ed Mellum (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/david-ed-mellum.jpg" alt="David Ed Mellum (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/D%C3%A9cio_Ferreira" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Décio Ferreira (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/decio-ferreira.jpeg" alt="Décio Ferreira (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Dillon_Kearns" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Dillon Kearns (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/dillon-kearns.jpeg" alt="Dillon Kearns (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Emma_Cunningham" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Emma Cunningham (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/emma-cunningham.png" alt="Emma Cunningham (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Erlend_Hamberg" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Erlend Hamberg (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/erlend-hamberg.png" alt="Erlend Hamberg (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Evan_Czaplicki" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Evan Czaplicki (8)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/evan-czaplicki.jpeg" alt="Evan Czaplicki (8)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Fabian_Kirchner" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Fabian Kirchner (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/fabian-kirchner.jpeg" alt="Fabian Kirchner (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Felix_Lamouroux" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Felix Lamouroux (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/felix-lamouroux.jpg" alt="Felix Lamouroux (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Francesco_Orsenigo" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Francesco Orsenigo (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/francesco-orsenigo.png" alt="Francesco Orsenigo (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Grant_Maki" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Grant Maki (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/grant-maki.jpg" alt="Grant Maki (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Greg_Ziegan" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Greg Ziegan (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/greg-ziegan.png" alt="Greg Ziegan (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/halohalospecial" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="halohalospecial (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">h</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Ian_Mackenzie" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Ian Mackenzie (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/ian-mackenzie.png" alt="Ian Mackenzie (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Ilias_Van_Peer" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Ilias Van Peer (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/ilias-van-peer.png" alt="Ilias Van Peer (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jakub_Hampl" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Jakub Hampl (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jakub-hampl.png" alt="Jakub Hampl (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/James_Carlson" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="James Carlson (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/james-carlson.png" alt="James Carlson (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jan_Hrcek" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Jan Hrcek (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jan-hrcek.jpeg" alt="Jan Hrcek (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jane_G." rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Jane G. (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jane-g.png" alt="Jane G. (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jeff_Schomay" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Jeff Schomay (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jeff-schomay.jpg" alt="Jeff Schomay (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jeremy_Fairbank" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Jeremy Fairbank (3)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jeremy-fairbank.jpg" alt="Jeremy Fairbank (3)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jesse_Thompson" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Jesse Thompson (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jesse-thompson.png" alt="Jesse Thompson (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jessica_Kerr" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Jessica Kerr (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jessica-kerr.jpg" alt="Jessica Kerr (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jo_Wood" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Jo Wood (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jo-wood.png" alt="Jo Wood (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jo%C3%ABl_Quenneville" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Joël Quenneville (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/joel-quenneville.jpeg" alt="Joël Quenneville (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Jonas_Coch" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Jonas Coch (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/jonas-coch.png" alt="Jonas Coch (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Josh_Steiner" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Josh Steiner (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/josh-steiner.png" alt="Josh Steiner (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Ju_Liu" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Ju Liu (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/ju-liu.png" alt="Ju Liu (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Justin_Herrick" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Justin Herrick (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/justin-herrick.jpeg" alt="Justin Herrick (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Justin_Mimbs" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Justin Mimbs (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/justin-mimbs.png" alt="Justin Mimbs (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Keith_Lazuka" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Keith Lazuka (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/keith-lazuka.png" alt="Keith Lazuka (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Luke_Westby" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Luke Westby (5)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/luke-westby.jpeg" alt="Luke Westby (5)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Magnus_Rundberget" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Magnus Rundberget (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/magnus-rundberget.jpg" alt="Magnus Rundberget (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Mario_Rogic" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Mario Rogic (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/mario-rogic.jpg" alt="Mario Rogic (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Mark_Skipper" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Mark Skipper (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/mark-skipper.png" alt="Mark Skipper (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Markus_Laire" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Markus_Laire (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/markus-laire.png" alt="Markus_Laire (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Martin_Feineis" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Martin Feineis (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/martin-feineis.png" alt="Martin Feineis (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Martin_Janiczek" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Martin Janiczek (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/martin-janiczek.jpeg" alt="Martin Janiczek (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Matias_Klemola" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Matias Klemola (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/matias-klemola.jpeg" alt="Matias Klemola (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Mats_Stijlaart" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Mats Stijlaart (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/mats-stijlaart.png" alt="Mats Stijlaart (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Matthew_Buscemi" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Matthew Buscemi (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/matthew-buscemi.jpeg" alt="Matthew Buscemi (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Matthew_Griffith" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Matthew Griffith (5)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/matthew-griffith.jpg" alt="Matthew Griffith (5)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Matthias_Rella" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Matthias Rella (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/matthias-rella.png" alt="Matthias Rella (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Michael_Bylstra" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Michael Bylstra (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/michael-bylstra.jpeg" alt="Michael Bylstra (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Miyamoen" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Miyamoen (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/miyamoen.jpeg" alt="Miyamoen (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Murphy_Randle" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Murphy Randle (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/murphy-randle.jpeg" alt="Murphy Randle (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Nils_Eriksson" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Nils Eriksson (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/nils-eriksson.jpg" alt="Nils Eriksson (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Noah_Hall" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Noah Hall (3)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/noah-hall.png" alt="Noah Hall (3)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Noah_Zachary_Gordon" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Noah Zachary Gordon (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/noah-zachary-gordon.png" alt="Noah Zachary Gordon (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Ossi_Hanhinen" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Ossi Hanhinen (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/ossi-hanhinen.jpeg" alt="Ossi Hanhinen (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Paul_Sonnentag" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Paul Sonnentag (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/paul-sonnentag.png" alt="Paul Sonnentag (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Peter_Szerzo" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Peter Szerzo (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/peter-szerzo.png" alt="Peter Szerzo (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Peter_Zingg" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Peter Zingg (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/peter-zingg.jpg" alt="Peter Zingg (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Ravi_Chugh" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Ravi Chugh (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/ravi-chugh.jpg" alt="Ravi Chugh (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/R%C3%A9mi_Lef%C3%A8vre" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Rémi Lefèvre (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/remi-lefevre.png" alt="Rémi Lefèvre (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Remi_Van_Keisbelck" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Remi Van Keisbelck (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/remi-van-keisbelck.png" alt="Remi Van Keisbelck (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Richard_Feldman" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Richard Feldman (8)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/richard-feldman.jpg" alt="Richard Feldman (8)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Robin_Heggelund_Hansen" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Robin Heggelund Hansen (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/robin-heggelund-hansen.png" alt="Robin Heggelund Hansen (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Rog%C3%A9rio_Chaves" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Rogério Chaves (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/rogerio-chaves.jpeg" alt="Rogério Chaves (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Roman_Fro%C5%82ow" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Roman Frołow (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/roman-frolow.jpeg" alt="Roman Frołow (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Roman_Potashow" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Roman Potashow (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/roman-potashow.jpeg" alt="Roman Potashow (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/R%C3%B3n%C3%A1n" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Rónán (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/ronan.jpeg" alt="Rónán (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Sam_Rowe" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Sam Rowe (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/sam-rowe.jpg" alt="Sam Rowe (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/S%C3%A9bastien_Cr%C3%A8me" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Sébastien Crème (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/sebastien-creme.png" alt="Sébastien Crème (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Sosuke" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Sosuke (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/sosuke.png" alt="Sosuke (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Suresh_Yadali" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Suresh Yadali (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/suresh-yadali.jpeg" alt="Suresh Yadali (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Tereza_Sokol" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Tereza Sokol (3)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/tereza-sokol.png" alt="Tereza Sokol (3)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Tessa_Kelly" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Tessa Kelly (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/tessa-kelly.png" alt="Tessa Kelly (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Thibaut_Assus" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Thibaut Assus (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/thibaut-assus.jpeg" alt="Thibaut Assus (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Tom%C3%A1%C5%A1_L%C3%A1tal" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Tomáš Látal (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/tomas-latal.jpeg" alt="Tomáš Látal (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Tomek_Wiszniewski" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Tomek Wiszniewski (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/tomek-wiszniewski.png" alt="Tomek Wiszniewski (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Vincent_Billey" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Vincent Billey (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/vincent-billey.png" alt="Vincent Billey (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/person/Yosuke_Torii" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Yosuke Torii (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="people/yosuke-torii.jpg" alt="Yosuke Torii (1)"></div>
+                    </div>
+                </div>
+            </a>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-30-0 font-size-40 s e wc mv-0-0-0">
+                    <div class="s t wf hf">Keywords</div>
+                </div>
+            </div>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-30-0 font-size-40 s e wc mv--15300-0-0">
+                    <div class="s t wf hf">Keywords</div>
+                </div>
+            </div>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-30-0 font-size-40 s e wc mv--30600-0-0">
+                    <div class="s t wf hf">Keywords</div>
+                </div>
+            </div>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-30-0 font-size-40 s e wc mv--45900-0-0">
+                    <div class="s t wf hf">Keywords</div>
+                </div>
+            </div><a class="hc s e wc ccx ccy" href="#/keyword/Animation" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Animation (4)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">A</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Atom" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Atom (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/atom.svg" alt="Atom (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Boilerplate" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Boilerplate (4)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Book" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Book (4)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/book.svg" alt="Book (4)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Conference" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Conference (7)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/presentation.svg" alt="Conference (7)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Confetti" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Confetti (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/confetti.svg" alt="Confetti (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Converter" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Converter (4)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">C</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/CSS" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="CSS (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/css.svg" alt="CSS (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/DevTool" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="DevTool (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">D</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Docker" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Docker (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/docker.svg" alt="Docker (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Educational" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Educational (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/educational.svg" alt="Educational (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Elixir" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Elixir (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/elixir.svg" alt="Elixir (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Elm_Conf_2016" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Elm Conf 2016 (13)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-conf-2016.png" alt="Elm Conf 2016 (13)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Elm_Conf_2017" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Elm Conf 2017 (11)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-conf-2017.png" alt="Elm Conf 2017 (11)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Elm_Conf_2018" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Elm Conf 2018 (10)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-conf-2018.png" alt="Elm Conf 2018 (10)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Elm_Europe_2017" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Elm Europe 2017 (23)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-europe-2017.png" alt="Elm Europe 2017 (23)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Elm_Europe_2018" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Elm Europe 2018 (21)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-europe-2018.png" alt="Elm Europe 2018 (21)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/elm-ui_Examples" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="elm-ui Examples (11)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">e</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Firework" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Firework (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/fireworks.svg" alt="Firework (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Font" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Font (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/font.svg" alt="Font (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Ford" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Ford (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/ford.jpeg" alt="Ford (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Game" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Game (10)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/joystick.svg" alt="Game (10)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Graphs" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Graphs (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">G</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/HTML" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="HTML (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/html.svg" alt="HTML (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/IBM" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="IBM (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/ibm.png" alt="IBM (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Integrated_Development_Environment_(IDE)" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Integrated Development Environment (IDE) (3)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">I</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/IntelliJ" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="IntelliJ (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">I</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/JSON" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="JSON (6)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/json.svg" alt="JSON (6)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/List_of_Links" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="List of Links (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">L</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Mathematics" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Mathematics (3)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/calculator.svg" alt="Mathematics (3)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Microsoft" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Microsoft (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/microsoft.png" alt="Microsoft (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Microsoft_Internet_Explorer_(IE)" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Microsoft Internet Explorer (IE) (2)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/ie.png" alt="Microsoft Internet Explorer (IE) (2)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Oslo_Elm_Day_2017" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Oslo Elm Day 2017 (11)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/oslo-elm-day-2017.png" alt="Oslo Elm Day 2017 (11)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Oslo_Elm_Day_2019" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Oslo Elm Day 2019 (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/oslo-elm-day-2019.png" alt="Oslo Elm Day 2019 (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Performance" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Performance (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">P</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Rubik" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Rubik (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/rubik.svg" alt="Rubik (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/SPA" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="SPA (5)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">S</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/SVG" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="SVG (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/svg.svg" alt="SVG (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Swagger" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Swagger (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/swagger.png" alt="Swagger (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/UI" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="UI (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">U</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/Water" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Water (1)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/water.svg" alt="Water (1)"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/keyword/WebGL" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="WebGL (3)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-40 height-px-40px ah cx av cy s e ic"><img class="we width-px-40 height-px-40px s e" src="svg/webgl.svg" alt="WebGL (3)"></div>
+                    </div>
+                </div>
+            </a>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-12-0 font-size-40 s e wc mv-0-0-0">
+                    <div class="s t wf hf">Links</div>
+                </div>
+            </div>
+            <div class="height-px-60px we width-px-60 cp fc-204-204-204-255 bg-51-51-51-255 s e">
+                <div class="hc av cy p-12-0 font-size-40 s e wc mv--15300-0-0">
+                    <div class="s t wf hf">Links</div>
+                </div>
+            </div><a class="hc s e wc ccx ccy" href="#/link/0-60_in_15_Minutes%3A_Building_a_Realtime_App_With_Elm_and_Horizon" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="0-60 in 15 Minutes: Building a Realtime App With Elm and Horizon (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">0</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/3.9_million_lines_later%3A_Analyzing_all_open_source_elm_code" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="3.9 million lines later: Analyzing all open source elm code (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">3</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Accessibility_with_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Accessibility with Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">A</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Activate_Your_Interface_with_CSS_Animations" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Activate Your Interface with CSS Animations (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">A</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/An_Elm_Kernel_for_Jupyter" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="An Elm Kernel for Jupyter (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">A</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/An_Elm_to_the_Past_%C2%ABBringing_Elm_0.18_to_IE8%2B%C2%BB" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="An Elm to the Past «Bringing Elm 0.18 to IE8+» (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">A</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Asteroids" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Asteroids (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/asteroids.png" alt="Asteroids"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Awesome_Elm_Gamedev" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Awesome Elm Gamedev (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">A</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Beyond_Hello_World_and_Todo_Lists" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Beyond Hello World and Todo Lists (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Bibliopola" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Bibliopola (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Bootstrapping_a_project_with_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Bootstrapping a project with Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Bringing_the_fun_to_graphics_programming" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Bringing the fun to graphics programming (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Building_a_Slippy_Map_Library_in_Pure_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Building a Slippy Map Library in Pure Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Building_a_Toolkit_for_Design" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Building a Toolkit for Design (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Building_an_Interactive_Storytelling_Framework_in_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Building an Interactive Storytelling Framework in Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Building_Reorderable_UI_in_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Building Reorderable UI in Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Built_in_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Built in Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">B</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Code_is_the_Easy_Part" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Code is the Easy Part (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">C</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Coding_the_Art%2C_Continued" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Coding the Art, Continued (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/code2art.png" alt="Coding the Art, Continued"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Compilers_as_Therapists%2C_or_Why_Elm_is_Good_for_ADHD" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Compilers as Therapists, or Why Elm is Good for ADHD (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">C</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Complex_Animations_Done_Well" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Complex Animations Done Well (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">C</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Convergent_Evolution" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Convergent Evolution (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">C</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Conway's_Game_of_Life" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Conway's Game of Life (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">C</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Cooking_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Cooking with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">C</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Date_manipulation_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Date manipulation with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">D</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Demystifying_Elm_JSON_Decoders" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Demystifying Elm JSON Decoders (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">D</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Demystifying_Parsers" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Demystifying Parsers (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">D</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Dive%3A_building_Prezi-like_presentations_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Dive: building Prezi-like presentations with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">D</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Ellie%2C_The_Elm_Live_Editor" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Ellie, The Elm Live Editor (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/ellie.png" alt="Ellie, The Elm Live Editor"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_0.19_readiness_helper" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Elm 0.19 readiness helper (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_Analyse" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Elm Analyse (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-analyse.png" alt="Elm Analyse"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_Conf_2017_Closing_Q%26A" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Elm Conf 2017 Closing Q&amp;A (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_Editor_Support_-_Perspectives_From_an_Editor_Hacker" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Elm Editor Support - Perspectives From an Editor Hacker (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_Europe_2017_-_Conference_Website" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Elm Europe 2017 - Conference Website (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-europe-2017.png" alt="Elm Europe 2017 - Conference Website"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_Europe_2018_-_Conference_Website" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Elm Europe 2018 - Conference Website (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-europe-2018.png" alt="Elm Europe 2018 - Conference Website"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_from_a_business_perspective" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Elm from a business perspective (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_from_a_CTO_perspective" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Elm from a CTO perspective (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_in_Action" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Elm in Action (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/book-elm-in-action.png" alt="Elm in Action"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_Lens" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Elm Lens (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_Module_Dependency_Graph" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Elm Module Dependency Graph (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_native_UI_in_production" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Elm native UI in production (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_SPA_Example" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Elm SPA Example (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_support_for_older_browsers%3F_(IE_9%2C_10%2C_%E2%80%A6)" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Elm support for older browsers? (IE 9, 10, …) (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm_Weekly" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Elm Weekly (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-weekly.png" alt="Elm Weekly"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm's_package_website" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Elm's package website (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-browser%3A_Smalltalk_goodness_for_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="elm-browser: Smalltalk goodness for elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">e</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-companies" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="elm-companies (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">e</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-conf_2016_-_Conference_Website" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="elm-conf 2016 - Conference Website (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-conf-2016.png" alt="elm-conf 2016 - Conference Website"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-conf_2017_-_Conference_Website" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="elm-conf 2017 - Conference Website (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-conf-2017.png" alt="elm-conf 2017 - Conference Website"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-conf_2018_-_Conference_Website" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="elm-conf 2018 - Conference Website (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-conf-2018.png" alt="elm-conf 2018 - Conference Website"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-dependencies-analyzer" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="elm-dependencies-analyzer (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">e</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-doc-preview" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="elm-doc-preview (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-doc-preview.png" alt="elm-doc-preview"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-particle" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="elm-particle (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-particle.png" alt="elm-particle"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elm-plot_%3A_the_big_picture" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Elm-plot : the big picture (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/elm-shared-state" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="elm-shared-state (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/tako.png" alt="elm-shared-state"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elmception%3A_supercharging_presentations_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Elmception: supercharging presentations with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/ELMineSweeper" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="ELMineSweeper (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Elmjutsu" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Elmjutsu (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/ElmSEQ%3A_A_conflict-free_replicated_data_type_for_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="ElmSEQ: A conflict-free replicated data type for elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Evergreen_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Evergreen elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Everything_in_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Everything in Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">E</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Facilitating_Technology_Change_Through_Cultural_Change" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Facilitating Technology Change Through Cultural Change (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">F</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Font_builder" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Font builder (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/font-builder.png" alt="Font builder"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Functional_All_the_Things%3A_A_Functional_Panel" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Functional All the Things: A Functional Panel (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">F</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Functional_Data_Structures" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Functional Data Structures (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">F</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Getting_your_organization_onboard_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Getting your organization onboard with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">G</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Grid" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Grid (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">G</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Herzog_Drei" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Herzog Drei (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/herzog-drei.png" alt="Herzog Drei"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/How_frontend_microservices_help_us_stay_flexible" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="How frontend microservices help us stay flexible (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">H</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/How_to_build_a_native_looking_date_picker_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="How to build a native looking date picker with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">H</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/How_to_unblock_yourself_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="How to unblock yourself with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">H</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/HTML_to_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="HTML to Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">H</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/HTML%2FSVG_to_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="HTML/SVG to Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">H</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/IBM_Decision_Composer" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="IBM Decision Composer (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">I</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/If_Coco_Chanel_Reviewed_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="If Coco Chanel Reviewed Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">I</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Immutable_Relational_Data" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Immutable Relational Data (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">I</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Incremental_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Incremental Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">I</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Infecting_the_visualization_design_process_with_the_elm_philosophy" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Infecting the visualization design process with the elm philosophy (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">I</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/intellij-elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="intellij-elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">i</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/JSON_to_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="JSON to Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">J</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/JSON_Tree_View" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="JSON Tree View (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">J</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Learning_elm_in_3_days_using_the_compiler" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Learning elm in 3 days using the compiler (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">L</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Lessons_from_100k_LOC_elm_at_Futurespace" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Lessons from 100k LOC elm at Futurespace (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">L</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Let's_publish_nice_packages" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Let's publish nice packages (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">L</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Lets_be_mainstream!" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Lets be mainstream! (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">L</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Live_coding_a_Mondrian_generator" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Live coding a Mondrian generator (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">L</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Localization_for_Elm_as_a_pre-build_phase" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Localization for Elm as a pre-build phase (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">L</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Make_Data_Structures" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Make Data Structures (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Making_a_LaTeX-to-Html_parser_in_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Making a LaTeX-to-Html parser in elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Making_Impossible_States_Impossible" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Making Impossible States Impossible (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/MHC_Truck_Search" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="MHC Truck Search (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Mogee_or_how_we_fit_Elm_in_a_64%C3%9764_grid" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Mogee or how we fit Elm in a 64×64 grid (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Moltiplication_Table" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Moltiplication Table (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Move_Fast_and_Don%E2%80%99t_Break_Things._Running_a_Startup_on_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Move Fast and Don’t Break Things. Running a Startup on Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Multiplayer_games_by_the_boatloads._Making_elm-gameroom" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Multiplayer games by the boatloads. Making elm-gameroom (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Music_chords_charts_in_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Music chords charts in elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">M</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Naming_Things_in_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Naming Things in Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">N</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Nightingale.space_-_Elm_and_Crowd-Sourced_Music_Making" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Nightingale.space - Elm and Crowd-Sourced Music Making (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">N</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Now_you're_thinking_in_functions" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Now you're thinking in functions (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">N</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/On-line_Documentation_Previewer" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="On-line Documentation Previewer (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/elm-doc-preview.png" alt="On-line Documentation Previewer"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Oslo_Elm_Day_2017_-_Conference_Website" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Oslo Elm Day 2017 - Conference Website (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/oslo-elm-day-2017.png" alt="Oslo Elm Day 2017 - Conference Website"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Oslo_Elm_Day_2019_-_Conference_Website" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Oslo Elm Day 2019 - Conference Website (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/oslo-elm-day-2019.png" alt="Oslo Elm Day 2019 - Conference Website"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Persistent_collections%3A_how_they_work_and_when_to_use_them" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Persistent collections: how they work and when to use them (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">P</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Programming_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Programming Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/book-programming-elm.png" alt="Programming Elm"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Programming_Robots_with_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Programming Robots with Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">P</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Putting_the_Elm_Platform_in_the_Browser" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Putting the Elm Platform in the Browser (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">P</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Putting_the_Elm_Platform_in_the_Browser" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Putting the Elm Platform in the Browser (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">P</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Q%26A_Panel" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Q&amp;A Panel (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">Q</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Rendering_text_with_WebGL" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Rendering text with WebGL (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">R</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Rewriting_a_Production_SPA_in_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Rewriting a Production SPA in Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">R</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Rich_Animation" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Rich Animation (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">R</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Rolling_Random_Romans" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Rolling Random Romans (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">R</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Roteiro" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Roteiro (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">R</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Rubber" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Rubber (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">R</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Rubik's_cube" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Rubik's cube (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/rubik.png" alt="Rubik's cube"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Scaling_Elm_Apps" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Scaling Elm Apps (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">S</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Solving_the_Boolean_Identity_Crisis" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Solving the Boolean Identity Crisis (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">S</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Spades" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Spades (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">S</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Structured_Editing_for_Elm*_in_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Structured Editing for Elm* in Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">S</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Surjective_%2F_Injective" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="Surjective / Injective (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">S</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Swagger_to_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Swagger to Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">S</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Teaching_Elm_to_Beginners" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Teaching Elm to Beginners (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Teaching_is_learning" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Teaching is learning (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/test-elm-performance" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="test-elm-performance (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">t</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Testing_your_Msgs_fully" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Testing your Msgs fully (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_Clockwork_Gardener%3A_Growing_an_Elm_App_With_Templates" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="The Clockwork Gardener: Growing an Elm App With Templates (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_Design_Evolution_of_elm-css_and_elm-test" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="The Design Evolution of elm-css and elm-test (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_Five_Stages_of_JSON_Decoding_in_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="The Five Stages of JSON Decoding in Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_Hard_Parts_of_Open_Source" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="The Hard Parts of Open Source (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_immutable_animator's_toolkit" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-161-156-127-255 we width-px-60 height-px-60px av at s e" title="The immutable animator's toolkit (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_Importance_of_Ports" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="The Importance of Ports (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_life_of_a_file" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="The life of a file (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_state_of_Elm_2016" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="The state of Elm 2016 (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_state_of_Elm_2017" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="The state of Elm 2017 (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_state_of_Elm_2017" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="The state of Elm 2017 (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_State_of_Elm_2017%2C_Extended_Edition" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="The State of Elm 2017, Extended Edition (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_state_of_Elm_2018" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="The state of Elm 2018 (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/The_Turing_Machine" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="The Turing Machine (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Toward_a_Better_Front_End_Architecture%3A_Elm_-_Codemash_2017" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Toward a Better Front End Architecture: Elm - Codemash 2017 (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Turning_the_elm_narrative_engine_inside-out" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Turning the elm narrative engine inside-out (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Types_Without_Borders" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="Types Without Borders (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">T</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/UI_Cards" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="UI Cards (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">U</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Understanding_style" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-111-158-116-255 we width-px-60 height-px-60px av at s e" title="Understanding style (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">U</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Visualizing_data_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-123-102-255 we width-px-60 height-px-60px av at s e" title="Visualizing data with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">V</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/What_is_Success%3F" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="What is Success? (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">W</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/When_and_how_to_use_Web_Components_with_elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="When and how to use Web Components with elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">W</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Why_Elm%3F" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Why Elm? (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/book-why-elm.png" alt="Why Elm?"></div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/Working_with_Maybe" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-102-132-139-255 we width-px-60 height-px-60px av at s e" title="Working with Maybe (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="hc ah cx av cy font-size-40 s e wc">
+                            <div class="s t wf hf">W</div>
+                        </div>
+                    </div>
+                </div>
+            </a><a class="hc s e wc ccx ccy" href="#/link/%E5%9F%BA%E7%A4%8E%E3%81%8B%E3%82%89%E3%82%8F%E3%81%8B%E3%82%8B_Elm" rel="noopener noreferrer">
+                <div class="hc spacing-10-10 s r wc cl ccy">
+                    <div class="b-0 bd bc-51-51-51-255 bg-163-152-94-255 we width-px-60 height-px-60px av at s e" title="基礎からわかる Elm (0)" style="transition: background 1000ms linear 0s;">
+                        <div class="we width-px-60 height-px-60px s e ic"><img class="we width-px-60 height-px-60px s e" src="img/book-elm-japanese.jpg" alt="基礎からわかる Elm"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="nb e fr">
+            <div class="height-px-80px cp bg-51-51-51-255 box-0px0px10px5px0-0-0-51 s e wf" style="transition: background 1000ms linear 0s;">
+                <div class="hc spacing-40-40 p-20 s r wf cl ccy" style="transition: padding 200ms linear 0s;">
+                    <div class="hc font-size-40 s e wc" style="transition: font 200ms linear 0s;">
+                        <div class="s t wf hf">Elm Resources</div>
+                    </div>
+                    <div class="hc spacing-10-10 s r wf cl ccy"><label class="ctxt spacing-3-3 font-size-24 s c wf" aria-live="polite">
+                            <div class="s e"></div>
+                            <div class="s e wf"><input class="br-3 spacing-3-3 b-0-0-2-0 p-8 font-size-24 bg-51-51-51-255 bc-51-51-51-255 s e wf focusable it" type="text" spellcheck="false">
+                                <div class="nb e fr">
+                                    <div class="b-0-0-2-0 p-8 bc-0-0-0-0 bg-0-0-0-0 hf transparency-0 fc-128-128-128-255 s e wf notxt ppe">
+                                        <div class="s t wf hf">Filter</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <div class="hc cptr s e wc ccx ccy sbt notxt focusable" role="button" tabindex="0"><svg xml:space="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="32">
+                                <path fill="#cccccc" d="M143 147a10 10 0 0 0 14-14L97 73a10 10 0 0 0-14 14zm0 0M100 300c0-6-4-10-10-10H10a10 10 0 1 0 0 20h80c6 0 10-4 10-10zm0 0M143 453l-60 60a10 10 0 1 0 14 14l60-60a10 10 0 0 0-14-14zm0 0M554 354c-18 11-39 17-61 17-65-1-118-55-117-121 0-50 31-96 78-114a10 10 0 0 0 0-19c-19-5-38-8-58-7-30 0-60 8-86 22V10a10 10 0 1 0-20 0v101a190 190 0 0 0 0 378v101a10 10 0 0 0 20 0V468a182 182 0 0 0 259-103 10 10 0 0 0-15-11zm-414-54c0-86 65-159 150-169v338c-85-10-150-83-150-169zm256 170c-30 0-60-9-86-25V155c26-16 56-25 86-25l24 1c-40 27-64 71-64 119a139 139 0 0 0 184 133c-28 54-83 87-144 87zm0 0"></path>
+                                <path fill="#cccccc" d="M599 213c-1-4-4-6-8-7l-36-6-16-34c-2-4-5-6-9-6s-7 2-9 6l-16 34-37 6a10 10 0 0 0-5 17l26 27-6 38a10 10 0 0 0 15 11l32-18 32 18a10 10 0 0 0 13-3c2-2 2-5 2-8l-6-38 26-27c3-3 4-7 2-10zm-46 27c-2 2-3 5-3 8l4 23-19-10c-3-2-7-2-10 0l-19 10 4-23c0-3-1-6-3-8l-16-17 22-4c3 0 6-2 8-5l9-20 9 20c2 3 5 5 8 5l22 4zm0 0"></path>
+                            </svg></div>
+                        <div class="hc cptr s e wc ccx ccy sbt notxt focusable" role="button" tabindex="0"><svg xml:space="http://www.w3.org/2000/svg" viewBox="0 0 490 490" height="32">
+                                <rect fill="#cccccc" y="372.4" width="490" height="9.8"></rect>
+                                <rect fill="#cccccc" y="401.8" width="490" height="9.8"></rect>
+                                <rect fill="#cccccc" y="431.2" width="490" height="9.8"></rect>
+                                <rect fill="#cccccc" y="343" width="490" height="9.8"></rect>
+                                <rect fill="#cccccc" y="49" width="490" height="107.8"></rect>
+                                <rect fill="#cccccc" y="186.2" width="490" height="107.8"></rect>
+                            </svg></div>
+                        <div class="hc cptr s e wc ccx ccy sbt notxt focusable" role="button" tabindex="0"><svg xml:space="http://www.w3.org/2000/svg" viewBox="0 0 53 53" height="32">
+                                <path fill="#cccccc" d="M29 20h-6v-6a1 1 0 0 0-2 0v6h-6a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2z"></path>
+                                <path fill="#cccccc" d="M51.7 51.3L36.8 35.8A21 21 0 0 0 22 0a21 21 0 1 0 13.4 37.2l14.9 15.5a1 1 0 0 0 1.4 0c.4-.4.4-1 0-1.4zM3 21a19 19 0 1 1 38 0 19 19 0 0 1-38 0z"></path>
+                            </svg></div>
+                        <div class="hc cptr s e wc ccx ccy sbt notxt focusable" role="button" tabindex="0"><svg xml:space="http://www.w3.org/2000/svg" viewBox="0 0 53 53" height="32">
+                                <path fill="#cccccc" d="M29 20H15a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2z"></path>
+                                <path fill="#cccccc" d="M51.7 51.3L36.8 35.8A21 21 0 0 0 22 0a21 21 0 1 0 13.4 37.2l14.9 15.5a1 1 0 0 0 1.4 0c.4-.4.4-1 0-1.4zM3 21a19 19 0 1 1 38 0 19 19 0 0 1-38 0z"></path>
+                            </svg></div><a class="hc s e wc ccx ccy" href="https://github.com/lucamug/elm-resources" rel="noopener noreferrer" target="_blank"><svg xml:space="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="32">
+                                <path fill="#cccccc" fill-rule="evenodd" clip-rule="evenodd" d="M512 0a512 512 0 0 0-162 998c26 4 35-11 35-25v-95c-129 24-162-31-173-60-5-15-30-60-52-72-18-10-44-34-1-34 41-1 69 37 79 52 46 78 120 56 149 42 5-33 18-55 33-68-114-13-233-57-233-253 0-56 20-102 52-137-5-13-23-66 5-136 0 0 43-14 141 52a475 475 0 0 1 256 0c98-66 141-52 141-52 28 70 10 123 5 136 33 35 53 81 53 137 0 197-120 240-234 253 19 16 35 47 35 95l-1 140c0 14 10 30 35 25A513 513 0 0 0 512 0z"></path>
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -100,12 +100,32 @@ type Id
     | DevTool
     | Intellij
     | IDEs
+    | Benchmark
+    | Draggable
+    | ProtoBuf
+    | GraphQL
 
 
 list : List Attributes
 list =
-    [ { id = DevTool
+    [ { id = Draggable
+      , name = "Draggable"
+      , picture = ""
+      }
+    , { id = ProtoBuf
+      , name = "ProtoBuf"
+      , picture = ""
+      }
+    , { id = GraphQL
+      , name = "GraphQL"
+      , picture = ""
+      }
+    , { id = DevTool
       , name = "DevTool"
+      , picture = ""
+      }
+    , { id = Benchmark
+      , name = "Benchmark"
       , picture = ""
       }
     , { id = Intellij

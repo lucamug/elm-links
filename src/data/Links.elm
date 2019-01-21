@@ -961,7 +961,7 @@ list =
       }
     , { authors = [ Mats_Stijlaart ]
       , name = "Elm Analyse"
-      , keywords = []
+      , keywords = [ DevTool ]
       , picture = "img/elm-analyse.png"
       , code = "https://github.com/stil4m/elm-analyse"
       , url = "https://www.npmjs.com/package/elm-analyse"
@@ -1254,5 +1254,85 @@ list =
       , code = "https://github.com/malaire/elm-dependencies-analyzer"
       , url = "https://www.markuslaire.com/github/elm-dependencies-analyzer/"
       , description = "A little program I created for analyzing package dependencies of application elm.json"
+      }
+    , { authors = [ James_Gary ]
+      , name = "Protect Your Eggs!"
+      , keywords = [ Game ]
+      , picture = ""
+      , code = "https://github.com/jamesgary/protect-the-egg"
+      , url = "http://elm-game-jam-feb-2017.s3-website-us-east-1.amazonaws.com"
+      , description = ""
+      }
+    , { authors = [ James_Gary ]
+      , name = "Constellations"
+      , keywords = [ Game ]
+      , picture = ""
+      , code = "https://github.com/jamesgary/constellations"
+      , url = "http://constellationsgame.com/"
+      , description = ""
+      }
+    , { authors = [ James_Gary ]
+      , name = "Boids Simulator in Elm"
+      , keywords = [ Animation ]
+      , picture = ""
+      , code = "https://github.com/jamesgary/boids"
+      , url = "http://elm-boids.s3-website-us-west-1.amazonaws.com/"
+      , description = ""
+      }
+    , { authors = [ James_Gary ]
+      , name = "Elm Sprite Benchmark"
+      , keywords = [ Animation, Benchmark ]
+      , picture = ""
+      , code = "https://github.com/jamesgary/elm-sprite-benchmark"
+      , url = "http://codingcats.com/elm-sprite-benchmark/"
+      , description = "Experimental! Simple benchmarks for rendering many sprites with Elm."
+      }
+    , { authors = [ Ilias_Van_Peer ]
+      , name = "elm-xref"
+      , keywords = [ DevTool ]
+      , picture = ""
+      , code = "https://github.com/zwilias/elm-xref"
+      , url = "https://www.npmjs.com/package/elm-xref"
+      , description = "Experimental tool for finding unused functions/finding usages"
+      }
+    , { authors = [ Yosuke_Torii ]
+      , name = "Reversi"
+      , keywords = [ DevTool ]
+      , picture = ""
+      , code = "https://github.com/jinjor/elm-reversi"
+      , url = "https://jinjor.github.io/elm-reversi/"
+      , description = ""
+      }
+    , { authors = [ Luca_Mugnaini ]
+      , name = "Elm Tangram"
+      , keywords = [ Game, Draggable ]
+      , picture = ""
+      , code = "https://github.com/lucamug/elm-tangram"
+      , url = "http://elm-tangram.surge.sh/"
+      , description = "Draggable Tangram in Elm"
+      }
+    , { authors = [ Evan_Czaplicki ]
+      , name = "A vision for data interchange in Elm"
+      , keywords = [ JSON, ProtoBuf, GraphQL ]
+      , picture = ""
+      , code = ""
+      , url = "https://gist.github.com/evancz/1c5f2cf34939336ecb79b97bb89d9da6"
+      , description = ""
+      }
+    , { authors = [ James_Kolce ]
+      , name = "Why Elm? (And How To Get Started With It)"
+      , keywords = []
+      , picture = ""
+      , code = ""
+      , url = "https://css-tricks.com/author/jameskolce/"
+      , description = "This is a guide about the programming language Elm."
+      }
+    , { authors = [ Luca_Mugnaini ]
+      , name = "Elm Resources"
+      , keywords = [ ElmUI_Example, ListOfLinks ]
+      , picture = ""
+      , code = "https://github.com/lucamug/elm-resources"
+      , url = "http://guupa.com/elm-resources"
+      , description = "A collection of Elm Resources"
       }
     ]

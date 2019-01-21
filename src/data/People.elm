@@ -146,16 +146,32 @@ type Id
     | Jan_Hrcek
     | Suresh_Yadali
     | Markus_Laire
+    | James_Gary
+    | James_Kolce
 
 
 list : List Attributes
 list =
-    [ { id = Markus_Laire
-      , name = "Markus_Laire"
+    [ { id = James_Kolce
+      , name = "James Kolce"
+      , twitter = ""
+      , picture = "people/james-kolce.jpeg"
+      , github = "jameskolce"
+      , url = ""
+      }
+    , { id = Markus_Laire
+      , name = "Markus Laire"
       , twitter = ""
       , picture = "people/markus-laire.png"
       , github = "malaire"
       , url = ""
+      }
+    , { id = James_Gary
+      , name = "James Gary"
+      , twitter = ""
+      , picture = "people/james-gary.jpeg"
+      , github = "jamesgary"
+      , url = "http://codingcats.com/"
       }
     , { id = Suresh_Yadali
       , name = "Suresh Yadali"
