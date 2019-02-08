@@ -797,6 +797,30 @@ list =
       , keywords = [ JSON ]
       , authors = [ Ilias_Van_Peer ]
       }
+    , { authors = [ Ilias_Van_Peer ]
+      , name = "elm-doc"
+      , keywords = [ DevTool ]
+      , picture = ""
+      , code = "https://github.com/zwilias/elm-doc"
+      , url = "https://www.npmjs.com/package/elm-doc"
+      , description = "Painfully simple tool for browsing documentation of application dependences locally (off-line)."
+      }
+    , { authors = [ Ilias_Van_Peer ]
+      , name = "elm-coverage"
+      , keywords = [ DevTool ]
+      , picture = ""
+      , code = "https://github.com/zwilias/elm-coverage"
+      , url = "https://www.npmjs.com/package/elm-coverage"
+      , description = "Tool for calculating code coverage for Elm code tested with elm-test."
+      }
+    , { authors = [ Ilias_Van_Peer ]
+      , name = "elm-xref"
+      , keywords = [ DevTool ]
+      , picture = ""
+      , code = "https://github.com/zwilias/elm-xref"
+      , url = "https://www.npmjs.com/package/elm-xref"
+      , description = "Experimental tool for finding unused functions/finding usages"
+      }
     , { name = "The state of Elm 2016"
       , code = ""
       , url = "https://www.brianthicks.com/post/2016/04/22/state-of-elm-2016-results/"
@@ -945,18 +969,10 @@ list =
       }
     , { authors = [ Remi_Lefevre ]
       , name = "elm-doc-preview"
-      , keywords = []
+      , keywords = [ DevTool ]
       , picture = "img/elm-doc-preview.png"
       , code = "https://github.com/dmy/elm-doc-preview"
       , url = "https://www.npmjs.com/package/elm-doc-preview"
-      , description = "This is a documentation previewer for Elm packages (>= 0.19). It allows previewing README.md and docs.json files (generated with elm make --docs=docs.json). It aims at rendering documentation exactly like the official package website."
-      }
-    , { authors = [ Remi_Lefevre ]
-      , name = "On-line Documentation Previewer"
-      , keywords = []
-      , picture = "img/elm-doc-preview.png"
-      , code = ""
-      , url = "https://elm-doc-preview.netlify.com/"
       , description = "This is a documentation previewer for Elm packages (>= 0.19). It allows previewing README.md and docs.json files (generated with elm make --docs=docs.json). It aims at rendering documentation exactly like the official package website."
       }
     , { authors = [ Mats_Stijlaart ]
@@ -1287,21 +1303,21 @@ list =
       , url = "http://codingcats.com/elm-sprite-benchmark/"
       , description = "Experimental! Simple benchmarks for rendering many sprites with Elm."
       }
-    , { authors = [ Ilias_Van_Peer ]
-      , name = "elm-xref"
-      , keywords = [ DevTool ]
-      , picture = ""
-      , code = "https://github.com/zwilias/elm-xref"
-      , url = "https://www.npmjs.com/package/elm-xref"
-      , description = "Experimental tool for finding unused functions/finding usages"
-      }
     , { authors = [ Yosuke_Torii ]
       , name = "Reversi"
-      , keywords = [ DevTool ]
+      , keywords = [ Game ]
       , picture = ""
       , code = "https://github.com/jinjor/elm-reversi"
       , url = "https://jinjor.github.io/elm-reversi/"
       , description = ""
+      }
+    , { authors = [ Yosuke_Torii ]
+      , name = "Unused Imports Remover"
+      , keywords = [ DevTool ]
+      , picture = ""
+      , code = "https://gist.github.com/jinjor/cce51986afa422a3e38befebe091ead2"
+      , url = "https://gist.github.com/jinjor/cce51986afa422a3e38befebe091ead2"
+      , description = "A small script that removes all unused imports with elm-analyse."
       }
     , { authors = [ Luca_Mugnaini ]
       , name = "Elm Tangram"
@@ -1335,4 +1351,261 @@ list =
       , url = "http://guupa.com/elm-resources"
       , description = "A collection of Elm Resources"
       }
+    , { authors = [ Aaron_VonderHaar ]
+      , name = "elm-format"
+      , keywords = [ DevTool ]
+      , picture = ""
+      , code = "https://github.com/annaghi/dnd-list/tree/3.0.0"
+      , url = "https://github.com/avh4/elm-format"
+      , description = "A tool to format Elm source code according to a standard set of rules based on the official Elm Style Guide"
+      }
+    , { authors = [ Anna_Bansaghi ]
+      , name = "dnd-list"
+      , keywords = [ Draggable ]
+      , picture = ""
+      , code = "https://package.elm-lang.org/packages/annaghi/dnd-list/latest"
+      , url = "https://annaghi.github.io/dnd-list/"
+      , description = "Drag and Drop for sortable lists in Elm web apps with mouse support"
+      }
+    , { url = "https://www.youtube.com/watch?v=RN2_NchjrJQ&index=1&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF"
+      , authors = [ Richard_Feldman ]
+      , name = "Exploring elm-spa-example"
+      , description = ""
+      , code = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=FSec8QmgEWo&t=1s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=3"
+      , authors = [ Teodor_Lunaas_Heggelund ]
+      , name = "Lessons learned teaching Elm to kids"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=jOu2hISeO5M&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=4"
+      , authors = [ Einar_Host ]
+      , name = "Picture combinators and recursive fish"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=UzvCX-8bTDs&t=1s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=5"
+      , authors = [ Tessa_Kelly ]
+      , name = "Color Coding with Elm"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=8Zd3ocr9Di8&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=6"
+      , authors = [ Matthew_Griffith ]
+      , name = "A Markup for the Statically Typed"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=8jW58fXuuOk&t=4s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=7"
+      , authors = [ Dan_Abrams ]
+      , name = "Audio, Video, and Elm - Best Practices for Multimedia"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=yE9PKFI19RM&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=8"
+      , authors = [ Jonas_Berdal ]
+      , name = "On the Elm Track with NSB"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=suSAfow2rmM&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=9"
+      , authors = [ Ju_Liu ]
+      , name = "Do Parsers dream of Electric Guitars?"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=vI30OvU3QW0&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=10"
+      , authors = [ Manuel_Fuchs ]
+      , name = "Emulating the Nintendo Game Boy CPU with Elm"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=yH6o322S8XQ&t=10s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=11"
+      , authors = [ Luca_Mugnaini ]
+      , name = "Elm at large (companies)"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=l-brxQKJnfw&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=12"
+      , authors = [ Ossi_Hanhinen ]
+      , name = "Being human in the Elm community"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=NLcRzOyrH08&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=13"
+      , authors = [ Kris_Jenkins ]
+      , name = "Slaying a UI Antipattern"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=goL7LeDHFi4&t=1s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=14"
+      , authors = [ Brian_Hicks ]
+      , name = "Joyful Particles in Elm"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=sLh-7E-iOto&t=3s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=15"
+      , authors = [ Emma_Tsujimoto_Cunningham ]
+      , name = "Parsing lexical ambiguity with Elm and expressive types"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=4QwI_QWoUK0&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=16"
+      , authors = [ Robin_Heggelund_Hansen ]
+      , name = "The Extensibility Problem"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=ir4sZLIznNI&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=17"
+      , authors = [ James_Carlson ]
+      , name = "Tarring files with Elm"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=afMD-hkWPsQ&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=18"
+      , authors = [ Filip_Haglund ]
+      , name = "A native interpreter for Elm"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
+    , { url = "https://www.youtube.com/watch?v=9V61aJVQXv0&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=19"
+      , authors = [ Viktor_Tymoshenko ]
+      , name = "Automated conference scheduling powered by Elm"
+      , code = ""
+      , description = ""
+      , picture = ""
+      , keywords = [ OsloElmDay2019 ]
+      }
     ]
+
+
+
+{-
+
+   1
+   https://www.youtube.com/watch?v=RN2_NchjrJQ&t=1s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=2
+   44:42
+   Richard Feldman - Exploring elm-spa-example
+   Oslo Elm Day
+   2
+   https://www.youtube.com/watch?v=FSec8QmgEWo&t=1s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=3
+   18:42
+   Teodor Lunaas Heggelund - Lessons learned teaching Elm to kids
+   Oslo Elm Day
+   3
+   https://www.youtube.com/watch?v=jOu2hISeO5M&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=4
+   23:26
+   Einar W. Høst - Picture combinators and recursive fish
+   Oslo Elm Day
+   4
+   https://www.youtube.com/watch?v=UzvCX-8bTDs&t=1s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=5
+   33:07
+   Tessa Kelly - Color Coding with Elm
+   Oslo Elm Day
+   5
+   https://www.youtube.com/watch?v=8Zd3ocr9Di8&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=6
+   20:07
+   Matthew Griffith - A Markup for the Statically Typed
+   Oslo Elm Day
+   6
+   https://www.youtube.com/watch?v=8jW58fXuuOk&t=4s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=7
+   18:33
+   Dan Abrams - Audio, Video, and Elm - Best Practices for Multimedia
+   Oslo Elm Day
+   7
+   https://www.youtube.com/watch?v=yE9PKFI19RM&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=8
+   17:52
+   Jonas Berdal - On the Elm Track with NSB
+   Oslo Elm Day
+   8
+   https://www.youtube.com/watch?v=suSAfow2rmM&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=9
+   23:33
+   Ju Liu - Do Parsers dream of Electric Guitars?
+   Oslo Elm Day
+   9
+   https://www.youtube.com/watch?v=vI30OvU3QW0&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=10
+   17:38
+   Manuel Fuchs - Emulating the Nintendo Game Boy CPU with Elm
+   Oslo Elm Day
+   10
+   https://www.youtube.com/watch?v=yH6o322S8XQ&t=10s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=11
+   18:36
+   Luca Mugnaini - Elm at large (companies)
+   Oslo Elm Day
+   11
+   https://www.youtube.com/watch?v=l-brxQKJnfw&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=12
+   16:28
+   Ossi Hanhinen - Being human in the Elm community
+   Oslo Elm Day
+   12
+   https://www.youtube.com/watch?v=NLcRzOyrH08&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=13
+   29:01
+   Kris Jenkins - Slaying a UI Antipattern
+   Oslo Elm Day
+   13
+   https://www.youtube.com/watch?v=goL7LeDHFi4&t=1s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=14
+   19:44
+   Brian Hicks - Joyful Particles in Elm
+   Oslo Elm Day
+   14
+   https://www.youtube.com/watch?v=sLh-7E-iOto&t=3s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=15
+   20:30
+   Emma Tsujimoto Cunningham - Parsing lexical ambiguity with Elm and expressive types
+   Oslo Elm Day
+   15
+   https://www.youtube.com/watch?v=4QwI_QWoUK0&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=16
+   13:30
+   Robin Heggelund Hansen - The Extensibility Problem
+   Oslo Elm Day
+   16
+   https://www.youtube.com/watch?v=ir4sZLIznNI&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=17
+   20:08
+   James (Jim) Carlson - Tarring files with Elm
+   Oslo Elm Day
+   17
+   https://www.youtube.com/watch?v=afMD-hkWPsQ&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=18
+   18:27
+   Filip Haglund - A native interpreter for Elm
+   Oslo Elm Day
+   18
+   https://www.youtube.com/watch?v=9V61aJVQXv0&t=0s&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF&index=19
+   15:36
+   Viktor Tymoshenko - Automated conference scheduling powered by Elm
+   Oslo Elm Day
+
+-}

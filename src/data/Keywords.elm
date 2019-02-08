@@ -109,7 +109,7 @@ type Id
 list : List Attributes
 list =
     [ { id = Draggable
-      , name = "Draggable"
+      , name = "Draggable - Drag and Drop"
       , picture = ""
       }
     , { id = ProtoBuf
@@ -121,7 +121,7 @@ list =
       , picture = ""
       }
     , { id = DevTool
-      , name = "DevTool"
+      , name = "Development Tool - Utility"
       , picture = ""
       }
     , { id = Benchmark

@@ -298,19 +298,38 @@ viewSquare model { item, itemType } =
                 [ width <| px <| size
                 , height <| px <| size
                 ]
+
+        modalOpen =
+            case CommonRoute.fromUrl Route.conf model.url of
+                Route.Empty ->
+                    False
+
+                Route.Filter _ ->
+                    False
+
+                _ ->
+                    True
     in
     el
-        [ Border.widthEach { bottom = borderSize, left = borderSize, right = borderSize, top = borderSize }
-        , Border.width 0
-        , Border.dashed
-        , Border.color <| c model .border
-        , Background.color <| pseudoRandomColor model item.lookup.name
-        , width <| px size
-        , height <| px size
-        , alignTop
-        , htmlAttribute <| Html.Attributes.title <| item.lookup.name ++ " (" ++ String.fromInt item.quantity ++ ")"
-        , htmlAttribute <| Html.Attributes.style "transition" "background 1000ms linear"
-        ]
+        ([ Border.widthEach { bottom = borderSize, left = borderSize, right = borderSize, top = borderSize }
+         , Border.width 0
+         , Border.dashed
+         , Border.color <| c model .border
+         , Background.color <| pseudoRandomColor model item.lookup.name
+         , width <| px size
+         , height <| px size
+         , alignTop
+         , htmlAttribute <| Html.Attributes.title <| item.lookup.name ++ " (" ++ String.fromInt item.quantity ++ ")"
+
+         --, htmlAttribute <| Html.Attributes.style "transition" "background 1000ms linear"
+         ]
+            ++ (if modalOpen then
+                    []
+
+                else
+                    [ htmlAttribute <| Html.Attributes.class "animatedItem" ]
+               )
+        )
     <|
         if item.lookup.picture == "" then
             el
@@ -504,16 +523,6 @@ viewKeywordsList model =
         , itemType = Keyword
         , select = \item -> Route.SelectedKeyword <| Maybe.withDefault "" <| Keywords.idToString item.lookup.id
         }
-
-
-name : { b | lookup : { a | name : String }, quantity : Int } -> ItemType -> String
-name item itemType =
-    case itemType of
-        Link ->
-            item.lookup.name
-
-        _ ->
-            nameAndQuantity item.lookup.name item.quantity
 
 
 
@@ -917,13 +926,14 @@ listOfLinks model links toSkip =
                         , Font.size 20
                         ]
                         { url = linkUrl item Link
-                        , label = text <| item.lookup.name ++ "  "
+                        , label = text <| item.lookup.name ++ " "
                         }
                     , newTabLink []
                         { url = item.lookup.url
                         , label = icon Icon_ExternalLink (c model .font) 16
                         }
                     ]
+                , paragraph [ Font.size 14, Font.color <| rgb 0.5 0.5 0.5 ] [ text item.lookup.description ]
                 , wrappedRow [ spacing 10, width fill ]
                     ([ link
                         []
@@ -1297,20 +1307,6 @@ extraDataLink model item =
 -}
 
 
-onEscape_ : Msg -> Html.Attribute Msg
-onEscape_ msg =
-    Html.Events.keyCode
-        |> Json.Decode.andThen
-            (\key ->
-                if key == 27 then
-                    Json.Decode.succeed msg
-
-                else
-                    Json.Decode.fail "Not Escape"
-            )
-        |> Html.Events.on "keyup"
-
-
 clickDecoder : Json.Decode.Decoder Shared.ClickData
 clickDecoder =
     Json.Decode.map5 Shared.ClickData
@@ -1391,7 +1387,19 @@ view model =
                 ([ html <|
                     Html.node "style"
                         []
-                        [ Html.text <| ".width-px-" ++ String.fromInt (sizeOfBoxesInt model) ++ " {width: " ++ String.fromFloat (sizeOfBoxesFloat model) ++ "px}"
+                        [ Html.text <| """
+                        .width-px-""" ++ String.fromInt (sizeOfBoxesInt model) ++ """ {
+                            width: """ ++ String.fromFloat (sizeOfBoxesFloat model) ++ """px
+                        }
+
+                        .animatedItem {
+                            transition: all 100ms linear;
+                        }
+                        .animatedItem:hover {
+                            transform: scale(1.7, 1.7);
+                            z-index: 1;
+                        }
+                        """
                         ]
                  ]
                     ++ textInBoxes model

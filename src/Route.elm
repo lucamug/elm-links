@@ -1,7 +1,6 @@
 module Route exposing
     ( Route(..)
     , conf
-    , getFilterFromRoute
     , routeToRestoreFilter
     , toString
     )
@@ -18,20 +17,6 @@ routeToRestoreFilter filter =
 
     else
         Filter filter
-
-
-getFilterFromRoute : Route -> String
-getFilterFromRoute route =
-    let
-        filter_ =
-            case route of
-                Filter filter ->
-                    filter
-
-                _ ->
-                    ""
-    in
-    Utils.decode filter_
 
 
 type Route

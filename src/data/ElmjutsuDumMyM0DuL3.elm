@@ -1,12 +1,13 @@
-module Data.People exposing
-    ( Attributes
-    , Id(..)
-    , WithQuantity
-    , empty
-    , idToString
-    , list
-    , stringToId
-    )
+module Data.ElmjutsuDumMyM0DuL3 exposing (..)
+-- exposing
+-- ( Attributes
+-- , Id(..)
+-- , WithQuantity
+-- , empty
+-- , idToString
+-- , list
+-- , stringToId
+-- )
 
 import Utils
 
@@ -161,68 +162,23 @@ type Id
     | Viktor_Tymoshenko
 
 
+Teodor_Lunaas_Heggelund
+Einar_Host
+Dan_Abrams
+Jonas_Berdal
+Manuel_Fuchs
+Kris_Jenkins
+Emma_Tsujimoto_Cunningham
+Filip_Haglund
+Viktor_Tymoshenko
+
+
 list : List Attributes
 list =
-    [ { id = Teodor_Lunaas_Heggelund
-      , name = "Teodor Lunaas Heggelund"
+    [ { id = 
+      , name = ""
       , twitter = ""
-      , picture = "people/teodor-lunaas-heggelund.png"
-      , github = ""
-      , url = ""
-      }
-    , { id = Einar_Host
-      , name = "Einar W. Høst"
-      , twitter = ""
-      , picture = "people/einar-w-host.jpg"
-      , github = "einarwh"
-      , url = ""
-      }
-    , { id = Dan_Abrams
-      , name = "Dan Abrams"
-      , twitter = ""
-      , picture = "people/dan-abrams.jpg"
-      , github = "danabrams"
-      , url = ""
-      }
-    , { id = Jonas_Berdal
-      , name = "Jonas Berdal"
-      , twitter = "people/jonas-berdal.jpeg"
       , picture = ""
-      , github = "jonasberdal"
-      , url = ""
-      }
-    , { id = Manuel_Fuchs
-      , name = "Manuel Fuchs"
-      , twitter = ""
-      , picture = "people/manuel-fuchs.jpeg"
-      , github = "Malax"
-      , url = ""
-      }
-    , { id = Kris_Jenkins
-      , name = "Kris Jenkins"
-      , twitter = ""
-      , picture = "people/kris-jenkins.jpg"
-      , github = "krisajenkins"
-      , url = ""
-      }
-    , { id = Emma_Tsujimoto_Cunningham
-      , name = "Emma Tsujimoto Cunningham"
-      , twitter = ""
-      , picture = "people/emma-tsujimoto-cunningham.png"
-      , github = ""
-      , url = ""
-      }
-    , { id = Filip_Haglund
-      , name = "Filip Haglund"
-      , twitter = ""
-      , picture = "people/filip-haglund.jpeg"
-      , github = "drathier"
-      , url = ""
-      }
-    , { id = Viktor_Tymoshenko
-      , name = "Viktor Tymoshenko"
-      , twitter = ""
-      , picture = "people/viktor-tymoshenko.jpg"
       , github = ""
       , url = ""
       }

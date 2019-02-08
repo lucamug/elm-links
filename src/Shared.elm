@@ -33,7 +33,7 @@ import Utils
 
 initialSquareWidth : Int
 initialSquareWidth =
-    60
+    56
 
 
 initialSquareWidthForMobile : Int
@@ -187,14 +187,14 @@ init flags url key =
       , squareWidth = toFloat flags.width / toFloat squareQuantity
       , width = flags.width
       , pageInTopArea = True
-      , colorMode = Night
+      , colorMode = Day
       , layoutMode = Grid
       , sortedKeywordsWithQuantity = sortedKeywordsWithQuantity
       , sortedPeopleWithQuantity = sortedPeopleWithQuantity
       , sortedLinksWithQuantity = sortedLinksWithQuantity
       , missingPeople = missingPeople
       , missingKeywords = missingKeywords
-      , indexForPeople = indexBuilder sortedPeopleWithQuantity
+      , indexForPeople = indexBuilderforPeople sortedPeopleWithQuantity
       , indexForKeywords = indexBuilder sortedKeywordsWithQuantity
       , indexForLinks = indexForLinks sortedLinksWithQuantity
       }
@@ -225,14 +225,12 @@ type alias ClickData =
 
 
 type Msg
-    = NoOp String
-    | Click ClickData
+    = Click ClickData
     | OnResize Int Int
     | ToggleColorMode
     | ToggleLayoutMode
     | IncreaseSquareQuantity
     | DecreaseSquareQuantity
-    | Select Route.Route
     | ChangeFilter String
     | PageInTopArea Bool
     | KeyUp Keyboard.RawKey
@@ -255,9 +253,6 @@ commandToCloseModal { filter, key } =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        NoOp string ->
-            ( model, Cmd.none )
-
         LinkClicked urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
@@ -390,15 +385,6 @@ update msg model =
                         Route.Filter <| Utils.encode filter
             )
 
-        Select route ->
-            ( model
-            , Browser.Navigation.pushUrl model.key <|
-                CommonRoute.toStringAndHash
-                    Route.conf
-                <|
-                    route
-            )
-
 
 
 -- HELPERS
@@ -448,6 +434,12 @@ peopleWithQuantity =
 
 
 createMyStopWordFilter =
+    {- The type signature for this function would be:
+
+       createMyStopWordFilter : Index.Model.Index doc -> ( Index.Model.Index doc, String -> Bool )
+
+       but these types are not exposed.
+    -}
     StopWordFilter.createFilterFunc
         []
 
@@ -463,6 +455,29 @@ indexForLinks list =
                 , fields =
                     [ ( \item -> item.lookup.name, 5.0 )
                     , ( \item -> item.lookup.description, 1.0 )
+                    ]
+                , listFields = []
+                , indexType = "Elm Resources - Customized Stop Words v1"
+                , initialTransformFactories = Index.Defaults.defaultInitialTransformFactories
+                , transformFactories = Index.Defaults.defaultTransformFactories
+                , filterFactories = [ createMyStopWordFilter ]
+                }
+    in
+    ElmTextSearch.addDocs list index
+
+
+indexBuilderforPeople :
+    List { b | lookup : { a | name : String, twitter : String, github : String } }
+    -> ( ElmTextSearch.Index { b | lookup : { a | name : String, twitter : String, github : String } }, List ( Int, String ) )
+indexBuilderforPeople list =
+    let
+        index =
+            ElmTextSearch.newWith
+                { ref = \item -> item.lookup.name
+                , fields =
+                    [ ( \item -> item.lookup.name, 5.0 )
+                    , ( \item -> item.lookup.twitter, 1.0 )
+                    , ( \item -> item.lookup.github, 1.0 )
                     ]
                 , listFields = []
                 , indexType = "Elm Resources - Customized Stop Words v1"
