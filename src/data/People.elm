@@ -159,6 +159,7 @@ type Id
     | Emma_Tsujimoto_Cunningham
     | Filip_Haglund
     | Viktor_Tymoshenko
+    | Jeremy_Brown
 
 
 list : List Attributes
@@ -168,6 +169,13 @@ list =
       , twitter = ""
       , picture = "people/teodor-lunaas-heggelund.png"
       , github = ""
+      , url = ""
+      }
+    , { id = Jeremy_Brown
+      , name = "Jeremy H. Brown"
+      , twitter = ""
+      , picture = "people/jeremy-brown.jpeg"
+      , github = "jhbrown94"
       , url = ""
       }
     , { id = Einar_Host

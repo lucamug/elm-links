@@ -37,7 +37,15 @@ type alias WithQuantity =
 
 list : List Attributes
 list =
-    [ { name = "JSON Tree View"
+    [ { name = "experimental-elm-spa-skeleton"
+      , code = "https://github.com/jhbrown94/experimental-elm-spa-skeleton"
+      , url = "https://github.com/jhbrown94/experimental-elm-spa-skeleton"
+      , picture = ""
+      , description = "An experimental approach to implementing an SPA in Elm, designed to simplify and isolate adding new pages."
+      , keywords = [ SPA, Boilerplate ]
+      , authors = [ Jeremy_Brown ]
+      }
+    , { name = "JSON Tree View"
       , code = "https://github.com/Microsoft/elm-json-tree-view"
       , url = "https://microsoft.github.io/elm-json-tree-view/example/index.html"
       , picture = ""
