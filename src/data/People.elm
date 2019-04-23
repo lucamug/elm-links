@@ -488,10 +488,10 @@ list =
       }
     , { id = Tomek_Wiszniewski
       , name = "Tomek Wiszniewski"
-      , twitter = ""
+      , twitter = "architectcodes"
       , picture = "people/tomek-wiszniewski.png"
-      , github = ""
-      , url = ""
+      , github = "architectcodes"
+      , url = "http://architect.codes/"
       }
     , { id = Vincent_Billey
       , name = "Vincent Billey"
