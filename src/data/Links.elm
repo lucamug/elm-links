@@ -996,7 +996,7 @@ list =
       , keywords = []
       , picture = "img/elm-weekly.png"
       , code = ""
-      , url = "http://www.elmweekly.nl/archive"
+      , url = "http://www.elmweekly.nl/"
       , description = "The wonderful world of the Elm programming language, in your inbox."
       }
     , { authors = [ Jeremy_Fairbank ]
