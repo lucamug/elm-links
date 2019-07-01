@@ -71,23 +71,30 @@ type alias Model =
     , pageInTopArea : Bool
     , colorMode : ColorMode
     , layoutMode : LayoutMode
-    , sortedKeywordsWithQuantity : List Keywords.WithQuantity
-    , sortedPeopleWithQuantity : List People.WithQuantity
-    , sortedLinksWithQuantity : List Links.WithQuantity
-    , missingPeople : List People.Id
-    , missingKeywords : List Keywords.Id
-    , indexForPeople : ( ElmTextSearch.Index People.WithQuantity, List ( Int, String ) )
-    , indexForKeywords : ( ElmTextSearch.Index Keywords.WithQuantity, List ( Int, String ) )
-    , indexForLinks : ( ElmTextSearch.Index Links.WithQuantity, List ( Int, String ) )
+
+    -- Cached stuff
+    , cached_sortedKeywordsWithQuantity : List Keywords.WithQuantity
+    , cached_sortedPeopleWithQuantity : List People.WithQuantity
+    , cached_sortedLinksWithQuantity : List Links.WithQuantity
+    , cached_missingPeople : List People.Id
+    , cached_missingKeywords : List Keywords.Id
+    , cached_indexForPeople : Maybe ( ElmTextSearch.Index People.WithQuantity, List ( Int, String ) )
+    , cached_indexForKeywords : Maybe ( ElmTextSearch.Index Keywords.WithQuantity, List ( Int, String ) )
+    , cached_indexForLinks : Maybe ( ElmTextSearch.Index Links.WithQuantity, List ( Int, String ) )
     }
 
 
-
--- INIT
-
-
-init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
-init flags url key =
+preparation :
+    { cached_sortedKeywordsWithQuantity : List Keywords.WithQuantity
+    , cached_sortedPeopleWithQuantity : List People.WithQuantity
+    , cached_sortedLinksWithQuantity : List Links.WithQuantity
+    , cached_missingPeople : List People.Id
+    , cached_missingKeywords : List Keywords.Id
+    , cached_indexForPeople : Maybe ( ElmTextSearch.Index People.WithQuantity, List ( Int, String ) )
+    , cached_indexForKeywords : Maybe ( ElmTextSearch.Index Keywords.WithQuantity, List ( Int, String ) )
+    , cached_indexForLinks : Maybe ( ElmTextSearch.Index Links.WithQuantity, List ( Int, String ) )
+    }
+preparation =
     let
         cleanedLinksWithQuantity =
             List.map
@@ -165,6 +172,62 @@ init flags url key =
                                 False
                     )
                 |> List.map (\item -> item.id)
+    in
+    { cached_sortedKeywordsWithQuantity = sortedKeywordsWithQuantity
+    , cached_sortedPeopleWithQuantity = sortedPeopleWithQuantity
+    , cached_sortedLinksWithQuantity = sortedLinksWithQuantity
+    , cached_missingPeople = missingPeople
+    , cached_missingKeywords = missingKeywords
+    , cached_indexForPeople = Just <| indexBuilderForPeople sortedPeopleWithQuantity
+    , cached_indexForKeywords = Just <| indexBuilderForKeywords sortedKeywordsWithQuantity
+    , cached_indexForLinks = Just <| indexBuilderForLinks sortedLinksWithQuantity
+    }
+
+
+
+-- INIT
+
+
+init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
+init flags url key =
+    let
+        model =
+            { url = url
+            , key = key
+            , filter = filter
+            , squareQuantity = squareQuantity
+            , squareWidth = toFloat flags.width / toFloat squareQuantity
+            , width = flags.width
+            , pageInTopArea = True
+            , colorMode = Day
+            , layoutMode = Grid
+
+            -- Cached stuff
+            , cached_sortedKeywordsWithQuantity = []
+            , cached_sortedPeopleWithQuantity = []
+            , cached_sortedLinksWithQuantity = []
+            , cached_missingPeople = []
+            , cached_missingKeywords = []
+            , cached_indexForPeople = Nothing
+            , cached_indexForKeywords = Nothing
+            , cached_indexForLinks = Nothing
+            }
+
+        model2 =
+            let
+                p =
+                    preparation
+            in
+            { model
+                | cached_sortedKeywordsWithQuantity = p.cached_sortedKeywordsWithQuantity
+                , cached_sortedPeopleWithQuantity = p.cached_sortedPeopleWithQuantity
+                , cached_sortedLinksWithQuantity = p.cached_sortedLinksWithQuantity
+                , cached_missingPeople = p.cached_missingPeople
+                , cached_missingKeywords = p.cached_missingKeywords
+                , cached_indexForPeople = p.cached_indexForPeople
+                , cached_indexForKeywords = p.cached_indexForKeywords
+                , cached_indexForLinks = p.cached_indexForLinks
+            }
 
         squareQuantity =
             if flags.width < 475 then
@@ -181,24 +244,7 @@ init flags url key =
                 _ ->
                     ""
     in
-    ( { url = url
-      , key = key
-      , filter = filter
-      , squareQuantity = squareQuantity
-      , squareWidth = toFloat flags.width / toFloat squareQuantity
-      , width = flags.width
-      , pageInTopArea = True
-      , colorMode = Day
-      , layoutMode = Grid
-      , sortedKeywordsWithQuantity = sortedKeywordsWithQuantity
-      , sortedPeopleWithQuantity = sortedPeopleWithQuantity
-      , sortedLinksWithQuantity = sortedLinksWithQuantity
-      , missingPeople = missingPeople
-      , missingKeywords = missingKeywords
-      , indexForPeople = indexBuilderforPeople sortedPeopleWithQuantity
-      , indexForKeywords = indexBuilder sortedKeywordsWithQuantity
-      , indexForLinks = indexForLinks sortedLinksWithQuantity
-      }
+    ( model2
     , Cmd.none
     )
 
@@ -443,10 +489,10 @@ peopleWithQuantity =
 --         []
 
 
-indexForLinks :
+indexBuilderForLinks :
     List { b | lookup : { a | description : String, name : String } }
     -> ( ElmTextSearch.Index { b | lookup : { a | description : String, name : String } }, List ( Int, String ) )
-indexForLinks list =
+indexBuilderForLinks list =
     let
         index =
             ElmTextSearch.newWith
@@ -465,10 +511,10 @@ indexForLinks list =
     ElmTextSearch.addDocs list index
 
 
-indexBuilderforPeople :
+indexBuilderForPeople :
     List { b | lookup : { a | name : String, twitter : String, github : String } }
     -> ( ElmTextSearch.Index { b | lookup : { a | name : String, twitter : String, github : String } }, List ( Int, String ) )
-indexBuilderforPeople list =
+indexBuilderForPeople list =
     let
         index =
             ElmTextSearch.newWith
@@ -488,10 +534,10 @@ indexBuilderforPeople list =
     ElmTextSearch.addDocs list index
 
 
-indexBuilder :
+indexBuilderForKeywords :
     List { b | lookup : { a | name : String } }
     -> ( ElmTextSearch.Index { b | lookup : { a | name : String } }, List ( Int, String ) )
-indexBuilder list =
+indexBuilderForKeywords list =
     let
         index =
             ElmTextSearch.newWith

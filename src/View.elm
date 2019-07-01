@@ -13,6 +13,7 @@ import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
 import Element.Input as Input
+import ElmTextSearch
 import Html exposing (Html)
 import Html.Attributes
 import Html.Events
@@ -438,12 +439,8 @@ viewList model { itemsToShow, itemType, select } =
 viewLinksList : Model -> List (Element Msg)
 viewLinksList model =
     let
-        searchResults =
-            Result.map Tuple.second <|
-                Shared.resultSearch model.indexForLinks (Utils.decode model.filter)
-
         itemsToShow =
-            case searchResults of
+            case searchLinksResults model of
                 Ok result ->
                     List.concatMap
                         (\item ->
@@ -451,12 +448,12 @@ viewLinksList model =
                                 id =
                                     Tuple.first item
                             in
-                            List.filter (\item_ -> item_.lookup.name == id) model.sortedLinksWithQuantity
+                            List.filter (\item_ -> item_.lookup.name == id) model.cached_sortedLinksWithQuantity
                         )
                         result
 
                 Err _ ->
-                    model.sortedLinksWithQuantity
+                    model.cached_sortedLinksWithQuantity
     in
     viewList model
         { itemsToShow = itemsToShow
@@ -468,12 +465,11 @@ viewLinksList model =
 viewPeopleList : Model -> List (Element Msg)
 viewPeopleList model =
     let
-        searchResults =
-            Result.map Tuple.second <|
-                Shared.resultSearch model.indexForPeople (Utils.decode model.filter)
-
+        -- searchResults =
+        --     Result.map Tuple.second <|
+        --         Shared.resultSearch model.cached_indexForPeople (Utils.decode model.filter)
         itemsToShow =
-            case searchResults of
+            case searchPeopleResults model of
                 Ok result ->
                     List.concatMap
                         (\item ->
@@ -481,12 +477,12 @@ viewPeopleList model =
                                 id =
                                     Tuple.first item
                             in
-                            List.filter (\item_ -> item_.lookup.name == id) model.sortedPeopleWithQuantity
+                            List.filter (\item_ -> item_.lookup.name == id) model.cached_sortedPeopleWithQuantity
                         )
                         result
 
                 Err _ ->
-                    model.sortedPeopleWithQuantity
+                    model.cached_sortedPeopleWithQuantity
     in
     viewList model
         { itemsToShow = itemsToShow
@@ -495,15 +491,62 @@ viewPeopleList model =
         }
 
 
+searchKeywordsResults :
+    { a
+        | cached_indexForKeywords : Maybe ( ElmTextSearch.Index doc, b )
+        , filter : String
+    }
+    -> Result String (List ( String, Float ))
+searchKeywordsResults model =
+    case model.cached_indexForKeywords of
+        Just index ->
+            Result.map Tuple.second <|
+                Shared.resultSearch index (Utils.decode model.filter)
+
+        Nothing ->
+            Err "Index not ready"
+
+
+searchPeopleResults :
+    { a
+        | cached_indexForPeople : Maybe ( ElmTextSearch.Index doc, b )
+        , filter : String
+    }
+    -> Result String (List ( String, Float ))
+searchPeopleResults model =
+    case model.cached_indexForPeople of
+        Just index ->
+            Result.map Tuple.second <|
+                Shared.resultSearch index (Utils.decode model.filter)
+
+        Nothing ->
+            Err "Index not ready"
+
+
+searchLinksResults :
+    { a
+        | cached_indexForLinks : Maybe ( ElmTextSearch.Index doc, b )
+        , filter : String
+    }
+    -> Result String (List ( String, Float ))
+searchLinksResults model =
+    case model.cached_indexForLinks of
+        Just index ->
+            Result.map Tuple.second <|
+                Shared.resultSearch index (Utils.decode model.filter)
+
+        Nothing ->
+            Err "Index not ready"
+
+
 viewKeywordsList : Model -> List (Element Msg)
 viewKeywordsList model =
     let
-        searchResults =
-            Result.map Tuple.second <|
-                Shared.resultSearch model.indexForKeywords (Utils.decode model.filter)
-
+        -- searchResults =
+        --     Result.map Tuple.second <|
+        --         Shared.resultSearch model.cached_indexForKeywords (Utils.decode model.filter)
         itemsToShow =
-            case searchResults of
+            case searchKeywordsResults model of
                 Ok result ->
                     List.concatMap
                         (\item ->
@@ -511,12 +554,12 @@ viewKeywordsList model =
                                 id =
                                     Tuple.first item
                             in
-                            List.filter (\item_ -> item_.lookup.name == id) model.sortedKeywordsWithQuantity
+                            List.filter (\item_ -> item_.lookup.name == id) model.cached_sortedKeywordsWithQuantity
                         )
                         result
 
                 Err _ ->
-                    model.sortedKeywordsWithQuantity
+                    model.cached_sortedKeywordsWithQuantity
     in
     viewList model
         { itemsToShow = itemsToShow
@@ -859,7 +902,7 @@ viewKeywordsRelatedLinks model id =
                     in
                     List.length filtered > 0
                 )
-                model.sortedLinksWithQuantity
+                model.cached_sortedLinksWithQuantity
     in
     listOfLinks model links { person = Nothing, keyword = Just id }
 
@@ -876,7 +919,7 @@ viewPeopleRelatedLinks model id =
                     in
                     List.length filtered > 0
                 )
-                model.sortedLinksWithQuantity
+                model.cached_sortedLinksWithQuantity
     in
     listOfLinks model links { person = Just id, keyword = Nothing }
 
@@ -1025,7 +1068,7 @@ getLink model id =
         items =
             List.filter
                 (\i -> i.lookup.name == id)
-                model.sortedLinksWithQuantity
+                model.cached_sortedLinksWithQuantity
     in
     List.head items
 
@@ -1036,7 +1079,7 @@ getKeyword model id =
         items =
             List.filter
                 (\i -> i.lookup.id == id)
-                model.sortedKeywordsWithQuantity
+                model.cached_sortedKeywordsWithQuantity
     in
     List.head items
 
@@ -1047,7 +1090,7 @@ getPerson model id =
         items =
             List.filter
                 (\i -> i.lookup.id == id)
-                model.sortedPeopleWithQuantity
+                model.cached_sortedPeopleWithQuantity
     in
     List.head items
 
