@@ -1,0 +1,37 @@
+
+
+# UNUSED ITEMS
+
+src/Model.elm:18:7	Model.Green
+
+
+# OTHER ISSUES
+
+Found 9 message(s)
+
+Messages:
+- src/CommonRoute.elm
+  > Unused imported variable `</>` at ((8,29),(8,34))
+* src/Shared2.elm
+  > No signature for top level definition `createMyStopWordFilter` at ((6,1),(6,23))
+* src/View.elm
+
+
+# LINES OF CODE
+
+      16 text files.
+classified 16 files      16 unique files.                              
+       1 file ignored.
+
+github.com/AlDanial/cloc v 1.82  T=0.04 s (351.1 files/s, 118735.9 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Elm                             15            392            214           4467
+-------------------------------------------------------------------------------
+SUM:                            15            392            214           4467
+-------------------------------------------------------------------------------
+
+
+# END
+

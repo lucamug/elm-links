@@ -2,25 +2,28 @@ module Main exposing (main)
 
 import Browser
 import Browser.Events
+import Init
 import Keyboard
+import Model
+import Msg
 import Port
-import Shared
+import Update
 import View
 
 
-main : Program Shared.Flags Shared.Model Shared.Msg
+main : Program Init.Flags Model.Model Msg.Msg
 main =
     Browser.application
-        { init = Shared.init
+        { init = Init.init
         , view = View.view
-        , update = Shared.update
+        , update = Update.update
         , subscriptions =
-            \model ->
+            \_ ->
                 Sub.batch
-                    [ Browser.Events.onResize Shared.OnResize
-                    , Port.pageInTopArea Shared.PageInTopArea
-                    , Keyboard.ups Shared.KeyUp
+                    [ Browser.Events.onResize Msg.OnResize
+                    , Port.pageInTopArea Msg.PageInTopArea
+                    , Keyboard.ups Msg.KeyUp
                     ]
-        , onUrlRequest = Shared.LinkClicked
-        , onUrlChange = Shared.UrlChanged
+        , onUrlRequest = Msg.LinkClicked
+        , onUrlChange = Msg.UrlChanged
         }

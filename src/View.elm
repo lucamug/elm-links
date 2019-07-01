@@ -14,12 +14,14 @@ import Element.Border as Border
 import Element.Font as Font
 import Element.Input as Input
 import ElmTextSearch
-import Html exposing (Html)
+import Html
 import Html.Attributes
 import Html.Events
+import Init
 import Json.Decode
+import Model
+import Msg
 import Route
-import Shared exposing (Model, Msg(..))
 import Svg
 import Svg.Attributes as SA
 import Utils
@@ -63,10 +65,10 @@ green =
     rgb 0.3 0.7 0.3
 
 
-colorPalette : Shared.ColorMode -> ColorPalette
+colorPalette : Model.ColorMode -> ColorPalette
 colorPalette colorMode =
     case colorMode of
-        Shared.Night ->
+        Model.Night ->
             { background = rgb 0.2 0.2 0.2
             , font = rgb 0.8 0.8 0.8
             , fontLight = rgb 0.5 0.5 0.5
@@ -93,7 +95,7 @@ colorPalette colorMode =
                 ]
             }
 
-        Shared.Day ->
+        Model.Day ->
             { background = rgb 0.95 0.95 0.95
             , font = rgb 0.3 0.3 0.3
             , fontLight = rgb 0.4 0.4 0.4
@@ -107,7 +109,7 @@ colorPalette colorMode =
                 ]
             }
 
-        Shared.Green ->
+        Model.Green ->
             { background = green
             , font = green
             , fontLight = green
@@ -122,7 +124,7 @@ colorPalette colorMode =
             }
 
 
-pseudoRandomColor : Model -> String -> Color
+pseudoRandomColor : Model.Model -> String -> Color
 pseudoRandomColor model title =
     let
         index =
@@ -137,7 +139,7 @@ pseudoRandomColor model title =
     Maybe.withDefault green <| Array.get index seriesArray
 
 
-c : Model -> (ColorPalette -> b) -> b
+c : Model.Model -> (ColorPalette -> b) -> b
 c model key =
     key <| colorPalette model.colorMode
 
@@ -158,12 +160,12 @@ elementColorToElmColor elementColor =
     ElmColor.fromRgba <| Element.toRgb elementColor
 
 
-sizeOfBoxesInt : Model -> Int
+sizeOfBoxesInt : Model.Model -> Int
 sizeOfBoxesInt model =
     floor <| sizeOfBoxesFloat model
 
 
-sizeOfBoxesFloat : Model -> Float
+sizeOfBoxesFloat : Model.Model -> Float
 sizeOfBoxesFloat model =
     let
         size =
@@ -173,7 +175,7 @@ sizeOfBoxesFloat model =
 
 
 textInBoxes :
-    Model
+    Model.Model
     ->
         { b
             | backgroundColor : Color
@@ -196,7 +198,7 @@ textInBoxes model { string, quantity, paddingLeft, fontRatio, backgroundColor, f
             (size // 3) * fontRatio
     in
     case model.layoutMode of
-        Shared.Grid ->
+        Model.Grid ->
             List.indexedMap
                 (\index _ ->
                     el
@@ -218,7 +220,7 @@ textInBoxes model { string, quantity, paddingLeft, fontRatio, backgroundColor, f
                 )
                 (List.repeat quantity ())
 
-        Shared.List ->
+        Model.List ->
             [ el [ padding 20, Font.size 24 ] <| text string ]
 
 
@@ -227,7 +229,7 @@ dunno =
     "¯\\_(ツ)_/¯"
 
 
-notFound : Model -> List (Element msg)
+notFound : Model.Model -> List (Element msg)
 notFound model =
     textInBoxes
         model
@@ -271,7 +273,7 @@ type ItemType
 
 
 viewSquare :
-    Model
+    Model.Model
     ->
         { c
             | item :
@@ -374,7 +376,7 @@ viewSquare model { item, itemType } =
 
 
 viewList :
-    Model
+    Model.Model
     ->
         { c
             | itemType : ItemType
@@ -391,7 +393,7 @@ viewList :
                 }
                 -> Route.Route
         }
-    -> List (Element Msg)
+    -> List (Element Msg.Msg)
 viewList model { itemsToShow, itemType, select } =
     if List.length itemsToShow == 0 then
         notFound model
@@ -414,10 +416,10 @@ viewList model { itemsToShow, itemType, select } =
                             ([ square
                              ]
                                 ++ (case model.layoutMode of
-                                        Shared.Grid ->
+                                        Model.Grid ->
                                             []
 
-                                        Shared.List ->
+                                        Model.List ->
                                             [ paragraph []
                                                 [ text <|
                                                     item.lookup.name
@@ -436,7 +438,7 @@ viewList model { itemsToShow, itemType, select } =
             itemsToShow
 
 
-viewLinksList : Model -> List (Element Msg)
+viewLinksList : Model.Model -> List (Element Msg.Msg)
 viewLinksList model =
     let
         itemsToShow =
@@ -462,12 +464,9 @@ viewLinksList model =
         }
 
 
-viewPeopleList : Model -> List (Element Msg)
+viewPeopleList : Model.Model -> List (Element Msg.Msg)
 viewPeopleList model =
     let
-        -- searchResults =
-        --     Result.map Tuple.second <|
-        --         Shared.resultSearch model.cached_indexForPeople (Utils.decode model.filter)
         itemsToShow =
             case searchPeopleResults model of
                 Ok result ->
@@ -501,7 +500,7 @@ searchKeywordsResults model =
     case model.cached_indexForKeywords of
         Just index ->
             Result.map Tuple.second <|
-                Shared.resultSearch index (Utils.decode model.filter)
+                Init.resultSearch index (Utils.decode model.filter)
 
         Nothing ->
             Err "Index not ready"
@@ -517,7 +516,7 @@ searchPeopleResults model =
     case model.cached_indexForPeople of
         Just index ->
             Result.map Tuple.second <|
-                Shared.resultSearch index (Utils.decode model.filter)
+                Init.resultSearch index (Utils.decode model.filter)
 
         Nothing ->
             Err "Index not ready"
@@ -533,18 +532,15 @@ searchLinksResults model =
     case model.cached_indexForLinks of
         Just index ->
             Result.map Tuple.second <|
-                Shared.resultSearch index (Utils.decode model.filter)
+                Init.resultSearch index (Utils.decode model.filter)
 
         Nothing ->
             Err "Index not ready"
 
 
-viewKeywordsList : Model -> List (Element Msg)
+viewKeywordsList : Model.Model -> List (Element Msg.Msg)
 viewKeywordsList model =
     let
-        -- searchResults =
-        --     Result.map Tuple.second <|
-        --         Shared.resultSearch model.cached_indexForKeywords (Utils.decode model.filter)
         itemsToShow =
             case searchKeywordsResults model of
                 Ok result ->
@@ -591,12 +587,12 @@ type Icon
     | Icon_Row
 
 
-saFill : Color -> Svg.Attribute Msg
+saFill : Color -> Svg.Attribute Msg.Msg
 saFill cl =
     SA.fill <| Color.Convert.colorToHex <| elementColorToElmColor cl
 
 
-icon : Icon -> Color -> Int -> Element Msg
+icon : Icon -> Color -> Int -> Element Msg.Msg
 icon icon_ cl size =
     let
         ( viewBox, paths ) =
@@ -611,7 +607,7 @@ icon icon_ cl size =
             paths
 
 
-iconViewBoxAndPaths : Icon -> Color -> ( String, List (Svg.Svg Msg) )
+iconViewBoxAndPaths : Icon -> Color -> ( String, List (Svg.Svg Msg.Msg) )
 iconViewBoxAndPaths icon_ cl =
     case icon_ of
         Icon_Plus ->
@@ -735,7 +731,7 @@ iconViewBoxAndPaths icon_ cl =
 -}
 
 
-viewHeader : Model -> Element Msg
+viewHeader : Model.Model -> Element Msg.Msg
 viewHeader model =
     let
         iconSize =
@@ -795,7 +791,7 @@ viewHeader model =
                     , Background.color <| c model .background
                     , Border.color <| c model .background
                     ]
-                    { onChange = Shared.ChangeFilter
+                    { onChange = Msg.ChangeFilter
                     , text = Utils.decode model.filter
                     , placeholder = Just <| Input.placeholder [ Font.color <| c model .fontLight ] <| text "Filter"
                     , label = Input.labelAbove [] none
@@ -803,36 +799,36 @@ viewHeader model =
                 , if String.length model.filter > 0 then
                     Input.button []
                         { label = icon Icon_Close (c model .font) iconSize
-                        , onPress = Just <| ChangeFilter ""
+                        , onPress = Just <| Msg.ChangeFilter ""
                         }
 
                   else
                     none
                 , Input.button []
                     { label = icon Icon_PlusL (c model .font) iconSize
-                    , onPress = Just ToggleColorMode
+                    , onPress = Just Msg.ToggleColorMode
                     }
                 , Input.button []
                     { label =
                         icon
                             (case model.layoutMode of
-                                Shared.Grid ->
+                                Model.Grid ->
                                     Icon_Row
 
-                                Shared.List ->
+                                Model.List ->
                                     Icon_Grid
                             )
                             (c model .font)
                             iconSize
-                    , onPress = Just ToggleLayoutMode
+                    , onPress = Just Msg.ToggleLayoutMode
                     }
                 , Input.button []
                     { label = icon Icon_Plus (c model .font) iconSize
-                    , onPress = Just DecreaseSquareQuantity
+                    , onPress = Just Msg.DecreaseSquareQuantity
                     }
                 , Input.button []
                     { label = icon Icon_Minus (c model .font) iconSize
-                    , onPress = Just IncreaseSquareQuantity
+                    , onPress = Just Msg.IncreaseSquareQuantity
                     }
                 , newTabLink []
                     { label = icon Icon_Github (c model .font) iconSize
@@ -843,7 +839,7 @@ viewHeader model =
 
 
 viewSelectionTitle :
-    Model
+    Model.Model
     ->
         { d
             | extraData : List (Element msg)
@@ -890,7 +886,7 @@ viewSelectionTitle model { item, itemType, extraData } extra =
         ]
 
 
-viewKeywordsRelatedLinks : Model -> Keywords.Id -> List (Element Msg)
+viewKeywordsRelatedLinks : Model.Model -> Keywords.Id -> List (Element Msg.Msg)
 viewKeywordsRelatedLinks model id =
     let
         links =
@@ -907,7 +903,7 @@ viewKeywordsRelatedLinks model id =
     listOfLinks model links { person = Nothing, keyword = Just id }
 
 
-viewPeopleRelatedLinks : Model -> People.Id -> List (Element Msg)
+viewPeopleRelatedLinks : Model.Model -> People.Id -> List (Element Msg.Msg)
 viewPeopleRelatedLinks model id =
     let
         links =
@@ -946,10 +942,10 @@ linkUrl item type_ =
 
 
 listOfLinks :
-    Model
+    Model.Model
     -> List { lookup : Links.Attributes, quantity : Int }
     -> { person : Maybe People.Id, keyword : Maybe Keywords.Id }
-    -> List (Element Msg)
+    -> List (Element Msg.Msg)
 listOfLinks model links toSkip =
     List.map
         (\item ->
@@ -1062,7 +1058,7 @@ listOfLinks model links toSkip =
 -}
 
 
-getLink : Model -> String -> Maybe Links.WithQuantity
+getLink : Model.Model -> String -> Maybe Links.WithQuantity
 getLink model id =
     let
         items =
@@ -1073,7 +1069,7 @@ getLink model id =
     List.head items
 
 
-getKeyword : Model -> Keywords.Id -> Maybe Keywords.WithQuantity
+getKeyword : Model.Model -> Keywords.Id -> Maybe Keywords.WithQuantity
 getKeyword model id =
     let
         items =
@@ -1084,7 +1080,7 @@ getKeyword model id =
     List.head items
 
 
-getPerson : Model -> People.Id -> Maybe People.WithQuantity
+getPerson : Model.Model -> People.Id -> Maybe People.WithQuantity
 getPerson model id =
     let
         items =
@@ -1100,7 +1096,7 @@ isVideo url =
     String.contains "https://www.youtube.com" url
 
 
-viewSelection : Model -> Route.Route -> Element Msg
+viewSelection : Model.Model -> Route.Route -> Element Msg.Msg
 viewSelection model route =
     let
         columSpacing =
@@ -1270,12 +1266,12 @@ viewSelection model route =
                 []
 
 
-extraDataKeyword : Model -> Keywords.Attributes -> List (Element msg)
-extraDataKeyword model item =
+extraDataKeyword : Model.Model -> Keywords.Attributes -> List (Element msg)
+extraDataKeyword _ _ =
     []
 
 
-extraDataPerson : Model -> People.Attributes -> List (Element Msg)
+extraDataPerson : Model.Model -> People.Attributes -> List (Element Msg.Msg)
 extraDataPerson model item =
     [ row [ spacing 20 ] <|
         (if String.length item.twitter > 0 then
@@ -1309,8 +1305,8 @@ extraDataPerson model item =
     ]
 
 
-extraDataLink : Model -> Links.Attributes -> List (Element msg)
-extraDataLink model item =
+extraDataLink : Model.Model -> Links.Attributes -> List (Element msg)
+extraDataLink _ item =
     (if String.length item.description > 0 then
         [ paragraph [ Font.size 16 ] [ text <| item.description ]
         ]
@@ -1350,9 +1346,9 @@ extraDataLink model item =
 -}
 
 
-clickDecoder : Json.Decode.Decoder Shared.ClickData
+clickDecoder : Json.Decode.Decoder Msg.ClickData
 clickDecoder =
-    Json.Decode.map5 Shared.ClickData
+    Json.Decode.map5 Msg.ClickData
         (Json.Decode.at [ "target", "id" ] Json.Decode.string)
         (Json.Decode.at [ "target", "parentElement", "id" ] Json.Decode.string)
         (Json.Decode.at [ "target", "parentElement", "parentElement", "id" ] Json.Decode.string)
@@ -1360,7 +1356,7 @@ clickDecoder =
         (Json.Decode.at [ "target", "parentElement", "parentElement", "parentElement", "parentElement", "id" ] Json.Decode.string)
 
 
-view : Model -> Browser.Document Msg
+view : Model.Model -> Browser.Document Msg.Msg
 view model =
     let
         route =
@@ -1401,7 +1397,7 @@ view model =
                                     [ width fill
                                     , height fill
                                     , Background.color <| rgba 0 0 0 0.7
-                                    , htmlAttribute <| Html.Events.on "click" (Json.Decode.map Shared.Click clickDecoder)
+                                    , htmlAttribute <| Html.Events.on "click" (Json.Decode.map Msg.Click clickDecoder)
                                     , htmlAttribute <| Html.Attributes.id "cover"
                                     , scrollbarY
                                     ]
@@ -1412,12 +1408,12 @@ view model =
             )
           <|
             (case model.layoutMode of
-                Shared.Grid ->
+                Model.Grid ->
                     wrappedRow
                         [ paddingEach { top = headerHeight, right = 0, bottom = 0, left = 0 }
                         ]
 
-                Shared.List ->
+                Model.List ->
                     column
                         [ paddingEach { top = headerHeight + 20, right = 20, bottom = 20, left = 20 }
                         , spacing 10

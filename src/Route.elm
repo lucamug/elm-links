@@ -5,9 +5,7 @@ module Route exposing
     , toString
     )
 
-import Url
 import Url.Parser exposing ((</>))
-import Utils
 
 
 routeToRestoreFilter : String -> Route

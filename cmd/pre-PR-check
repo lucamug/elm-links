@@ -1,0 +1,43 @@
+#!/bin/bash
+printf "\n\e[0;32m🍣   Checking if \"Debug...\" are still in the code...\e[0m\n\n"
+cmd/reset
+# cmd/helpers/elm-make meta.js     "src/MainMeta.elm"
+printf "\n\e[0;32m🍣   Checking for unused items (elm-xref)...\e[0m\n\n"
+printf "\n\n# UNUSED ITEMS\n\n" > cmd/issues.txt
+node_modules/.bin/elm-xref >> cmd/issues.txt
+printf "\n\e[0;32m🍣   Checking for other issues (elm-analyse)...\e[0m\n\n"
+printf "\n\n# OTHER ISSUES\n\n" >> cmd/issues.txt
+node_modules/.bin/elm-analyse --elm-format-path=node_modules/.bin/elm-format >> cmd/issues.txt
+# Removing issues related to libraries
+node_modules/.bin/replace "^.*/node_modules/.*\n" "" cmd/issues.txt --silent
+# Removing system info
+node_modules/.bin/replace "^INFO:.*\n" "" cmd/issues.txt --silent
+# Removing part of the path that contains user name
+node_modules/.bin/replace ".*/src/" "src/" cmd/issues.txt --silent
+# Removing not tracked issues
+node_modules/.bin/replace ".*Importing all from module .Element.*\n" "" cmd/issues.txt --silent
+node_modules/.bin/replace ".*.Nothing. mapped to .Nothing. in case expression.*\n" "" cmd/issues.txt --silent
+node_modules/.bin/replace ".*Record has only one field. Use the field's type or introduce a Type.*\n" "" cmd/issues.txt --silent
+node_modules/.bin/replace ".*.TODO. should not be used in comments.*\n" "" cmd/issues.txt --silent
+node_modules/.bin/replace ".*Use .::. instead of .\+\+..*\n" "" cmd/issues.txt --silent
+node_modules/.bin/replace ".*Unnecessary parens.*\n" "" cmd/issues.txt --silent
+node_modules/.bin/replace ".*Joining two literal lists with .\+\+., but instead you can just join the lists.*\n" "" cmd/issues.txt --silent
+node_modules/.bin/replace ".*src/SelfService.elm.*\n" "" cmd/issues.txt --silent
+node_modules/.bin/replace ".*Shared.onEnter.*\n" "" cmd/issues.txt --silent
+# Remove position of the issue
+# node_modules/.bin/replace " at \(\(\d*,\d*\),\(\d*,\d*\)\)" "" cmd/issues.txt --silent
+# node_modules/.bin/replace ":\d*:\d*" "" cmd/issues.txt --silent
+# Remove files that have not issues
+# for some reaons "-" is not accepted as character in the second string
+node_modules/.bin/replace "^. src.*\n. src" "* src" cmd/issues.txt --silent
+node_modules/.bin/replace "^. src.*\n. src" "* src" cmd/issues.txt --silent
+node_modules/.bin/replace "^. src.*\n. src" "* src" cmd/issues.txt --silent
+node_modules/.bin/replace "^. src.*\n. src" "* src" cmd/issues.txt --silent
+node_modules/.bin/replace "^. src.*\n. src" "* src" cmd/issues.txt --silent
+node_modules/.bin/replace "^. src.*\n\n" "" cmd/issues.txt --silent
+# Adding counter of lines of code
+printf "\n\n# LINES OF CODE\n\n" >> cmd/issues.txt
+node_modules/.bin/cloc src >> cmd/issues.txt
+# End
+printf "\n\n# END\n\n" >> cmd/issues.txt
+printf "\n\e[0;32m🍺   Done! The file "cmd/issues.txt" has been generated. Check it and if you are happy push it to your branch and send the Pull Request.\e[0m\n\n"
