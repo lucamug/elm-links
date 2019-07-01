@@ -22,6 +22,7 @@ import Keyboard
 import List.Extra
 import NaturalOrdering
 import Route
+import Shared2
 import StopWordFilter
 import Url
 import Utils
@@ -431,17 +432,15 @@ peopleWithQuantity =
 
 -- SEARCH ENGINE
 --createMyStopWordFilter : Index.Model.Index doc -> ( Index.Model.Index doc, String -> Bool )
-
-
-createMyStopWordFilter =
-    {- The type signature for this function would be:
-
-       createMyStopWordFilter : Index.Model.Index doc -> ( Index.Model.Index doc, String -> Bool )
-
-       but these types are not exposed.
-    -}
-    StopWordFilter.createFilterFunc
-        []
+-- createMyStopWordFilter =
+--     {- The type signature for this function would be:
+--
+--        createMyStopWordFilter : Index.Model.Index doc -> ( Index.Model.Index doc, String -> Bool )
+--
+--        but these types are not exposed.
+--     -}
+--     StopWordFilter.createFilterFunc
+--         []
 
 
 indexForLinks :
@@ -460,7 +459,7 @@ indexForLinks list =
                 , indexType = "Elm Resources - Customized Stop Words v1"
                 , initialTransformFactories = Index.Defaults.defaultInitialTransformFactories
                 , transformFactories = Index.Defaults.defaultTransformFactories
-                , filterFactories = [ createMyStopWordFilter ]
+                , filterFactories = [ Shared2.createMyStopWordFilter ]
                 }
     in
     ElmTextSearch.addDocs list index
@@ -483,7 +482,7 @@ indexBuilderforPeople list =
                 , indexType = "Elm Resources - Customized Stop Words v1"
                 , initialTransformFactories = Index.Defaults.defaultInitialTransformFactories
                 , transformFactories = Index.Defaults.defaultTransformFactories
-                , filterFactories = [ createMyStopWordFilter ]
+                , filterFactories = [ Shared2.createMyStopWordFilter ]
                 }
     in
     ElmTextSearch.addDocs list index
@@ -504,7 +503,7 @@ indexBuilder list =
                 , indexType = "Elm Resources - Customized Stop Words v1"
                 , initialTransformFactories = Index.Defaults.defaultInitialTransformFactories
                 , transformFactories = Index.Defaults.defaultTransformFactories
-                , filterFactories = [ createMyStopWordFilter ]
+                , filterFactories = [ Shared2.createMyStopWordFilter ]
                 }
     in
     ElmTextSearch.addDocs list index
