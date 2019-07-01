@@ -4,7 +4,9 @@ module Msg exposing
     )
 
 import Browser
+import Http
 import Keyboard
+import Package
 import Url
 
 
@@ -29,3 +31,4 @@ type Msg
     | KeyUp Keyboard.RawKey
     | LinkClicked Browser.UrlRequest
     | UrlChanged Url.Url
+    | GotPackages (Result Http.Error (List Package.Package))

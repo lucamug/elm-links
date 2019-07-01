@@ -10,11 +10,15 @@ import Data.Keywords as Keywords
 import Data.Links as Links
 import Data.People as People
 import ElmTextSearch
+import Http
 import Index.Defaults
+import Json.Decode
+import Json.Decode.Pipeline
 import List.Extra
 import Model
 import Msg
 import NaturalOrdering
+import Package
 import Route
 import Shared2
 import Url
@@ -38,10 +42,10 @@ maybeToBool : Maybe a -> Bool
 maybeToBool something =
     case something of
         Just _ ->
-            False
+            True
 
         Nothing ->
-            True
+            False
 
 
 preparation :
@@ -56,12 +60,22 @@ preparation :
     }
 preparation =
     let
-        cleanedLinksWithQuantity =
-            List.map
-                (\item -> { lookup = item, quantity = 0 })
-                Links.list
+        --
+        -- items with quantities
+        --
+        keywordsWithQuantity =
+            createKeywordsWithQuantity
 
-        cleanedKeywordsWithQuantity =
+        peopleWithQuantity =
+            createPeopleWithQuantity
+
+        linksWithQuantity =
+            createLinksWithQuantity
+
+        --
+        -- filtering items that have no links
+        --
+        keywordsWithQuantity_filtered =
             keywordsWithQuantity
                 |> List.filter
                     (\item -> maybeToBool item.maybeLookup)
@@ -72,7 +86,7 @@ preparation =
                         }
                     )
 
-        cleanedPeopleWithQuantity =
+        peopleWithQuantity_filtered =
             peopleWithQuantity
                 |> List.filter
                     (\item -> maybeToBool item.maybeLookup)
@@ -83,41 +97,44 @@ preparation =
                         }
                     )
 
+        --
+        -- items that have links but don't exists
+        --
         missingPeople =
             peopleWithQuantity
                 |> List.filter
-                    (\item -> maybeToBool item.maybeLookup)
+                    (\item -> not <| maybeToBool item.maybeLookup)
                 |> List.map (\item -> item.id)
 
         missingKeywords =
             keywordsWithQuantity
                 |> List.filter
-                    (\item -> maybeToBool item.maybeLookup)
+                    (\item -> not <| maybeToBool item.maybeLookup)
                 |> List.map (\item -> item.id)
 
-        sortedPeopleWithQuantity =
+        sortedPeople =
             List.sortWith
                 (NaturalOrdering.compareOn (\item -> item.lookup.name))
-                cleanedPeopleWithQuantity
+                peopleWithQuantity_filtered
 
-        sortedKeywordsWithQuantity =
+        sortedKeywords =
             List.sortWith
                 (NaturalOrdering.compareOn (\item -> item.lookup.name))
-                cleanedKeywordsWithQuantity
+                keywordsWithQuantity_filtered
 
-        sortedLinksWithQuantity =
+        sortedLinks =
             List.sortWith
                 (NaturalOrdering.compareOn (\item -> item.lookup.name))
-                cleanedLinksWithQuantity
+                linksWithQuantity
     in
-    { cached_sortedKeywordsWithQuantity = sortedKeywordsWithQuantity
-    , cached_sortedPeopleWithQuantity = sortedPeopleWithQuantity
-    , cached_sortedLinksWithQuantity = sortedLinksWithQuantity
+    { cached_sortedKeywordsWithQuantity = sortedKeywords
+    , cached_sortedPeopleWithQuantity = sortedPeople
+    , cached_sortedLinksWithQuantity = sortedLinks
     , cached_missingPeople = missingPeople
     , cached_missingKeywords = missingKeywords
-    , cached_indexForPeople = Just <| indexBuilderForPeople sortedPeopleWithQuantity
-    , cached_indexForKeywords = Just <| indexBuilderForKeywords sortedKeywordsWithQuantity
-    , cached_indexForLinks = Just <| indexBuilderForLinks sortedLinksWithQuantity
+    , cached_indexForPeople = Just <| indexBuilderForPeople sortedPeople
+    , cached_indexForKeywords = Just <| indexBuilderForKeywords sortedKeywords
+    , cached_indexForLinks = Just <| indexBuilderForLinks sortedLinks
     }
 
 
@@ -128,6 +145,15 @@ preparation =
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model.Model, Cmd Msg.Msg )
 init flags url key =
     let
+        getPackagesCmd =
+            Http.get
+                { url = "data/search.json"
+                , expect =
+                    Http.expectJson
+                        Msg.GotPackages
+                        (Json.Decode.list Package.decodePackage)
+                }
+
         model =
             { url = url
             , key = key
@@ -182,7 +208,7 @@ init flags url key =
                     ""
     in
     ( model2
-    , Cmd.none
+    , getPackagesCmd
     )
 
 
@@ -203,13 +229,24 @@ type alias Flags =
 -- ██   ██ ███████ ███████ ██      ███████ ██   ██ ███████
 
 
-keywordsWithQuantity :
+createLinksWithQuantity :
+    List
+        { lookup : Links.Attributes
+        , quantity : Int
+        }
+createLinksWithQuantity =
+    List.map
+        (\item -> { lookup = item, quantity = 0 })
+        Links.list
+
+
+createKeywordsWithQuantity :
     List
         { id : Keywords.Id
         , maybeLookup : Maybe Keywords.Attributes
         , quantity : Int
         }
-keywordsWithQuantity =
+createKeywordsWithQuantity =
     Links.list
         |> List.concatMap (\link -> link.keywords)
         |> List.Extra.gatherEquals
@@ -222,13 +259,13 @@ keywordsWithQuantity =
             )
 
 
-peopleWithQuantity :
+createPeopleWithQuantity :
     List
         { id : People.Id
         , maybeLookup : Maybe People.Attributes
         , quantity : Int
         }
-peopleWithQuantity =
+createPeopleWithQuantity =
     Links.list
         |> List.concatMap (\link -> link.authors)
         |> List.Extra.gatherEquals

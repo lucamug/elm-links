@@ -146,3 +146,10 @@ update msg model =
                     else
                         Route.Filter <| Utils.encode filter
             )
+
+        Msg.GotPackages result ->
+            let
+                _ =
+                    Debug.log "xxx" result
+            in
+            ( model, Cmd.none )
