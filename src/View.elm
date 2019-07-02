@@ -22,9 +22,18 @@ import Json.Decode
 import Model
 import Msg
 import Route
+import Shared
 import Svg
 import Svg.Attributes as SA
 import Utils
+
+
+resultSearch :
+    ( ElmTextSearch.Index doc, b )
+    -> String
+    -> Result String ( ElmTextSearch.Index doc, List ( String, Float ) )
+resultSearch index searchString =
+    ElmTextSearch.search searchString (Tuple.first index)
 
 
 
@@ -486,7 +495,7 @@ viewPeopleList model =
     viewList model
         { itemsToShow = itemsToShow
         , itemType = Person
-        , select = \item -> Route.SelectedPerson <| Maybe.withDefault "" <| People.idToString item.lookup.id
+        , select = \item -> Route.SelectedPerson item.lookup.id
         }
 
 
@@ -500,7 +509,7 @@ searchKeywordsResults model =
     case model.cached_indexForKeywords of
         Just index ->
             Result.map Tuple.second <|
-                Init.resultSearch index (Utils.decode model.filter)
+                resultSearch index (Utils.decode model.filter)
 
         Nothing ->
             Err "Index not ready"
@@ -516,7 +525,7 @@ searchPeopleResults model =
     case model.cached_indexForPeople of
         Just index ->
             Result.map Tuple.second <|
-                Init.resultSearch index (Utils.decode model.filter)
+                resultSearch index (Utils.decode model.filter)
 
         Nothing ->
             Err "Index not ready"
@@ -532,7 +541,7 @@ searchLinksResults model =
     case model.cached_indexForLinks of
         Just index ->
             Result.map Tuple.second <|
-                Init.resultSearch index (Utils.decode model.filter)
+                resultSearch index (Utils.decode model.filter)
 
         Nothing ->
             Err "Index not ready"
@@ -560,7 +569,7 @@ viewKeywordsList model =
     viewList model
         { itemsToShow = itemsToShow
         , itemType = Keyword
-        , select = \item -> Route.SelectedKeyword <| Maybe.withDefault "" <| Keywords.idToString item.lookup.id
+        , select = \item -> Route.SelectedKeyword <| item.lookup.id
         }
 
 
@@ -886,38 +895,38 @@ viewSelectionTitle model { item, itemType, extraData } extra =
         ]
 
 
-viewKeywordsRelatedLinks : Model.Model -> Keywords.Id -> List (Element Msg.Msg)
-viewKeywordsRelatedLinks model id =
+viewKeywordsRelatedLinks : Model.Model -> String -> List (Element Msg.Msg)
+viewKeywordsRelatedLinks model keywordId =
     let
         links =
             List.filter
                 (\item ->
                     let
                         filtered =
-                            List.filter (\keyword -> keyword == id) item.lookup.keywords
+                            List.filter (\keyword -> keyword == keywordId) item.lookup.keywords
                     in
                     List.length filtered > 0
                 )
                 model.cached_sortedLinksWithQuantity
     in
-    listOfLinks model links { person = Nothing, keyword = Just id }
+    listOfLinks model links { person = Nothing, keyword = Just keywordId }
 
 
-viewPeopleRelatedLinks : Model.Model -> People.Id -> List (Element Msg.Msg)
-viewPeopleRelatedLinks model id =
+viewPeopleRelatedLinks : Model.Model -> String -> List (Element Msg.Msg)
+viewPeopleRelatedLinks model personId =
     let
         links =
             List.filter
                 (\item ->
                     let
                         filtered =
-                            List.filter (\author -> author == id) item.lookup.authors
+                            List.filter (\author -> author == personId) item.lookup.authors
                     in
                     List.length filtered > 0
                 )
                 model.cached_sortedLinksWithQuantity
     in
-    listOfLinks model links { person = Just id, keyword = Nothing }
+    listOfLinks model links { person = Just personId, keyword = Nothing }
 
 
 linkUrl : { b | lookup : { a | name : String } } -> ItemType -> String
@@ -1063,7 +1072,7 @@ getLink model id =
     let
         items =
             List.filter
-                (\i -> i.lookup.name == id)
+                (\i -> Shared.compareLowerCase i.lookup.name id)
                 model.cached_sortedLinksWithQuantity
     in
     List.head items
@@ -1074,18 +1083,18 @@ getKeyword model id =
     let
         items =
             List.filter
-                (\i -> i.lookup.id == id)
+                (\i -> Shared.compareLowerCase i.lookup.id id)
                 model.cached_sortedKeywordsWithQuantity
     in
     List.head items
 
 
-getPerson : Model.Model -> People.Id -> Maybe People.WithQuantity
-getPerson model id =
+getPerson : Model.Model -> String -> Maybe People.WithQuantity
+getPerson model personId =
     let
         items =
             List.filter
-                (\i -> i.lookup.id == id)
+                (\i -> i.lookup.id == personId)
                 model.cached_sortedPeopleWithQuantity
     in
     List.head items
@@ -1163,7 +1172,7 @@ viewSelection model route =
 
                                         Just item_ ->
                                             link []
-                                                { url = CommonRoute.toStringAndHash Route.conf <| Route.SelectedPerson <| Maybe.withDefault "" <| People.idToString i
+                                                { url = CommonRoute.toStringAndHash Route.conf <| Route.SelectedPerson <| i
                                                 , label =
                                                     row [ spacing 10 ]
                                                         [ viewSquare model { item = item_, itemType = Person }
@@ -1190,8 +1199,7 @@ viewSelection model route =
                                                     { url =
                                                         CommonRoute.toStringAndHash Route.conf <|
                                                             Route.SelectedKeyword <|
-                                                                Maybe.withDefault "" <|
-                                                                    Keywords.idToString i
+                                                                i
                                                     , label =
                                                         row [ spacing 10 ]
                                                             [ viewSquare model { item = item_, itemType = Keyword }
@@ -1207,16 +1215,8 @@ viewSelection model route =
 
             Route.SelectedKeyword string ->
                 let
-                    maybeId =
-                        Keywords.stringToId string
-
                     maybeItem =
-                        case maybeId of
-                            Nothing ->
-                                Nothing
-
-                            Just id ->
-                                getKeyword model id
+                        getKeyword model string
                 in
                 case maybeItem of
                     Nothing ->
@@ -1234,16 +1234,8 @@ viewSelection model route =
 
             Route.SelectedPerson string ->
                 let
-                    maybeId =
-                        People.stringToId string
-
                     maybeItem =
-                        case maybeId of
-                            Nothing ->
-                                Nothing
-
-                            Just id ->
-                                getPerson model id
+                        getPerson model string
                 in
                 case maybeItem of
                     Nothing ->

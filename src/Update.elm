@@ -3,9 +3,15 @@ module Update exposing (update)
 import Browser
 import Browser.Navigation
 import CommonRoute
+import Data.Keywords as Keywords
+import Data.Links as Links
+import Data.Packages as Packages
+import Data.People as People
+import Dict
 import Keyboard
 import Model
 import Msg
+import Preparation
 import Route
 import Shared
 import Url
@@ -149,7 +155,36 @@ update msg model =
 
         Msg.GotPackages result ->
             let
-                _ =
-                    Debug.log "xxx" result
+                githubToPeopleIdDict =
+                    githubToPeopleId People.list
+
+                links =
+                    case result of
+                        Ok packages ->
+                            List.map (\package -> Packages.packageToLink githubToPeopleIdDict package) packages
+
+                        Err err ->
+                            []
+
+                model2 =
+                    let
+                        p =
+                            Preparation.preparation { links = Links.list ++ links, keywords = Keywords.list, people = People.list }
+                    in
+                    { model
+                        | cached_sortedKeywordsWithQuantity = p.cached_sortedKeywordsWithQuantity
+                        , cached_sortedPeopleWithQuantity = p.cached_sortedPeopleWithQuantity
+                        , cached_sortedLinksWithQuantity = p.cached_sortedLinksWithQuantity
+                        , cached_missingPeople = p.cached_missingPeople
+                        , cached_missingKeywords = p.cached_missingKeywords
+                        , cached_indexForPeople = p.cached_indexForPeople
+                        , cached_indexForKeywords = p.cached_indexForKeywords
+                        , cached_indexForLinks = p.cached_indexForLinks
+                    }
             in
-            ( model, Cmd.none )
+            ( model2, Cmd.none )
+
+
+githubToPeopleId : List People.Attributes -> Dict.Dict String People.Id
+githubToPeopleId people =
+    Dict.fromList <| List.map (\person -> ( String.toLower person.github, person.id )) people

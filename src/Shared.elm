@@ -1,4 +1,4 @@
-module Shared exposing (commandToCloseModal)
+module Shared exposing (commandToCloseModal, compareLowerCase)
 
 import Browser.Navigation
 import CommonRoute
@@ -15,3 +15,8 @@ commandToCloseModal { filter, key } =
     Browser.Navigation.pushUrl key <|
         CommonRoute.toStringAndHash Route.conf <|
             Route.routeToRestoreFilter filter
+
+
+compareLowerCase : String -> String -> Bool
+compareLowerCase string1 string2 =
+    String.toLower string1 == String.toLower string2

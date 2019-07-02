@@ -38,8 +38,8 @@ type alias Model =
     , cached_sortedKeywordsWithQuantity : List Keywords.WithQuantity
     , cached_sortedPeopleWithQuantity : List People.WithQuantity
     , cached_sortedLinksWithQuantity : List Links.WithQuantity
-    , cached_missingPeople : List People.Id
-    , cached_missingKeywords : List Keywords.Id
+    , cached_missingPeople : List String
+    , cached_missingKeywords : List String
     , cached_indexForPeople : Maybe ( ElmTextSearch.Index People.WithQuantity, List ( Int, String ) )
     , cached_indexForKeywords : Maybe ( ElmTextSearch.Index Keywords.WithQuantity, List ( Int, String ) )
     , cached_indexForLinks : Maybe ( ElmTextSearch.Index Links.WithQuantity, List ( Int, String ) )
