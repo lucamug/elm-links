@@ -8,13 +8,23 @@ import Url
 import Url.Parser exposing ((</>))
 
 
-toStringAndHash : { b | toString : a -> String } -> a -> String
+toStringAndHash :
+    { b
+        | toString : a -> String
+        , routeMode : String
+    }
+    -> a
+    -> String
 toStringAndHash conf route =
     let
         string =
             conf.toString route
     in
-    "#" ++ string
+    if conf.routeMode == "path" then
+        "/" ++ string
+
+    else
+        "#" ++ string
 
 
 
@@ -22,7 +32,11 @@ toStringAndHash conf route =
 
 
 fromUrl :
-    { a | disabled : b, parser : Url.Parser.Parser (b -> b) b }
+    { a
+        | disabled : b
+        , parser : Url.Parser.Parser (b -> b) b
+        , routeMode : String
+    }
     -> Url.Url
     -> b
 fromUrl conf url =
@@ -30,10 +44,17 @@ fromUrl conf url =
 
 
 urlToMaybeRoute :
-    { b | parser : Url.Parser.Parser (a -> a) a }
+    { b
+        | parser : Url.Parser.Parser (a -> a) a
+        , routeMode : String
+    }
     -> Url.Url
     -> Maybe a
 urlToMaybeRoute conf url =
     -- We copy the fragment in to the path first because the parser only works
     -- on the path
-    Url.Parser.parse conf.parser { url | path = Maybe.withDefault "" url.fragment }
+    if conf.routeMode == "path" then
+        Url.Parser.parse conf.parser url
+
+    else
+        Url.Parser.parse conf.parser { url | path = Maybe.withDefault "" url.fragment }

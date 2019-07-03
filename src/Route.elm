@@ -80,9 +80,11 @@ conf :
     { disabled : Route
     , parser : Url.Parser.Parser (Route -> a) a
     , toString : Route -> String
+    , routeMode : String
     }
 conf =
     { parser = parser
     , toString = toString
     , disabled = Empty
+    , routeMode = "path"
     }

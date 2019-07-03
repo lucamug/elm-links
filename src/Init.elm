@@ -30,12 +30,12 @@ import Url
 
 initialSquareWidth : Int
 initialSquareWidth =
-    56
+    48
 
 
 initialSquareWidthForMobile : Int
 initialSquareWidthForMobile =
-    50
+    36
 
 
 
@@ -63,7 +63,7 @@ init flags url key =
             , width = flags.width
             , pageInTopArea = True
             , colorMode = Model.Day
-            , layoutMode = Model.List
+            , layoutMode = Model.Grid
 
             -- Cached stuff
             , cached_sortedKeywordsWithQuantity = []
