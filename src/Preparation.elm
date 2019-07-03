@@ -6,6 +6,7 @@ import Data.Keywords as Keywords
 import Data.Links as Links
 import Data.Packages as Packages
 import Data.People as People
+import Dict
 import ElmTextSearch
 import Http
 import Index.Defaults
@@ -39,13 +40,25 @@ preparation :
 preparation { links, keywords, people } =
     let
         --
+        -- dicts for fast lookup
+        --
+        keywordsDict =
+            Dict.fromList <| List.map (\keyword -> ( String.toLower keyword.id, keyword )) keywords
+
+        peopleDict =
+            Dict.fromList <| List.map (\person -> ( String.toLower person.id, person )) people
+
+        peopleDictByGithub =
+            Dict.fromList <| List.map (\person -> ( String.toLower person.github, person.id )) (List.filter (\person -> person.github /= "") people)
+
+        --
         -- items with quantities
         --
         keywordsWithQuantity =
-            createKeywordsWithQuantity links keywords
+            createKeywordsWithQuantity links keywordsDict
 
         peopleWithQuantity =
-            createPeopleWithQuantity links people
+            createPeopleWithQuantity links peopleDict peopleDictByGithub
 
         linksWithQuantity =
             createLinksWithQuantity links
@@ -90,6 +103,9 @@ preparation { links, keywords, people } =
                     (\item -> not <| maybeToBool item.maybeLookup)
                 |> List.map (\item -> item.id)
 
+        --
+        -- sorting
+        --
         sortedPeople =
             List.sortWith
                 (NaturalOrdering.compareOn (\item -> item.lookup.name))
@@ -149,44 +165,101 @@ createLinksWithQuantity links =
 
 createKeywordsWithQuantity :
     List Links.Attributes
-    -> List Keywords.Attributes
+    -> Dict.Dict String Keywords.Attributes
     ->
         List
             { id : String
             , maybeLookup : Maybe Keywords.Attributes
             , quantity : Int
             }
-createKeywordsWithQuantity links keywords =
+createKeywordsWithQuantity links keywordsDict =
+    -- List of links
     links
-        |> List.concatMap (\link -> link.keywords)
+        -- ["SPA","Boilerplate","JSON",..]
+        |> List.concatMap (\link -> List.map (\keyword -> String.toLower keyword) link.keywords)
+        -- [("SPA",["SPA","SPA"]),("Boilerplate",["Boilerplate"..
         |> List.Extra.gatherEquals
+        -- [ { id = "SPA"
+        --   , maybeLookup = Just { id = "SPA", name = "SPA", picture = "" }
+        --   , quantity = 6
+        --   } ,
+        --   { id = "Boilerplate"
+        --   ..
         |> List.map
             (\item ->
-                { id = Tuple.first item
+                let
+                    keywordToLookup =
+                        Tuple.first item
+
+                    searchResult =
+                        Dict.get (String.toLower keywordToLookup) keywordsDict
+                in
+                { id = keywordToLookup
                 , quantity = List.length (Tuple.second item) + 1
-                , maybeLookup = List.head <| List.filter (\keyword -> Tuple.first item == keyword.id) keywords
+                , maybeLookup =
+                    case searchResult of
+                        Nothing ->
+                            Just
+                                -- creating a password if it doesn't exsist
+                                { id = keywordToLookup
+                                , name = keywordToLookup
+                                , picture = ""
+                                }
+
+                        Just keyword ->
+                            Just keyword
                 }
             )
 
 
 createPeopleWithQuantity :
     List Links.Attributes
-    -> List People.Attributes
+    -> Dict.Dict String People.Attributes
+    -> Dict.Dict String String
     ->
         List
             { id : String
             , maybeLookup : Maybe People.Attributes
             , quantity : Int
             }
-createPeopleWithQuantity links people =
+createPeopleWithQuantity links peopleDict peopleDictByGithub =
     links
+        -- Putting all authors in an array, with repetitions
         |> List.concatMap (\link -> link.authors)
+        -- Looking up person.id as if it was github handle
+        -- |> List.map (\personId -> Maybe.withDefault personId <| Dict.get (String.toLower personId) peopleDictByGithub)
+        -- Grouping similar person.id together to count them
         |> List.Extra.gatherEquals
         |> List.map
             (\item ->
+                let
+                    peopleToLookup =
+                        Tuple.first item
+
+                    searchResult =
+                        Dict.get (String.toLower peopleToLookup) peopleDict
+                in
                 { id = Tuple.first item
                 , quantity = List.length (Tuple.second item) + 1
-                , maybeLookup = List.head <| List.filter (\person -> Tuple.first item == person.id) people
+
+                -- , maybeLookup = List.head <| List.filter (\person -> Tuple.first item == person.id) people
+                , maybeLookup =
+                    case searchResult of
+                        Nothing ->
+                            Just
+                                -- creating a person if it doesn't exsist, using the peopleToLookup
+                                -- as id, name and github handle
+                                { id = peopleToLookup
+                                , name = peopleToLookup -- Name, usually the same as the type constructor
+                                , picture = "" -- Picture that represent the person
+                                , twitter = "" -- Twitter handle
+                                , github = peopleToLookup -- Github handle
+                                , url = "" -- Link to a personal homepage
+                                , country = ""
+                                }
+
+                        Just person ->
+                            Just person
                 }
             )
 

@@ -903,7 +903,7 @@ viewKeywordsRelatedLinks model keywordId =
                 (\item ->
                     let
                         filtered =
-                            List.filter (\keyword -> keyword == keywordId) item.lookup.keywords
+                            List.filter (\keyword -> String.toLower keyword == String.toLower keywordId) item.lookup.keywords
                     in
                     List.length filtered > 0
                 )

@@ -149,21 +149,13 @@ list =
       , keywords = [ "UI" ]
       , authors = []
       }
-    , { name = "elm-particle"
-      , code = "https://package.elm-lang.org/packages/BrianHicks/elm-particle/latest/"
-      , url = "https://brianhicks.github.io/elm-particle/Confetti.html"
-      , picture = "img/elm-particle.png"
-      , description = "Simple particle system for web apps. Designed for visual flourishes like confetti."
-      , keywords = [ "Animation", "Confetti", "Water", "Firework" ]
-      , authors = [ "Brian_Hicks" ]
-      }
-    , { name = "Elm Module Dependency Graph"
-      , code = "https://package.elm-lang.org/packages/Brian_Hicks/elm-particle/latest/"
+    , { name = "Interactive Visualization Tool for Graph Theory"
+      , code = "https://github.com/erkal/kite"
       , url = "https://erkal.github.io/kite/"
       , picture = ""
       , description = "Visualization of the Module Dependency Graph"
       , keywords = [ "Animation", "Graphs" ]
-      , authors = []
+      , authors = [ "erkal" ]
       }
     , { name = "Elm SPA Example"
       , code = "https://github.com/rtfeldman/elm-spa-example"
@@ -861,6 +853,14 @@ list =
       , keywords = [ "Docker", "Elixir" ]
       , authors = [ "Luke_Westby" ]
       }
+    , { name = "elm-module-graph"
+      , code = "https://github.com/justinmimbs/elm-module-graph"
+      , url = "https://justinmimbs.github.io/elm-module-graph/examples/elm-spa-example.html"
+      , picture = ""
+      , description = "Visually explore package and module dependencies for an Elm project"
+      , keywords = [ "Graphs" ]
+      , authors = [ "Justin_Mimbs" ]
+      }
     , { name = "Asteroids"
       , code = "https://github.com/justinmimbs/asteroids"
       , url = "https://justinmimbs.github.io/asteroids/"
@@ -1366,14 +1366,6 @@ list =
       , code = "https://github.com/annaghi/dnd-list/tree/3.0.0"
       , url = "https://github.com/avh4/elm-format"
       , description = "A tool to format Elm source code according to a standard set of rules based on the official Elm Style Guide"
-      }
-    , { authors = [ "Anna_Bansaghi" ]
-      , name = "dnd-list"
-      , keywords = [ "Draggable" ]
-      , picture = ""
-      , code = "https://package.elm-lang.org/packages/annaghi/dnd-list/latest"
-      , url = "https://annaghi.github.io/dnd-list/"
-      , description = "Drag and Drop for sortable lists in Elm web apps with mouse support"
       }
     , { url = "https://www.youtube.com/watch?v=RN2_NchjrJQ&index=1&list=PLcAzxXzXQlPbalOfueVbHCRSo26ksIXiF"
       , authors = [ "Richard_Feldman" ]

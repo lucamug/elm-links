@@ -63,7 +63,7 @@ init flags url key =
             , width = flags.width
             , pageInTopArea = True
             , colorMode = Model.Day
-            , layoutMode = Model.Grid
+            , layoutMode = Model.List
 
             -- Cached stuff
             , cached_sortedKeywordsWithQuantity = []

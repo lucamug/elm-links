@@ -17,6 +17,7 @@ type alias Attributes =
     , twitter : String -- Twitter handle
     , github : String -- Github handle
     , url : String -- Link to a personal homepage
+    , country : String
     }
 
 
@@ -38,6 +39,7 @@ empty =
     , twitter = ""
     , github = ""
     , url = ""
+    , country = ""
     }
 
 
@@ -59,6 +61,15 @@ list =
       , picture = "svg/elm_logo.svg"
       , github = "elm"
       , url = "https://github.com/elm"
+      , country = ""
+      }
+    , { id = "Elm_Community"
+      , name = "Elm Community Github Account"
+      , twitter = ""
+      , picture = "people/elm-community.png"
+      , github = "elm-community"
+      , url = "http://elm-community.org/"
+      , country = ""
       }
     , { id = "Keith_Lazuka"
       , name = "Keith Lazuka"
@@ -66,6 +77,7 @@ list =
       , picture = "people/keith-lazuka.png"
       , github = "klazuka"
       , url = ""
+      , country = ""
       }
     , { id = "Jeremy_Brown"
       , name = "Jeremy H. Brown"
@@ -73,6 +85,7 @@ list =
       , picture = "people/jeremy-brown.jpeg"
       , github = "jhbrown94"
       , url = ""
+      , country = ""
       }
     , { id = "Teodor_Lunaas_Heggelund"
       , name = "Teodor Lunaas Heggelund"
@@ -80,6 +93,7 @@ list =
       , picture = "people/teodor-lunaas-heggelund.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Einar_Host"
       , name = "Einar W. Høst"
@@ -87,6 +101,7 @@ list =
       , picture = "people/einar-w-host.jpg"
       , github = "einarwh"
       , url = ""
+      , country = ""
       }
     , { id = "Dan_Abrams"
       , name = "Dan Abrams"
@@ -94,6 +109,7 @@ list =
       , picture = "people/dan-abrams.jpg"
       , github = "danabrams"
       , url = ""
+      , country = ""
       }
     , { id = "Jonas_Berdal"
       , name = "Jonas Berdal"
@@ -101,6 +117,7 @@ list =
       , picture = ""
       , github = "jonasberdal"
       , url = ""
+      , country = ""
       }
     , { id = "Manuel_Fuchs"
       , name = "Manuel Fuchs"
@@ -108,6 +125,7 @@ list =
       , picture = "people/manuel-fuchs.jpeg"
       , github = "Malax"
       , url = ""
+      , country = ""
       }
     , { id = "Kris_Jenkins"
       , name = "Kris Jenkins"
@@ -115,6 +133,7 @@ list =
       , picture = "people/kris-jenkins.jpg"
       , github = "krisajenkins"
       , url = ""
+      , country = ""
       }
     , { id = "Emma_Tsujimoto_Cunningham"
       , name = "Emma Tsujimoto Cunningham"
@@ -122,6 +141,7 @@ list =
       , picture = "people/emma-tsujimoto-cunningham.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Filip_Haglund"
       , name = "Filip Haglund"
@@ -129,6 +149,7 @@ list =
       , picture = "people/filip-haglund.jpeg"
       , github = "drathier"
       , url = ""
+      , country = ""
       }
     , { id = "Viktor_Tymoshenko"
       , name = "Viktor Tymoshenko"
@@ -136,6 +157,7 @@ list =
       , picture = "people/viktor-tymoshenko.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Anna_Bansaghi"
       , name = "Anna Bansaghi"
@@ -143,6 +165,7 @@ list =
       , picture = "people/anna-bansaghi.jpeg"
       , github = "annaghi"
       , url = ""
+      , country = ""
       }
     , { id = "James_Kolce"
       , name = "James Kolce"
@@ -150,6 +173,7 @@ list =
       , picture = "people/james-kolce.jpeg"
       , github = "jameskolce"
       , url = ""
+      , country = ""
       }
     , { id = "Markus_Laire"
       , name = "Markus Laire"
@@ -157,6 +181,7 @@ list =
       , picture = "people/markus-laire.png"
       , github = "malaire"
       , url = ""
+      , country = ""
       }
     , { id = "James_Gary"
       , name = "James Gary"
@@ -164,6 +189,7 @@ list =
       , picture = "people/james-gary.jpeg"
       , github = "jamesgary"
       , url = "http://codingcats.com/"
+      , country = ""
       }
     , { id = "Suresh_Yadali"
       , name = "Suresh Yadali"
@@ -171,6 +197,7 @@ list =
       , picture = "people/suresh-yadali.jpeg"
       , github = "yadalis"
       , url = ""
+      , country = ""
       }
     , { id = "Tomas_Latal"
       , name = "Tomáš Látal"
@@ -178,6 +205,7 @@ list =
       , picture = "people/tomas-latal.jpeg"
       , github = "kraklin"
       , url = ""
+      , country = ""
       }
     , { id = "Jan_Hrcek"
       , name = "Jan Hrcek"
@@ -185,6 +213,7 @@ list =
       , picture = "people/jan-hrcek.jpeg"
       , github = "jhrcek"
       , url = ""
+      , country = ""
       }
     , { id = "Miyamoen"
       , name = "Miyamoen"
@@ -192,6 +221,7 @@ list =
       , picture = "people/miyamoen.jpeg"
       , github = "miyamoen"
       , url = ""
+      , country = ""
       }
     , { id = "Martin_Feineis"
       , name = "Martin Feineis"
@@ -199,6 +229,7 @@ list =
       , picture = "people/martin-feineis.png"
       , github = ""
       , url = "http://canena.de/"
+      , country = ""
       }
     , { id = "Justin_Herrick"
       , name = "Justin Herrick"
@@ -206,6 +237,7 @@ list =
       , picture = "people/justin-herrick.jpeg"
       , github = "jah2488"
       , url = "http://justinherrick.com/"
+      , country = ""
       }
     , { id = "Remi_Van_Keisbelck"
       , name = "Remi Van Keisbelck"
@@ -213,6 +245,7 @@ list =
       , picture = "people/remi-van-keisbelck.png"
       , github = "vankeisb"
       , url = "http://www.rvkb.com/"
+      , country = ""
       }
     , { id = "Jo_Wood"
       , name = "Jo Wood"
@@ -220,6 +253,7 @@ list =
       , picture = "people/jo-wood.png"
       , github = "tennety"
       , url = "https://www.gicentre.net/"
+      , country = ""
       }
     , { id = "Chandu_Tennety"
       , name = "Chandu Tennety"
@@ -227,6 +261,7 @@ list =
       , picture = "people/chandu-tennety.jpeg"
       , github = "tennety"
       , url = ""
+      , country = ""
       }
     , { id = "Fabian_Kirchner"
       , name = "Fabian Kirchner"
@@ -234,6 +269,7 @@ list =
       , picture = "people/fabian-kirchner.jpeg"
       , github = "kirchner"
       , url = ""
+      , country = ""
       }
     , { id = "Sosuke"
       , name = "Sosuke"
@@ -241,6 +277,7 @@ list =
       , picture = "people/sosuke.png"
       , github = "nikueaterso"
       , url = ""
+      , country = ""
       }
     , { id = "Matias_Klemola"
       , name = "Matias Klemola"
@@ -248,6 +285,7 @@ list =
       , picture = "people/matias-klemola.jpeg"
       , github = "klazuka"
       , url = ""
+      , country = ""
       }
     , { id = "Rogerio_Chaves"
       , name = "Rogério Chaves"
@@ -255,6 +293,7 @@ list =
       , picture = "people/rogerio-chaves.jpeg"
       , github = "rogeriochaves"
       , url = ""
+      , country = ""
       }
     , { id = "Jane_G"
       , name = "Jane G."
@@ -262,6 +301,7 @@ list =
       , picture = "people/jane-g.png"
       , github = "isomoar"
       , url = ""
+      , country = ""
       }
     , { id = "Andreas_Hultgren"
       , name = "Andreas Hultgren"
@@ -269,6 +309,7 @@ list =
       , picture = "people/andreas-hultgren.jpeg"
       , github = "ahultgren"
       , url = ""
+      , country = ""
       }
     , { id = "Matthew_Buscemi"
       , name = "Matthew Buscemi"
@@ -276,6 +317,7 @@ list =
       , picture = "people/matthew-buscemi.jpeg"
       , github = "mbuscemi"
       , url = ""
+      , country = ""
       }
     , { id = "Michael_Bylstra"
       , name = "Michael Bylstra"
@@ -283,6 +325,7 @@ list =
       , picture = "people/michael-bylstra.jpeg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Austin_Bingham"
       , name = "Austin Bingham"
@@ -290,6 +333,7 @@ list =
       , picture = "people/austin-bingham.png"
       , github = "abingham"
       , url = ""
+      , country = ""
       }
     , { id = "Brian_Hicks"
       , name = "Brian Hicks"
@@ -297,6 +341,7 @@ list =
       , picture = "people/brian-hicks.jpg"
       , github = "BrianHicks"
       , url = ""
+      , country = ""
       }
     , { id = "Luca_Mugnaini"
       , name = "Luca Mugnaini"
@@ -304,6 +349,7 @@ list =
       , picture = "people/luca-mugnaini.jpg"
       , github = "lucamug"
       , url = ""
+      , country = ""
       }
     , { id = "Richard_Feldman"
       , name = "Richard Feldman"
@@ -311,6 +357,7 @@ list =
       , picture = "people/richard-feldman.jpg"
       , github = "rtfeldman"
       , url = ""
+      , country = ""
       }
     , { id = "Evan_Czaplicki"
       , name = "Evan Czaplicki"
@@ -318,6 +365,7 @@ list =
       , picture = "people/evan-czaplicki.jpeg"
       , github = "evancz"
       , url = ""
+      , country = ""
       }
     , { id = "Jakub_Hampl"
       , name = "Jakub Hampl"
@@ -325,6 +373,7 @@ list =
       , picture = "people/jakub-hampl.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Greg_Ziegan"
       , name = "Greg Ziegan"
@@ -332,6 +381,7 @@ list =
       , picture = "people/greg-ziegan.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Matthew_Griffith"
       , name = "Matthew Griffith"
@@ -339,6 +389,7 @@ list =
       , picture = "people/matthew-griffith.jpg"
       , github = "mdgriffith"
       , url = ""
+      , country = ""
       }
     , { id = "Noah_Zachary_Gordon"
       , name = "Noah Zachary Gordon"
@@ -346,6 +397,7 @@ list =
       , picture = "people/noah-zachary-gordon.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Tereza_Sokol"
       , name = "Tereza Sokol"
@@ -353,6 +405,7 @@ list =
       , picture = "people/tereza-sokol.png"
       , github = "terezka"
       , url = ""
+      , country = ""
       }
     , { id = "Peter_Szerzo"
       , name = "Peter Szerzo"
@@ -360,6 +413,7 @@ list =
       , picture = "people/peter-szerzo.png"
       , github = ""
       , url = "http://www.peterszerzo.com/"
+      , country = ""
       }
     , { id = "Sebastien_Creme"
       , name = "Sébastien Crème"
@@ -367,6 +421,7 @@ list =
       , picture = "people/sebastien-creme.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Noah_Hall"
       , name = "Noah Hall"
@@ -374,6 +429,7 @@ list =
       , picture = "people/noah-hall.png"
       , github = "eeue56"
       , url = ""
+      , country = ""
       }
     , { id = "Jeff_Schomay"
       , name = "Jeff Schomay"
@@ -381,6 +437,7 @@ list =
       , picture = "people/jeff-schomay.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Tomek_Wiszniewski"
       , name = "Tomek Wiszniewski"
@@ -388,6 +445,7 @@ list =
       , picture = "people/tomek-wiszniewski.png"
       , github = "architectcodes"
       , url = "http://architect.codes/"
+      , country = ""
       }
     , { id = "Vincent_Billey"
       , name = "Vincent Billey"
@@ -395,6 +453,7 @@ list =
       , picture = "people/vincent-billey.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Martin_Janiczek"
       , name = "Martin Janiczek"
@@ -402,6 +461,7 @@ list =
       , picture = "people/martin-janiczek.jpeg"
       , github = "Janiczek"
       , url = ""
+      , country = ""
       }
     , { id = "Matthias_Rella"
       , name = "Matthias Rella"
@@ -409,6 +469,7 @@ list =
       , picture = "people/matthias-rella.png"
       , github = "myrho"
       , url = ""
+      , country = ""
       }
     , { id = "Robin_Heggelund_Hansen"
       , name = "Robin Heggelund Hansen"
@@ -416,6 +477,7 @@ list =
       , picture = "people/robin-heggelund-hansen.png"
       , github = "Skinney"
       , url = ""
+      , country = ""
       }
     , { id = "Christophe_Benz"
       , name = "Christophe Benz"
@@ -423,6 +485,7 @@ list =
       , picture = "people/christophe-benz.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Amitai_Burstein"
       , name = "Amitai Burstein"
@@ -430,6 +493,7 @@ list =
       , picture = "people/amitai-burstein.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Josh_Steiner"
       , name = "Josh Steiner"
@@ -437,6 +501,7 @@ list =
       , picture = "people/josh-steiner.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Mario_Rogic"
       , name = "Mario Rogic"
@@ -444,6 +509,7 @@ list =
       , picture = "people/mario-rogic.jpg"
       , github = "supermario"
       , url = ""
+      , country = ""
       }
     , { id = "Andrey_Kuzmin"
       , name = "Andrey Kuzmin"
@@ -451,6 +517,7 @@ list =
       , picture = "people/andrey-kuzmin.jpg"
       , github = "w0rm"
       , url = "http://unsoundscapes.com/"
+      , country = ""
       }
     , { id = "Jesse_Thompson"
       , name = "Jesse Thompson"
@@ -458,6 +525,7 @@ list =
       , picture = "people/jesse-thompson.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Grant_Maki"
       , name = "Grant Maki"
@@ -465,6 +533,7 @@ list =
       , picture = "people/grant-maki.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Ravi_Chugh"
       , name = "Ravi Chugh"
@@ -472,6 +541,7 @@ list =
       , picture = "people/ravi-chugh.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Anthony_Deschamps"
       , name = "Anthony Deschamps"
@@ -479,6 +549,7 @@ list =
       , picture = "people/anthony-deschamps.jpeg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Dillon_Kearns"
       , name = "Dillon Kearns"
@@ -486,6 +557,7 @@ list =
       , picture = "people/dillon-kearns.jpeg"
       , github = "dillonkearns"
       , url = ""
+      , country = ""
       }
     , { id = "Sam_Rowe"
       , name = "Sam Rowe"
@@ -493,6 +565,7 @@ list =
       , picture = "people/sam-rowe.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Ally_Kelly_McKnight"
       , name = "Ally Kelly McKnight"
@@ -500,6 +573,7 @@ list =
       , picture = "people/ally-kelly-mcknight.jpeg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Jonas_Coch"
       , name = "Jonas Coch"
@@ -507,6 +581,7 @@ list =
       , picture = "people/jonas-coch.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Tessa_Kelly"
       , name = "Tessa Kelly"
@@ -514,6 +589,7 @@ list =
       , picture = "people/tessa-kelly.png"
       , github = "tesk9"
       , url = ""
+      , country = ""
       }
     , { id = "Murphy_Randle"
       , name = "Murphy Randle"
@@ -521,6 +597,7 @@ list =
       , picture = "people/murphy-randle.jpeg"
       , github = "splodingsocks"
       , url = ""
+      , country = ""
       }
     , { id = "Luke_Westby"
       , name = "Luke Westby"
@@ -528,6 +605,7 @@ list =
       , picture = "people/luke-westby.jpeg"
       , github = "lukewestby"
       , url = ""
+      , country = ""
       }
     , { id = "Jeremy_Fairbank"
       , name = "Jeremy Fairbank"
@@ -535,6 +613,7 @@ list =
       , picture = "people/jeremy-fairbank.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Peter_Zingg"
       , name = "Peter Zingg"
@@ -542,6 +621,7 @@ list =
       , picture = "people/peter-zingg.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Ossi_Hanhinen"
       , name = "Ossi Hanhinen"
@@ -549,6 +629,7 @@ list =
       , picture = "people/ossi-hanhinen.jpeg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Abadi_Kurniawaan"
       , name = "Abadi Kurniawaan"
@@ -556,6 +637,7 @@ list =
       , picture = "people/abadi-kurniawan.jpg"
       , github = "abadi199"
       , url = ""
+      , country = ""
       }
     , { id = "Joel_Quenneville"
       , name = "Joël Quenneville"
@@ -563,6 +645,7 @@ list =
       , picture = "people/joel-quenneville.jpeg"
       , github = "JoelQ"
       , url = ""
+      , country = ""
       }
     , { id = "Jessica_Kerr"
       , name = "Jessica Kerr"
@@ -570,6 +653,7 @@ list =
       , picture = "people/jessica-kerr.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Yosuke_Torii"
       , name = "Yosuke Torii"
@@ -577,6 +661,7 @@ list =
       , picture = "people/yosuke-torii.jpg"
       , github = "jinjor"
       , url = ""
+      , country = ""
       }
     , { id = "Ilias_Van_Peer"
       , name = "Ilias Van Peer"
@@ -584,6 +669,7 @@ list =
       , picture = "people/ilias-van-peer.png"
       , github = "zwilias"
       , url = ""
+      , country = ""
       }
     , { id = "James_Carlson"
       , name = "James Carlson"
@@ -591,6 +677,7 @@ list =
       , picture = "people/james-carlson.png"
       , github = "jxxcarlson"
       , url = "https://jxxcarlson.github.io/"
+      , country = ""
       }
     , { id = "Christopher_Bertels"
       , name = "Christopher Bertels"
@@ -598,6 +685,7 @@ list =
       , picture = "people/christopher-bertels.png"
       , github = "bakkdoor"
       , url = "https://syncrypt.space/"
+      , country = ""
       }
     , { id = "Alexander_Kachkaev"
       , name = "Alexander Kachkaev"
@@ -605,6 +693,7 @@ list =
       , picture = "people/alexander-kachkaev.png"
       , github = "kachkaev"
       , url = ""
+      , country = ""
       }
     , { id = "Ian_Mackenzie"
       , name = "Ian Mackenzie"
@@ -612,6 +701,7 @@ list =
       , picture = "people/ian-mackenzie.png"
       , github = "ianmackenzie"
       , url = "https://github.com/opensolid"
+      , country = ""
       }
     , { id = "Celine_Martinet_Sanchez"
       , name = "Céline Martinet Sanchez"
@@ -619,6 +709,7 @@ list =
       , picture = "people/celine-martinet-sanchez.png"
       , github = ""
       , url = "http://www.hello-birds.com/"
+      , country = ""
       }
     , { id = "Ju_Liu"
       , name = "Ju Liu"
@@ -626,6 +717,7 @@ list =
       , picture = "people/ju-liu.png"
       , github = ""
       , url = "https://github.com/Arkham"
+      , country = ""
       }
     , { id = "Mark_Skipper"
       , name = "Mark Skipper"
@@ -633,6 +725,7 @@ list =
       , picture = "people/mark-skipper.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Decio_Ferreira"
       , name = "Décio Ferreira"
@@ -640,6 +733,7 @@ list =
       , picture = "people/decio-ferreira.jpeg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Thibaut_Assus"
       , name = "Thibaut Assus"
@@ -647,6 +741,7 @@ list =
       , picture = "people/thibaut-assus.jpeg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Emma_Cunningham"
       , name = "Emma Cunningham"
@@ -654,6 +749,7 @@ list =
       , picture = "people/emma-cunningham.png"
       , github = "emmacunningham"
       , url = ""
+      , country = ""
       }
     , { id = "Paul_Sonnentag"
       , name = "Paul Sonnentag"
@@ -661,6 +757,7 @@ list =
       , picture = "people/paul-sonnentag.png"
       , github = "paulsonnentag"
       , url = "http://paulsonnentag.com/"
+      , country = ""
       }
     , { id = "Justin_Mimbs"
       , name = "Justin Mimbs"
@@ -668,6 +765,7 @@ list =
       , picture = "people/justin-mimbs.png"
       , github = "justinmimbs"
       , url = ""
+      , country = ""
       }
     , { id = "Roman_Potashow"
       , name = "Roman Potashow"
@@ -675,6 +773,7 @@ list =
       , picture = "people/roman-potashow.jpeg"
       , github = "justgook"
       , url = ""
+      , country = ""
       }
     , { id = "Nils_Eriksson"
       , name = "Nils Eriksson"
@@ -682,6 +781,7 @@ list =
       , picture = "people/nils-eriksson.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Erlend_Hamberg"
       , name = "Erlend Hamberg"
@@ -689,6 +789,7 @@ list =
       , picture = "people/erlend-hamberg.png"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Felix_Lamouroux"
       , name = "Felix Lamouroux"
@@ -696,6 +797,7 @@ list =
       , picture = "people/felix-lamouroux.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Magnus_Rundberget"
       , name = "Magnus Rundberget"
@@ -703,6 +805,7 @@ list =
       , picture = "people/magnus-rundberget.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "David_Ed_Mellum"
       , name = "David Ed Mellum"
@@ -710,6 +813,7 @@ list =
       , picture = "people/david-ed-mellum.jpg"
       , github = ""
       , url = ""
+      , country = ""
       }
     , { id = "Remi_Lefevre"
       , name = "Rémi Lefèvre"
@@ -717,6 +821,7 @@ list =
       , picture = "people/remi-lefevre.png"
       , github = "dmy"
       , url = ""
+      , country = ""
       }
     , { id = "Mats_Stijlaart"
       , name = "Mats Stijlaart"
@@ -724,6 +829,7 @@ list =
       , picture = "people/mats-stijlaart.png"
       , github = "stil4m"
       , url = "http://stil4m.github.io/"
+      , country = ""
       }
     , { id = "Francesco_Orsenigo"
       , name = "Francesco Orsenigo"
@@ -731,6 +837,7 @@ list =
       , picture = "people/francesco-orsenigo.png"
       , github = "xarvh"
       , url = ""
+      , country = ""
       }
     , { id = "Halohalospecial"
       , name = "halohalospecial"
@@ -738,6 +845,7 @@ list =
       , picture = ""
       , github = "halohalospecial"
       , url = ""
+      , country = ""
       }
     , { id = "Roman_Frolow"
       , name = "Roman Frołow"
@@ -745,6 +853,7 @@ list =
       , picture = "people/roman-frolow.jpeg"
       , github = "rofrol"
       , url = ""
+      , country = ""
       }
     , { id = "Ronan"
       , name = "Rónán"
@@ -752,6 +861,7 @@ list =
       , picture = "people/ronan.jpeg"
       , github = "ronanyeah"
       , url = ""
+      , country = ""
       }
     , { id = "Aaron_VonderHaar"
       , name = "Aaron VonderHaar"
@@ -759,5 +869,62 @@ list =
       , picture = "people/aaron-vonderhaar.jpeg"
       , github = "avh4"
       , url = ""
+      , country = ""
+      }
+    , { id = "Alex_Tan"
+      , name = "Alex Tan"
+      , twitter = ""
+      , picture = "people/alex-tan.jpeg"
+      , github = "alex-tan"
+      , url = ""
+      , country = ""
+      }
+    , { id = "Kadzuya_Okamoto"
+      , name = "Kadzuya Okamoto"
+      , twitter = ""
+      , picture = "people/kadzuya-okamoto.jpeg"
+      , github = "arowM"
+      , url = "https://arow.info"
+      , country = "Japan"
+      }
+    , { id = "Andy_Andys8"
+      , name = "Andy"
+      , twitter = "_andys8"
+      , picture = "people/andy-andys8.jpeg"
+      , github = "andys8"
+      , url = ""
+      , country = ""
+      }
+    , { id = "Bill_St_Clair"
+      , name = "Bill St. Clair"
+      , twitter = ""
+      , picture = "people/bill-st-clair.jpeg"
+      , github = "billstclair"
+      , url = "https://lisplog.org/"
+      , country = ""
+      }
+    , { id = "Dave_Keen"
+      , name = "Dave Keen"
+      , twitter = ""
+      , picture = "people/dave-keen.png"
+      , github = "ccapndave"
+      , url = "http://www.keendevelopment.ch/"
+      , country = ""
+      }
+    , { id = "Chadtech_Chadtech"
+      , name = "Chadtech"
+      , twitter = ""
+      , picture = "people/chadtech.jpeg"
+      , github = "Chadtech"
+      , url = "http://www.chadtech.us/"
+      , country = ""
+      }
+    , { id = "GETTO_Systems"
+      , name = "GETTO Systems"
+      , twitter = ""
+      , picture = "people/getto-systems.jpeg"
+      , github = "getto-systems"
+      , url = "https://www.getto.systems/"
+      , country = "Japan"
       }
     ]

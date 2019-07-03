@@ -68,7 +68,10 @@ decodeAttributes =
 --     }
 
 
-packageToLink : Dict.Dict String People.Id -> Attributes -> Links.Attributes
+packageToLink :
+    Dict.Dict String People.Id
+    -> Attributes
+    -> Links.Attributes
 packageToLink githubToPeopleId package =
     let
         authorAndName =
