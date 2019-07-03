@@ -47,7 +47,7 @@ init flags url key =
     let
         getPackagesCmd =
             Http.get
-                { url = "data/search.json"
+                { url = "/data/search.json"
                 , expect =
                     Http.expectJson
                         Msg.GotPackages

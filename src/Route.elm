@@ -60,7 +60,7 @@ toString route =
                     [ urlLabel.filter, filter ]
     in
     if pieces == [] then
-        ""
+        "/"
 
     else
         "/" ++ String.join "/" pieces

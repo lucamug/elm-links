@@ -358,7 +358,7 @@ viewSquare model { item, itemType } =
                 Link ->
                     image
                         imageAttrs
-                        { src = item.lookup.picture
+                        { src = "/" ++ item.lookup.picture
                         , description = item.lookup.name
                         }
 
@@ -372,14 +372,14 @@ viewSquare model { item, itemType } =
                 Person ->
                     image
                         imageAttrs
-                        { src = item.lookup.picture
+                        { src = "/" ++ item.lookup.picture
                         , description = nameAndQuantity item.lookup.name item.quantity
                         }
 
                 Keyword ->
                     image
                         imageAttrs
-                        { src = item.lookup.picture
+                        { src = "/" ++ item.lookup.picture
                         , description = nameAndQuantity item.lookup.name item.quantity
                         }
 

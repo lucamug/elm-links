@@ -41,33 +41,6 @@ decodeAttributes =
         |> Json.Decode.Pipeline.required "versions" (Json.Decode.list Json.Decode.string)
 
 
-
--- Attributes
---
---     { name : String
---     , summary : String
---     , license : String
---     , versions : List String
---     }
---
---   "name": "ianmackenzie/elm-3d-camera",
---   "summary": "Camera type for 3D rendering and projection",
---   "license": "MPL-2.0",
---   "versions": ["1.1.0"]
---
---
--- Link
---
---     { name : String -- Name of the link, also used as ID
---     , url : String -- Url of the link
---     , code : String -- Url to the source code, if available. Otherwise empty string.
---     , picture : String -- Picture representing the link, if available. Otherwise empty string.
---     , description : String -- Description of the link
---     , keywords : List Keywords.Id -- List of related Keywords, from `src/data/Keywords.elm`
---     , authors : List People.Id -- List of related Authors, from `src/data/People.elm`
---     }
-
-
 packageToLink :
     Dict.Dict String People.Id
     -> Attributes

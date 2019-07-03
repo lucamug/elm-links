@@ -21,7 +21,7 @@ toStringAndHash conf route =
             conf.toString route
     in
     if conf.routeMode == "path" then
-        "/" ++ string
+        "" ++ string
 
     else
         "#" ++ string
