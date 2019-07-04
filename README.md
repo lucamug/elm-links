@@ -1,5 +1,7 @@
 # elm-resources
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aec6dcc8-3e63-47fb-8ec2-a675e0e9492e/deploy-status)](https://app.netlify.com/sites/elm-resources/deploys)
+
 ## A collection of Elm Resources
 
 ## [https://lucamug.github.io/elm-resources/](https://lucamug.github.io/elm-resources/)
