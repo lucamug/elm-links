@@ -30,7 +30,7 @@ printf "\n\e[0;32m🍣   Minifying...\e[0m\n\n"
 cp docs_new/index-dev.html TEMP/index-dev.html
 node_modules/.bin/replace '(<script class="dev-only".*</script>)' '<!-- $1 -->' TEMP/index-dev.html -m -i
 node_modules/.bin/replace '<!-- prod-only (.*) -->' '$1' TEMP/index-dev.html -m -i
-node_modules/.bin/html-minifier -o build/200.html TEMP/index-dev.html --minify-css --minify-js --collapse-whitespace --remove-comments --preserve-line-breaks
+node_modules/.bin/html-minifier -o build/404.html TEMP/index-dev.html --minify-css --minify-js --collapse-whitespace --remove-comments --preserve-line-breaks
 
 
 
