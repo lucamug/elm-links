@@ -335,12 +335,12 @@ viewSquare model { item, itemType } =
 
          --, htmlAttribute <| Html.Attributes.style "transition" "background 1000ms linear"
          ]
-            ++ (if modalOpen then
-                    []
-
-                else
-                    [ htmlAttribute <| Html.Attributes.class "animatedItem" ]
-               )
+            -- ++ (if modalOpen then
+            --         []
+            --
+            --     else
+            ++ [ htmlAttribute <| Html.Attributes.class "animatedItem" ]
+         --    )
         )
     <|
         if item.lookup.picture == "" then

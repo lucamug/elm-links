@@ -1,2 +1,3 @@
 #!/bin/bash
+cd build
 http-server -p 8006

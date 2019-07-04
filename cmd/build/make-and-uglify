@@ -1,8 +1,0 @@
-#!/bin/bash
-printf "\n\e[0;32m🍣   Compiling optimized version...\e[0m\n\n"
-rm -rf temp
-node_modules/.bin/elm make --output=temp/main.js src/Main.elm --optimize
-printf "\n\e[0;32m🍺   Done\e[0m\n"
-printf "\n\e[0;32m🍣   Uglifying...\e[0m\n\n"
-node_modules/.bin/uglifyjs temp/main.js --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' | uglifyjs --mangle --output=docs/js/main.js
-printf "\n\e[0;32m🍺   Done\e[0m\n"
