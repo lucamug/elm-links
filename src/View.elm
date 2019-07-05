@@ -28,6 +28,11 @@ import Svg.Attributes as SA
 import Utils
 
 
+productionUrl : String
+productionUrl =
+    "https://elm-resources.guupa.com"
+
+
 resultSearch :
     ( ElmTextSearch.Index doc, b )
     -> String
@@ -401,9 +406,10 @@ viewList :
                     , quantity : Int
                 }
                 -> Route.Route
+            , siteMap : Bool
         }
     -> List (Element Msg.Msg)
-viewList model { itemsToShow, itemType, select } =
+viewList model { itemsToShow, itemType, select, siteMap } =
     if List.length itemsToShow == 0 then
         notFound model
 
@@ -417,38 +423,42 @@ viewList model { itemsToShow, itemType, select } =
                             , itemType = itemType
                             }
                 in
-                link
-                    []
-                    { url = CommonRoute.toStringAndHash Route.conf <| select item
-                    , label =
-                        row [ spacing 10 ]
-                            ([ square
-                             ]
-                                ++ (case model.layoutMode of
-                                        Model.Grid ->
-                                            []
+                if siteMap then
+                    text <| productionUrl ++ (CommonRoute.toStringAndHash Route.conf <| select item)
 
-                                        Model.List ->
-                                            [ paragraph []
-                                                [ text <|
-                                                    item.lookup.name
-                                                        ++ (if item.quantity > 1 then
-                                                                " (" ++ String.fromInt item.quantity ++ ")"
+                else
+                    link
+                        []
+                        { url = CommonRoute.toStringAndHash Route.conf <| select item
+                        , label =
+                            row [ spacing 10 ]
+                                ([ square
+                                 ]
+                                    ++ (case model.layoutMode of
+                                            Model.Grid ->
+                                                []
 
-                                                            else
-                                                                ""
-                                                           )
+                                            Model.List ->
+                                                [ paragraph []
+                                                    [ text <|
+                                                        item.lookup.name
+                                                            ++ (if item.quantity > 1 then
+                                                                    " (" ++ String.fromInt item.quantity ++ ")"
+
+                                                                else
+                                                                    ""
+                                                               )
+                                                    ]
                                                 ]
-                                            ]
-                                   )
-                            )
-                    }
+                                       )
+                                )
+                        }
             )
             itemsToShow
 
 
-viewLinksList : Model.Model -> List (Element Msg.Msg)
-viewLinksList model =
+viewLinksList : Model.Model -> Bool -> List (Element Msg.Msg)
+viewLinksList model siteMap =
     let
         itemsToShow =
             case searchLinksResults model of
@@ -470,11 +480,12 @@ viewLinksList model =
         { itemsToShow = itemsToShow
         , itemType = Link
         , select = \item -> Route.SelectedLink <| Utils.encode item.lookup.name
+        , siteMap = siteMap
         }
 
 
-viewPeopleList : Model.Model -> List (Element Msg.Msg)
-viewPeopleList model =
+viewPeopleList : Model.Model -> Bool -> List (Element Msg.Msg)
+viewPeopleList model siteMap =
     let
         itemsToShow =
             case searchPeopleResults model of
@@ -496,6 +507,7 @@ viewPeopleList model =
         { itemsToShow = itemsToShow
         , itemType = Person
         , select = \item -> Route.SelectedPerson item.lookup.id
+        , siteMap = siteMap
         }
 
 
@@ -547,8 +559,8 @@ searchLinksResults model =
             Err "Index not ready"
 
 
-viewKeywordsList : Model.Model -> List (Element Msg.Msg)
-viewKeywordsList model =
+viewKeywordsList : Model.Model -> Bool -> List (Element Msg.Msg)
+viewKeywordsList model siteMap =
     let
         itemsToShow =
             case searchKeywordsResults model of
@@ -570,6 +582,7 @@ viewKeywordsList model =
         { itemsToShow = itemsToShow
         , itemType = Keyword
         , select = \item -> Route.SelectedKeyword <| item.lookup.id
+        , siteMap = siteMap
         }
 
 
@@ -1348,77 +1361,97 @@ clickDecoder =
         (Json.Decode.at [ "target", "parentElement", "parentElement", "parentElement", "parentElement", "id" ] Json.Decode.string)
 
 
+view2 : Model.Model -> Browser.Document Msg.Msg
+view2 model =
+    { title = "Elm Resources"
+    , body =
+        [ layout [] <| text "hi" ]
+    }
+
+
 view : Model.Model -> Browser.Document Msg.Msg
 view model =
     let
         route =
             CommonRoute.fromUrl Route.conf model.url
+
+        siteMap =
+            True
     in
     { title = "Elm Resources"
     , body =
-        [ layoutWith
-            { options =
-                [ focusStyle
-                    { borderColor = Nothing
-                    , backgroundColor = Nothing
-                    , shadow =
-                        Nothing
-                    }
-                ]
-            }
-            ([ width fill
-             , Font.family
-                [ Font.typeface "Noto Sans Japanese"
-                , Font.sansSerif
-                ]
-             , Font.color <| c model .font
-             , inFront <| viewHeader model
-             , Background.color <| c model .background
-             , htmlAttribute <| Html.Attributes.style "transition" "background 1000ms linear"
-             ]
-                ++ (case route of
-                        Route.Empty ->
-                            []
+        if siteMap then
+            [ layout [] <|
+                column [ padding 30, spacing 8 ] <|
+                    viewPeopleList model siteMap
+                        ++ viewKeywordsList model siteMap
+                        ++ viewLinksList model siteMap
+            ]
 
-                        Route.Filter _ ->
-                            []
+        else
+            [ layoutWith
+                { options =
+                    [ focusStyle
+                        { borderColor = Nothing
+                        , backgroundColor = Nothing
+                        , shadow =
+                            Nothing
+                        }
+                    ]
+                }
+                ([ width fill
+                 , Font.family
+                    [ Font.typeface "Noto Sans Japanese"
+                    , Font.sansSerif
+                    ]
+                 , Font.color <| c model .font
+                 , inFront <| viewHeader model
+                 , Background.color <| c model .background
+                 , htmlAttribute <| Html.Attributes.style "transition" "background 1000ms linear"
+                 ]
+                    ++ (case route of
+                            Route.Empty ->
+                                []
 
-                        _ ->
-                            [ inFront <|
-                                el
-                                    [ width fill
-                                    , height fill
-                                    , Background.color <| rgba 0 0 0 0.7
-                                    , htmlAttribute <| Html.Events.on "click" (Json.Decode.map Msg.Click clickDecoder)
-                                    , htmlAttribute <| Html.Attributes.id "cover"
-                                    , scrollbarY
-                                    ]
-                                <|
-                                    viewSelection model route
+                            Route.Filter _ ->
+                                []
+
+                            _ ->
+                                [ inFront <|
+                                    el
+                                        [ width fill
+                                        , height fill
+                                        , Background.color <| rgba 0 0 0 0.7
+                                        , htmlAttribute <| Html.Events.on "click" (Json.Decode.map Msg.Click clickDecoder)
+                                        , htmlAttribute <| Html.Attributes.id "cover"
+                                        , scrollbarY
+                                        ]
+                                    <|
+                                        viewSelection model route
+                                ]
+                       )
+                )
+              <|
+                (case model.layoutMode of
+                    Model.Grid ->
+                        wrappedRow
+                            [ paddingEach { top = headerHeight, right = 0, bottom = 0, left = 0 }
                             ]
-                   )
-            )
-          <|
-            (case model.layoutMode of
-                Model.Grid ->
-                    wrappedRow
-                        [ paddingEach { top = headerHeight, right = 0, bottom = 0, left = 0 }
-                        ]
 
-                Model.List ->
-                    column
-                        [ paddingEach { top = headerHeight + 20, right = 20, bottom = 20, left = 20 }
-                        , spacing 10
-                        , width (fill |> maximum 800)
-                        , centerX
-                        , Border.shadow { offset = ( 0, 0 ), size = 5, blur = 10, color = rgba 0 0 0 0.2 }
-                        ]
-            )
-            <|
-                ([ html <|
-                    Html.node "style"
-                        []
-                        [ Html.text <| """
+                    Model.List ->
+                        column
+                            [ paddingEach { top = headerHeight + 20, right = 20, bottom = 20, left = 20 }
+                            , spacing 10
+                            , width (fill |> maximum 800)
+                            , centerX
+                            , Border.shadow { offset = ( 0, 0 ), size = 5, blur = 10, color = rgba 0 0 0 0.2 }
+                            ]
+                )
+                <|
+                    ([ html <|
+                        Html.node "style"
+                            []
+                            [ Html.text <| """
                         .width-px-""" ++ String.fromInt (sizeOfBoxesInt model) ++ """ {
                             width: """ ++ String.fromFloat (sizeOfBoxesFloat model) ++ """px
                         }
@@ -1431,35 +1464,35 @@ view model =
                             z-index: 1;
                         }
                         """
-                        ]
-                 ]
-                    ++ textInBoxes model
-                        { string = "People"
-                        , quantity = 3
-                        , paddingLeft = 50
-                        , fontRatio = 2
-                        , backgroundColor = c model .background
-                        , fontColor = c model .font
-                        }
-                    ++ viewPeopleList model
-                    ++ textInBoxes model
-                        { string = "Keywords"
-                        , quantity = 4
-                        , paddingLeft = 60
-                        , fontRatio = 2
-                        , backgroundColor = c model .background
-                        , fontColor = c model .font
-                        }
-                    ++ viewKeywordsList model
-                    ++ textInBoxes model
-                        { string = "Links"
-                        , quantity = 2
-                        , paddingLeft = 25
-                        , fontRatio = 2
-                        , backgroundColor = c model .background
-                        , fontColor = c model .font
-                        }
-                    ++ viewLinksList model
-                )
-        ]
+                            ]
+                     ]
+                        ++ textInBoxes model
+                            { string = "People"
+                            , quantity = 3
+                            , paddingLeft = 50
+                            , fontRatio = 2
+                            , backgroundColor = c model .background
+                            , fontColor = c model .font
+                            }
+                        ++ viewPeopleList model siteMap
+                        ++ textInBoxes model
+                            { string = "Keywords"
+                            , quantity = 4
+                            , paddingLeft = 60
+                            , fontRatio = 2
+                            , backgroundColor = c model .background
+                            , fontColor = c model .font
+                            }
+                        ++ viewKeywordsList model siteMap
+                        ++ textInBoxes model
+                            { string = "Links"
+                            , quantity = 2
+                            , paddingLeft = 25
+                            , fontRatio = 2
+                            , backgroundColor = c model .background
+                            , fontColor = c model .font
+                            }
+                        ++ viewLinksList model siteMap
+                    )
+            ]
     }
