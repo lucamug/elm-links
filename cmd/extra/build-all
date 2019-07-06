@@ -18,7 +18,8 @@ cp -r docs_new/svg    build/
 printf "\n\e[0;32m🍣   Copying files...\e[0m\n\n"
 
 cp docs_new/favicon.ico   build
-cp docs_new/robots.txt   build
+cp docs_new/robots.txt    build
+cp docs_new/sitemap.txt   build
 
 printf "\n\e[0;32m🍣   Compiling and uglify optimized version...\e[0m\n\n"
 
