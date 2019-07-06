@@ -4,9 +4,11 @@
 
 ## A collection of Elm Resources
 
-## [https://lucamug.github.io/elm-resources/](https://lucamug.github.io/elm-resources/)
+## [https://elm-resources.guupa.com/](https://elm-resources.guupa.com/)
 
-[![Screenshot](https://lucamug.github.io/elm-resources/img/elm-resources.png)](https://lucamug.github.io/elm-resources/)
+[![Screenshot](https://elm-resources.guupa.com/img/elm-resources.png)](https://elm-resources.guupa.com/)
+
+
 
 Feel free to add resources sending Pull Requests or opening Issues.
 
