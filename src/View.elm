@@ -1376,7 +1376,7 @@ view model =
             CommonRoute.fromUrl Route.conf model.url
 
         siteMap =
-            True
+            False
     in
     { title = "Elm Resources"
     , body =

@@ -1,2 +1,9 @@
+#
+# Robots file for search engines
+# Everything is allowed
+#
+
 User-agent: *
 Disallow:
+
+Sitemap: https://elm-resources.guupa.com/sitemap.txt
