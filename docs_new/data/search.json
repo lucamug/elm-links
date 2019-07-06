@@ -2937,7 +2937,7 @@
   "name": "newmana/chroma-elm",
   "summary": "A clone of the very useful chroma.js in Elm",
   "license": "Apache-2.0",
-  "versions": ["6.0.0", "7.0.0", "8.1.0"]
+  "versions": ["7.0.0", "8.1.0", "9.0.0"]
 }, {
   "name": "niho/json-schema-form",
   "summary": "Generate validating forms from JSON schemas.",
