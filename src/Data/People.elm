@@ -967,4 +967,28 @@ list =
       , url = ""
       , country = ""
       }
+    , { id = "Abinaya_Sudhir", name = "Abinaya Sudhir", twitter = "", picture = "people/abinaya-sudhir.png", github = "abinayasudhir", url = "", country = "India" }
+    , { id = "Achut_Kiran_Cherukuri", name = "achutkiran", twitter = "", picture = "people/achutkiran.png", github = "achutkiran", url = "", country = "" }
+    , { id = "adauguet", name = "adauguet", twitter = "", picture = "people/adauguet.png", github = "adauguet", url = "", country = "" }
+    , { id = "AdrianRibao", name = "Adrián Ribao", twitter = "", picture = "people/AdrianRibao.jpeg", github = "AdrianRibao", url = "http://www.adrima.es", country = "Spain" }
+    , { id = "afidegnum", name = "Kokou Afidegnon", twitter = "", picture = "people/afidegnum.png", github = "afidegnum", url = "", country = "" }
+    , { id = "ahstro", name = "Anton Strömkvist", twitter = "", picture = "people/ahstro.jpeg", github = "ahstro", url = "https://ahst.ro", country = "Sweden" }
+    , { id = "akoppela", name = "Andrey Koppel", twitter = "", picture = "people/akoppela.png", github = "akoppela", url = "", country = "Indonesia" }
+    , { id = "alexanderkiel", name = "alexanderkiel", twitter = "", picture = "people/alexanderkiel.jpeg", github = "alexanderkiel", url = "http://www.alexanderkiel.net", country = "Germany, Leipzig" }
+    , { id = "alexkorban", name = "Alex Korban", twitter = "", picture = "people/alexkorban.jpeg", github = "alexkorban", url = "https://korban.net", country = "New Zealand, Wellington" }
+    , { id = "allenap", name = "Gavin Panella", twitter = "", picture = "people/allenap.png", github = "allenap", url = "http://allenap.me/", country = "Luxembourg" }
+    , { id = "allo-media", name = "Groupe Allo-Media", twitter = "", picture = "people/allo-media.png", github = "allo-media", url = "", country = "" }
+    , { id = "altjsus", name = "Гриш∆", twitter = "", picture = "people/altjsus.jpeg", github = "altjsus", url = "http://altjsus.github.io", country = "Russia, Belgorod" }
+    , { id = "andre-dietrich", name = "Andre Dietrich", twitter = "", picture = "people/andre-dietrich.jpeg", github = "andre-dietrich", url = "", country = "" }
+    , { id = "andrewMacmurray", name = "Andrew MacMurray", twitter = "", picture = "people/andrewMacmurray.jpeg", github = "andrewMacmurray", url = "", country = "UK, London" }
+    , { id = "anhmiuhv", name = "Linh Hoang", twitter = "", picture = "people/anhmiuhv.png", github = "anhmiuhv", url = "", country = "US, Atlanta" }
+    , { id = "Arkham", name = "Ju Liu", twitter = "", picture = "people/Arkham.jpeg", github = "Arkham", url = "", country = "UK, London" }
+    , { id = "arnau", name = "Arnau Siches", twitter = "", picture = "people/arnau.jpeg", github = "arnau", url = "https://www.spoontaneous.net", country = "UK, London" }
+    , { id = "arsduo", name = "Alex Koppel", twitter = "", picture = "people/arsduo.jpeg", github = "arsduo", url = "http://alexkoppel.com", country = "US, Chicago" }
+    , { id = "arturopala", name = "Artur Opala", twitter = "", picture = "people/arturopala.jpeg", github = "arturopala", url = "", country = "UK, Worthing" }
+    , { id = "astynax", name = "Aleksei Pirogov", twitter = "", picture = "people/astynax.png", github = "astynax", url = "", country = "Russia, Moscow" }
+    , { id = "AuricSystemsInternational", name = "AuricSystemsInternational", twitter = "", picture = "people/AuricSystemsInternational.png", github = "AuricSystemsInternational", url = "", country = "" }
+    , { id = "avh4-experimental", name = "avh4-experimental", twitter = "", picture = "people/avh4-experimental.png", github = "avh4-experimental", url = "", country = "" }
+    , { id = "babsballetschool", name = "Babs Balletschool", twitter = "", picture = "people/babsballetschool.png", github = "babsballetschool", url = "https://www.babsballetschool.nl/", country = "Netherland" }
+    , { id = "bartavelle", name = "Simon Marechal", twitter = "", picture = "people/bartavelle.jpeg", github = "bartavelle", url = "http://hbtvl.banquise.net", country = "France, Marseille" }
     ]
