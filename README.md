@@ -14,7 +14,7 @@ Feel free to add resources sending Pull Requests or opening Issues.
 
 ## How to add a link
 
-Open the file `src/data/Links.elm` and add a new record in the list inside the `list` function.
+Edit the file `src/data/Links.elm` [clicking here](https://github.com/lucamug/elm-resources/edit/master/src/Data/Links.elm) and add a new record in the list inside the `list` function.
 
 The type of the record is:
 ```
@@ -23,15 +23,15 @@ type alias Attributes =
     , url : String                -- Url of the link
     , code : String               -- Url to the source code, if available. Otherwise empty string.
     , picture : String            -- Picture representing the link, if available. Otherwise empty string.
-    , description : String        -- Description of the link
-    , keywords : List Keywords.Id -- List of related Keywords, from `src/data/Keywords.elm`
-    , authors : List People.Id    -- List of related Authors, from `src/data/People.elm`
+    , description : String        -- Description of the link - Empty string if N/A
+    , keywords : List String      -- List of related Keywords - Empty list if N/A
+    , authors : List String       -- List of related Authors - Empty list if N/A
     }
 ```
 
 ## How to add a Keyword
 
-Open the file `src/data/Keywords.elm` and add
+Edit the file `src/data/Keywords.elm` [clicking here](https://github.com/lucamug/elm-resources/edit/master/src/Data/Keywords.elm)
 
 * a new constructor for the type `Id`
 * a new record in the list inside the `list` function.
@@ -39,7 +39,7 @@ Open the file `src/data/Keywords.elm` and add
 The type of the record is:
 ```
 type alias Attributes =
-    { id : Id          -- The type constructor
+    { id : String      -- The type constructor
     , name : String    -- Name, usually the same as the type constructor
     , picture : String -- Picture that represent the keyword
     }
@@ -47,7 +47,7 @@ type alias Attributes =
 
 ## How to add a Person
 
-Open the file `src/data/People.elm` and add
+Edit the file `src/data/People.elm` [clicking here](https://github.com/lucamug/elm-resources/edit/master/src/Data/People.elm) and add
 
 * a new constructor for the type `Id`
 * a new record in the list inside the `list` function.
